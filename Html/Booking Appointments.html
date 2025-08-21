@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking an Appointment</title>
+  <link rel="stylesheet" href="../Css/Book.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../JS/Book.js"></script>
+</head>
+
+<body class="animated-bg" class="loading">
+
+  <div id="mainco">
+           <header class="navx">
+            <nav class="navbar">
+              <div class="logo-container">
+                    <a href="/Html/Home.html">
+                <img src="../Images/logo.png" alt="Logo" class="logo" />
+                </a>
+                </div>
+
+                <ul class="nav-links">
+                <li><a href="/Html/Home.html">Home</a></li>
+                <li><a href="./Doctor Profiles.html">Doc Team</a></li>
+                <li><a href="./Terms of Service.html">Services</a></li>
+                <li><a href="/Html/Contact us.html">Contact</a></li>
+                </ul>
+            </nav>
+            </header>
+
+    <header class="site-header">
+
+      <div class="page-header">
+        <h1 class="hover-title">
+          Book Your Appointment with Our Experts
+        </h1>
+        <p>
+          Fill out the form below to schedule your consultation with one of our specialists. We look forward to
+          assisting
+          you!
+        </p>
+      </div>
+    </header>
+
+
+
+
+
+
+    <div class="container">
+      <img src="../Images/Book page .png" alt="Doctors" class="side-image">
+
+
+      <form class="appointment-form" id="form">
+        <h2>Book Your Appointment</h2> <!-- عنوان أبسط فوق الفورم -->
+        <div class="form-group">
+          <label for="name">Full Name:</label>
+          <input type="text" id="name" name="name" required placeholder="Enter your full name" oninput="handleSubmit()">
+          <span style="color: red;font-size: 14px;margin-top: 5px;display: block;" id="error_name"></span>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required placeholder="Enter your email address"
+            oninput="handleSubmit()">
+          <span style="color: red;font-size: 14px;margin-top: 5px;display: block;" id="error_email"></span>
+
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number:</label>
+          <input type="text" id="phone" name="phone" required placeholder="Enter your phone number"
+            oninput="handleSubmit()">
+          <span style="color: red;font-size: 14px;margin-top: 5px;display: block;" id="error_phone"></span>
+        </div>
+        <div class="form-group">
+          <label for="date">Appointment Date:</label>
+          <input type="date" id="date" name="date" required>
+        </div>
+        <div class="form-group">
+          <label for="department">Select Department:</label>
+          <select id="department" name="department" required>
+            <option value="general">Internal Medicine (Dr. Mohamed Waleed)</option>
+            <option value="cardiology">Cardiology (Dr. Mohamed Zaky)</option>
+            <option value="neurology">Neurology (Dr. Mohamed Ragab)</option>
+            <option value="dentistry">Dental Surgery (Dr. Omar Ragab)</option>
+            <option value="dermatology">Dermatology (Dr. Youssef Al-Demerdash)</option>
+            <option value="psychology">Clinical Psychology (Dr. Mostafa Ashraf)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Additional Notes:</label>
+          <textarea id="message" name="message" rows="4" placeholder="Enter any additional notes (optional)"></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="submit-button" id="submit-btn">Submit Appointment</button>
+        </div>
+      </form>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-container">
+
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="./Contact us.html">Contact Us</a></li>
+           <li><a href="./Terms of Service.html">Our Services</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>About CodeCare Hospital </h3>
+          <p>
+            At <strong>CodeCare Hospital</strong>, we deliver trusted healthcare powered by modern diagnostics, expert
+            consultations, and compassionate care - tailored for you.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h3>Get in Touch</h3>
+          <p>Email: info@codecarehospital.com</p>
+          <p>Phone: +20 100 000 0000</p>
+          <p>Address: Cairo, Egypt</p>
+          <div class="social">
+            <a href="https://www.facebook.com/lolazoda?locale=ar_AR">Facebook</a> |
+          <a href="https://github.com/MohamedZaky-zdragon50">github</a> |
+          <a href="https://www.linkedin.com/in/mohamed-zaky-0130a52a8/">LinkedIn</a>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+    </div>
+            <div class="loader">
+            <div class="logo">
+                <div class="heart">
+                    <svg viewBox="0 0 100 100">
+                        <path class="outline"
+                            d="M10,30 C10,10 40,10 50,30 C60,10 90,10 90,30 C90,60 50,90 50,90 C50,90 10,60 10,30 Z"
+                            fill="none" stroke="#e4002b" stroke-width="4" />
+                        <polyline class="pulse" points="20,50 30,50 35,40 40,60 45,50 55,50" fill="none"
+                            stroke="#e4002b" stroke-width="3" />
+                    </svg>
+                </div>
+                <h1><span class="dark">Code</span><span class="red">Care</span></h1>
+            </div>
+        </div>
+
+    <div id="successMessage" class="success-message" style="display: none;">
+      ✅ Thank you! We will contact you shortly
+    </div>
+
+
+
+</body>
+
+</html>

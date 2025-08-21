@@ -1,0 +1,495 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+     color: #000000;
+     font-family: Arial, sans-serif;
+}
+
+/* Base styling */
+.bady {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fefefe;
+    background-image: linear-gradient(270deg, #fcefee, #ffffff, #f8e4e4);
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+    color: black;
+    line-height: 1.7;
+    padding: 90px 20px 30px 20px;
+}
+
+
+.head {
+    margin-top: 50px;
+}
+/* خلفية متدرجة متحركة */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Loader */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.heart svg {
+    width: 100px;
+    height: 100px;
+}
+
+.pulse {
+    stroke-dasharray: 60;
+    stroke-dashoffset: 60;
+    animation: pulseMove 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseMove {
+    0% { stroke-dashoffset: 60; }
+    50% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: 60; }
+}
+
+/* Typography */
+h1 {
+    font-size: 32px;
+    color: #e30808;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 24px;
+    color: #d00000;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.Location {
+      
+    display: flex;
+    left: 15px;
+}
+
+p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 15px;
+    margin-left: 40px;
+}
+
+
+/* Section box */
+section {
+    background-color: #fff;
+    border-left: 5px solid #e30808;
+    padding: 25px 20px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+     transition: all 0.3s ease-in-out;
+}
+
+
+
+/* تأثير عند المرور بالماوس */
+section:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      transform: translateX(10px) scale(1.02);
+}
+
+/* Social media list */
+ul.social-links {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+ul.social-links li a {
+    color: rgb(30, 64, 175);
+    font-size: medium;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+ul.social-links li a:hover {
+    color: #e30808;
+    text-decoration: underline;
+}
+
+/* Links */
+a {
+    font-weight: bold;
+    color: rgb(30, 64, 175);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #e30808;
+    text-decoration: underline;
+}
+
+/* Address */
+address {
+    font-style: normal;
+    color: #444;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+
+
+
+/* the Footer Style */
+.footer {
+    background-color: #222;
+    color: #eee;
+    padding: 60px 20px 30px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+    margin: 20px;
+}
+
+.footer-column h3 {
+    margin-bottom: 15px;
+    color: #ffffff;
+    font-size: 20px;
+    border-bottom: 2px solid #444;
+    padding-bottom: 5px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    margin: 10px;
+}
+
+.footer-column ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: hsl(0, 100%, 50%);
+}
+
+.footer-column p {
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    border-top: 1px solid #444;
+    padding-top: 15px;
+    color: #aaa;
+    font-size: 14px;
+}
+
+.social {
+    padding-left: 35px;
+}
+
+
+.social a {
+    color: #e22f1b;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    
+}
+
+.social a:hover {
+    color: hsl(0, 0%, 100%); }
+
+strong {
+    color: #e30808;
+}
+
+
+
+/* 📱 Responsive for Mobile */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-column {
+        margin-bottom: 30px;
+    }
+
+    
+}
+
+/* Responsive Design */
+/* Responsive Design */
+@media (max-width: 600px) {
+
+
+/* ************************** */
+
+
+    body, .bady {
+        padding: 20px 10px;
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    p, address {
+        font-size: 15px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    section {
+        padding: 15px 10px;
+        margin: 20px 10px;
+    }
+
+    ul.social-links {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .Location,
+    .end-section {
+        margin-left: 0;
+        text-align: center;
+    }
+
+  
+   
+
+    /* العناصر العامة */
+    body, .bady {
+        padding: 20px 10px;
+        font-size: 16px;
+    }
+
+    /* تنسيق العنوان ليكون في الوسط */
+    h1, h2 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .Location {
+        margin-left: -10px !important;
+        text-align: center;
+    }
+
+    /* جعل الخريطة متوسطة */
+    iframe {
+        width: 100% !important;
+        height: 250px;
+        margin-left: 0 !important;
+        display: block;
+        margin: 0 auto;
+    }
+
+/* ************************** */
+
+  .logo-container {
+      width: 100%;
+    text-align: left;
+    margin-bottom: 30px;
+  }
+
+  .logo {
+    width: 80px;
+  }
+
+/* ************************** */
+
+  .navbar {
+    flex-direction: column;
+    align-items: center; /* وسط العناصر */
+  }
+
+  .logo-container {
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  .nav-links {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+    .Location {
+     display: block !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    text-align: center !important;       /* يتوسط العنصر نفسه */
+  }
+
+    iframe {
+    display: block !important;
+    margin: 20px auto 0 !important;
+    width: 90% !important;   /* يمكنك ضبط النسبة هنا */
+    height: 250px !important; /* ارتفاع مناسب للموبايل */
+    max-width: 100% !important;          /* ارتفاع مريح للموبايل */
+  }
+
+}
+
+
+.end-section {
+    margin-left: 70px;
+}
+
+
+.social-links{
+    font-weight:bolder;
+}
+
+
+
+/* NAV XXXXXXXXX */
+.navx {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    /* لضمان أن الهيدر يظهر فوق باقي العناصر */
+}
+
+.navbar {
+  position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1200px;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+    /* تحديد أقصى عرض للشريط */
+}
+
+.nav-links {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+
+}
+
+/* تنسيق روابط التنقل */
+.nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 22px;
+    font-weight: bolder;
+    transition: color 0.3s ease;
+}
+
+/* التأثير عند التحويم */
+.nav-links li a:hover {
+    color: #e30808;
+}
+
+/* **************** */
+
+
+.logo-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+    
+}
+
+
+/* اللوجو داخل الـ navbar */
+.logo {
+    position: static;
+    width: 110px;
+    height: 60px;
+    margin-left: 20px;
+    object-fit: contain;
+      transition: transform 0.3s ease;
+}
+
+
+
+ .logo-container {
+    flex-shrink: 0;
+}
+
+
+.logo:hover {
+    transform: scale(1.03);
+} 
+
+
+
+body {
+    overflow-x: hidden;
+}
+
+/* ولضمان أن الـ HTML ما يسمحش بالتمدد الجانبي */
+html {
+    overflow-x: hidden;
+    width: 100%;
+}

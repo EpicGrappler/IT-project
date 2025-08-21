@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>services | CodeCare</title>
+  <link rel="stylesheet" href="../Css/Terms services.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../JS/Services .js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+</head>
+
+
+<body>
+  <div id="mainco">
+    <header class="navx">
+      <nav class="navbar">
+        <div class="logo-container">
+          <!-- Logo في الـ Navbar -->
+          <a href="/Html/Home.html">
+            <img id="navLogo"
+              src="../Images/logo-light.png"
+              data-light="../Images/logo-light.png"
+              data-dark="../Images/logo-dark.png"
+              alt="CodeCare Logo" />
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="/Html/Home.html">Home</a></li>
+          <li><a href="./Doctor Profiles.html">Our Doctors</a></li>
+          <li><a href="/Html/Terms of Service.html">Services</a></li>
+          <li><a href="/Html/Contact us.html">Contact</a></li>
+        </ul>
+
+        <!-- Search Box -->
+        <div class="search-container">
+          <input type="search" id="search-input" placeholder="Search..." aria-label="Search" />
+          <button aria-label="Search" class="search-btn" id="search-btn">🔍</button>
+          <div class="search-error" id="search-error"></div>
+        </div>
+
+        <!-- Dark Mode Toggle -->
+        <div class="dark-mode-switch">
+          <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+            <span class="slider">
+              <i class="fas fa-moon"></i>
+            </span>
+            <span class="switch-label">Dark Mode</span>
+          </button>
+        </div>
+
+          <div class="account-button compact">
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" stroke-width="2" stroke="#0080ca" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="8" r="5" />
+    <path d="M20 21a8 8 0 0 0-16 0" />
+  </svg>
+  <span class="label">Account</span>
+</div>
+
+<style>
+  .account-button.compact {
+    padding: 8px 14px;
+    gap: 6px;
+    background: linear-gradient(to right, #ffffff, #f3faff);
+    border-radius: 40px;
+    box-shadow: 0 4px 14px rgba(0, 128, 202, 0.1);
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    animation: fadeInUp 0.5s ease-out;
+    transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
+  }
+
+  .account-button.compact:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(to right, #e0f0ff, #ffffff);
+    box-shadow: 0 8px 20px rgba(0, 128, 202, 0.2);
+  }
+
+  .account-button .icon {
+    width: 22px;
+    height: 22px;
+    transition: stroke 0.4s ease;
+  }
+
+  .account-button.compact:hover .icon {
+    stroke: #1d4ed8;
+  }
+
+  .account-button .label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #333;
+    transition: color 0.4s ease;
+  }
+
+  .account-button.compact:hover .label {
+    color: #1d4ed8;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+
+        <!-- Side Menu -->
+        <div class="side-menu" id="side-menu">
+          <ul>
+            <li><a href="/Html/Home.html">Home</a></li>
+            <li><a href="./Doctor Profiles.html">Our Doctors</a></li>
+            <li><a href="/Html/Terms of Service.html">Services</a></li>
+            <li><a href="/Html/Contact us.html">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+
+  <!-- ========== Landing Page ========== -->
+
+  <main class="container">
+    <section class="content">
+      <h1 class="main-title">Gateway to Smart<br> Medical Access</h1>
+      <p class="description">
+        Experience a new era of digital healthcare, tailored just for you.
+      </p>
+      <a href="/It Project/Html/Doctor Profiles.html" class="btn-link">Find Your Doctor</a>
+
+
+    </section>
+
+    <section class="image-area">
+      <img src="/It Project/Images/services pic.gif" alt="Landing Page Illustration" />
+    </section>
+  </main>
+
+  <!-- ========== Terms of Service Section (Styled Separately) ========== -->
+  <div class="terms-wrapper" id="terms" >
+    <header>
+      <h1> Terms of Services For <span class="highlight">CodeCare</span> </h1>
+      <p>By using the website and medical services provided by Code Care Hospital, you agree to the following terms and conditions:</p>
+    </header>
+
+    <section class="labels">
+        <h2>Medical Services</h2>
+        <ul>
+          <li>Medical Consultations</li>
+          <li>Diagnostic Services</li>
+          <li>Medical Treatments</li>
+          <li>All services are subject to the hospital's internal policies</li>
+        </ul>
+    </section>
+
+    <section>
+      <h2>User Responsibilities</h2>
+      <p style="font-weight: bold;">Patients are expected to comply with the following responsibilities when utilizing the services offered by Code Care Hospital:</p>
+      <ul>
+        <li>Provide accurate medical history upon registration.</li>
+        <li>Schedule appointments in advance based on the hospital's availability.</li>
+        <li>Follow the prescribed medical treatments and guidelines provided by healthcare professionals.</li>
+      </ul>
+    </section>
+
+      <section>
+    <h2>Appointment & Payment Policies</h2>
+    <ul>
+      <li><strong>Booking:</strong> All appointments must be booked through our online portal or via phone during working hours.</li>
+      <li><strong>Cancellation:</strong> Cancellations made less than 24 hours before the appointment may incur a cancellation fee.</li>
+      <li><strong>Payments:</strong> We accept cash, major credit cards, and most insurance plans; full payment is due at time of service unless otherwise arranged.</li>
+      <li><strong>No‑Show Policy:</strong> Failure to attend without prior notice may result in suspension of future bookings.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Limitations of Liability</h2>
+    <p style="font-weight: bold;">CodeCare Hospital and its staff will exercise all reasonable care and skill in the provision of medical services. However:</p>
+    <ul>
+      <li>We are not responsible for any adverse health outcomes that occur outside the scope of prescribed treatments.</li>
+      <li>The hospital disclaims liability for any indirect, special, or consequential damages arising from use of our services.</li>
+      <li>Telemedicine consultations are subject to technological limitations beyond our control; we do not guarantee uninterrupted connectivity.</li>
+      <li>In cases of emergency, always call local emergency services first before contacting our facilities.</li>
+    </ul>
+  </section>
+
+  </div>
+
+
+ <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-column" id="f1">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="./Contact us.html">Contact Support</a></li>
+            <li><a href="./Terms of Service.html">View Services</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column" id="f2">
+          <h3>About CodeCare Hospital</h3>
+          <p>At <strong style="color: #0080ca;">CodeCare Hospital</strong>, we provide exceptional healthcare solutions combining state-of-the-art technology, expert professionals, and compassionate care tailored to each patient’s needs.</p>
+        </div>
+
+        <div class="footer-column" id="f3">
+          <h3>Contact Information</h3>
+          <p><i class="fas fa-envelope"></i> Email: info@codecarehospital.com</p>
+          <p><i class="fas fa-phone"></i> Phone: +20 100 000 0000</p>
+          <p><i class="fas fa-map-marker-alt"></i> Address: Cairo, Egypt</p>
+          <div class="social">
+            <a href="https://www.facebook.com/lolazoda?locale=ar_AR">
+              <i class="fab fa-facebook-f"></i> Facebook
+            </a> |
+            <a href="https://github.com/MohamedZaky-zdragon50">
+              <i class="fab fa-github"></i> GitHub
+            </a> |
+            <a href="https://www.linkedin.com/in/mohamed-zaky-0130a52a8/">
+              <i class="fab fa-linkedin-in"></i> LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('darkModeToggle');
+  if (!btn) return; // حماية لو الزر مش موجود
+
+  const icon = btn.querySelector('i');
+  const logo = document.getElementById('logo');
+  const navLogo = document.getElementById('navLogo');
+
+  const wasDark = localStorage.getItem('darkMode') === 'enabled';
+  if (wasDark) {
+    document.body.classList.add('dark-mode');
+    btn.classList.add('active');
+    icon?.classList.replace('fa-moon', 'fa-sun');
+    if (logo) logo.src = logo.dataset.dark;
+    if (navLogo) navLogo.src = navLogo.dataset.dark;
+  }
+
+  btn.addEventListener('click', () => {
+    const isDark = document.body.classList.toggle('dark-mode');
+    btn.classList.toggle('active', isDark);
+    icon?.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
+
+    if (logo) logo.style.opacity = 0;
+    if (navLogo) navLogo.style.opacity = 0;
+
+    setTimeout(() => {
+      if (logo) {
+        logo.src = isDark ? logo.dataset.dark : logo.dataset.light;
+        logo.style.opacity = 1;
+      }
+      if (navLogo) {
+        navLogo.src = isDark ? navLogo.dataset.dark : navLogo.dataset.light;
+        navLogo.style.opacity = 1;
+      }
+    }, 200);
+
+    localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+  });
+});
+
+  </script>
+
+<div class="loading light-mode fade">
+  <div class="logo">
+    <div class="heart">
+      <svg viewBox="0 0 100 100">
+        <path class="outline" d="M10,30 C10,10 40,10 50,30 C60,10 90,10 90,30 C90,60 50,90 50,90 C50,90 10,60 10,30 Z" fill="none" stroke="#007bff" stroke-width="4" />
+        <polyline class="pulse" points="20,50 30,50 35,40 40,60 45,50 55,50" fill="none" stroke="#007bff" stroke-width="3" />
+      </svg>
+    </div>
+    <h1><span class="white">Code</span><span class="blue">Care</span></h1>
+  </div>
+</div>
+
+</body>
+
+</html>

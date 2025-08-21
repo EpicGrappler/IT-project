@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Doctors</title>
+  <link rel="stylesheet" href="/Css/style.css"> 
+</head>
+
+<body class="animated-bg loading">
+
+  <div id="mainco" style="display:none;">
+    <header class="navx">
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="/Html/Home.html">Home</a></li>
+          <li><a href="./Doctor Profiles.html">Doc Team</a></li>
+          <li><a href="/Html/Terms of Service.html">Services</a></li>
+          <li><a href="/Html/Contact us.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <header class="site-header">
+      <div class="logo-container">
+        <a href="/Html/Home.html">
+          <img src="../Images/logo.png" alt="Logo" class="logo" />
+        </a>
+      </div>
+
+      <div class="page-header">
+        <h1 class="hover-title">
+          Find Your Doctor, Powered by Code
+        </h1>
+        <p>
+          We’ve coded the smart way to connect you to care—search by name or specialty in seconds.
+        </p>
+      </div>
+    </header>
+
+    <!-- Main Content with Image and Form -->
+    <div class="container">
+      <!-- Image on the right -->
+      <img src="/Images/Doc prof.jpg" alt="Doctors" class="doctor-image">
+
+      <!-- Search Form -->
+      <form class="search-form">
+        <h2>Search for a Doctor</h2>
+        <label for="name">Doctor's Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter doctor's name">
+        <br><br>
+        <label for="specialty">Select Specialty:</label>
+        <select id="specialty" name="specialty">
+          <option value="">Select specialty</option>
+          <option value="internal">Internal Medicine</option>
+          <option value="cardiology">Cardiology</option>
+          <option value="dentistry">Dental Surgery</option>
+          <option value="psychology">Clinical Psychology</option>
+          <option value="dermatology">Dermatology</option>
+          <option value="neurology">Neurology</option>
+          <option value="Pediatrics">Pediatrics</option>
+        </select>
+        <br><br>        
+        <button type="submit">Search</button>
+
+        <!-- رسالة البحث تظهر هنا تحت الفورم -->
+        <div id="message-box" style="margin-top: 15px; font-weight: bold;"></div>
+
+        <p>Visit Our Doctors by <a href="/Html/Doctor Profiles.html" class="link">Clicking Here</a></p>
+      </form>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="/Html/Contact us.html">Contact Us</a></li>
+            <li><a href="./Terms of Service.html">Our Services</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>About CodeCare Hospital</h3>
+          <p>
+            At <strong>CodeCare Hospital</strong>, we deliver trusted healthcare powered by modern diagnostics, expert consultations, and compassionate care - tailored for you.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h3>Get in Touch</h3>
+          <p>Email: info@codecarehospital.com</p>
+          <p>Phone: +20 100 000 0000</p>
+          <p>Address: Cairo, Egypt</p>
+          <div class="social">
+            <a href="https://www.facebook.com/lolazoda?locale=ar_AR">Facebook</a> |
+            <a href="https://github.com/MohamedZaky-zdragon50">GitHub</a> |
+            <a href="https://www.linkedin.com/in/mohamed-zaky-0130a52a8/">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="loader">
+    <div class="logo">
+      <div class="heart">
+        <svg viewBox="0 0 100 100">
+          <path class="outline" d="M10,30 C10,10 40,10 50,30 C60,10 90,10 90,30 C90,60 50,90 50,90 C50,90 10,60 10,30 Z" fill="none" stroke="#e4002b" stroke-width="4"/>
+          <polyline class="pulse" points="20,50 30,50 35,40 40,60 45,50 55,50" fill="none" stroke="#e4002b" stroke-width="3" />
+        </svg>
+      </div>
+      <h1><span class="dark">Code</span><span class="red">Care</span></h1>
+    </div>
+  </div>
+
+  <!-- ربط ملف JS في نهاية الصفحة -->
+  <script src="/JS/search.js"></script>
+
+</body>
+</html>

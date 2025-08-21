@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | CodeCare</title>
+  <link rel="stylesheet" href="../Css/login.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../JS/login.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+</head>
+
+<body>
+  <div id="mainco">
+    <header class="navx">
+      <nav class="navbar">
+        <div class="logo-container">
+          <!-- Logo في الـ Navbar -->
+          <a href="/Html/Home.html">
+            <img id="navLogo"
+              src="../Images/logo-light.png"
+              data-light="../Images/logo-light.png"
+              data-dark="../Images/logo-dark.png"
+              alt="CodeCare Logo" />
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="/Html/Home.html">Home</a></li>
+          <li><a href="./Doctor Profiles.html">Our Doctors</a></li>
+          <li><a href="/Html/Terms of Service.html">Services</a></li>
+          <li><a href="/Html/Contact us.html">Contact</a></li>
+        </ul>
+
+        <!-- Search Box -->
+        <div class="search-container">
+          <input type="search" id="search-input" placeholder="Search..." aria-label="Search" />
+          <button aria-label="Search" class="search-btn" id="search-btn">🔍</button>
+          <div class="search-error" id="search-error"></div>
+        </div>
+
+        <!-- Dark Mode Toggle -->
+        <div class="dark-mode-switch">
+          <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+            <span class="slider">
+              <i class="fas fa-moon"></i>
+            </span>
+            <span class="switch-label">Dark Mode</span>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+
+        <!-- Side Menu -->
+        <div class="side-menu" id="side-menu">
+          <ul>
+            <li><a href="/Html/Home.html">Home</a></li>
+            <li><a href="./Doctor Profiles.html">Our Doctors</a></li>
+            <li><a href="/Html/Terms of Service.html">Services</a></li>
+            <li><a href="/Html/Contact us.html">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="logo-container">
+        <!-- Logo في الـ Container -->
+        <img id="logo"
+          src="../Images/logo-light.png"
+          data-light="../Images/logo-light.png"
+          data-dark="../Images/logo-dark.png"
+          alt="CodeCare Logo" />
+      </div>
+
+      <div class="welcome-text">
+        <h1>Welcome Back to <span class="highlight">CodeCare</span></h1>
+        <p>Sign in to access your personalized healthcare experience</p>
+      </div>
+
+      <div class="form-container">
+        <form action="" method="post" id="form">
+          <div class="input-group">
+            <label for="Email">Email Address</label>
+            <input type="email" name="Email" id="Email" placeholder="example@domain.com" required oninput="handleSubmit()" />
+            <span class="error" id="emailerror"></span>
+          </div>
+
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Enter your secure password" required oninput="handleSubmit()" />
+            <span class="error" id="passworderror"></span>
+          </div>
+
+          <button type="submit" id="submit-btn">Log In</button>
+        </form>
+
+        <p class="register-link">
+          New to CodeCare?
+          <a href="register.html">Create your account</a>
+        </p>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-column" id="f1">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="./Contact us.html">Contact Support</a></li>
+            <li><a href="./Terms of Service.html">View Services</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column" id="f2">
+          <h3>About CodeCare Hospital</h3>
+          <p>At <strong style="color: #0080ca;">CodeCare Hospital</strong>, we provide exceptional healthcare solutions combining state-of-the-art technology, expert professionals, and compassionate care tailored to each patient’s needs.</p>
+        </div>
+
+        <div class="footer-column" id="f3">
+          <h3>Contact Information</h3>
+          <p><i class="fas fa-envelope"></i> Email: info@codecarehospital.com</p>
+          <p><i class="fas fa-phone"></i> Phone: +20 100 000 0000</p>
+          <p><i class="fas fa-map-marker-alt"></i> Address: Cairo, Egypt</p>
+          <div class="social">
+            <a href="https://www.facebook.com/lolazoda?locale=ar_AR">
+              <i class="fab fa-facebook-f"></i> Facebook
+            </a> |
+            <a href="https://github.com/MohamedZaky-zdragon50">
+              <i class="fab fa-github"></i> GitHub
+            </a> |
+            <a href="https://www.linkedin.com/in/mohamed-zaky-0130a52a8/">
+              <i class="fab fa-linkedin-in"></i> LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('darkModeToggle');
+      const icon = btn.querySelector('i');
+      const logo = document.getElementById('logo');
+      const navLogo = document.getElementById('navLogo');
+
+      // استرجاع الحالة من localStorage
+      const wasDark = localStorage.getItem('darkMode') === 'enabled';
+      if (wasDark) {
+        document.body.classList.add('dark-mode');
+        btn.classList.add('active');
+        icon.classList.replace('fa-moon', 'fa-sun');
+        logo.src = logo.dataset.dark;
+        navLogo.src = navLogo.dataset.dark;
+      }
+
+      btn.addEventListener('click', () => {
+        const isDark = document.body.classList.toggle('dark-mode');
+        btn.classList.toggle('active', isDark);
+
+        // تبديل أيقونة القمر ↔️ الشمس
+        if (isDark) icon.classList.replace('fa-moon', 'fa-sun');
+        else        icon.classList.replace('fa-sun', 'fa-moon');
+
+        // تأثير تلاشي بسيط على الشعارات
+        logo.style.opacity = 0;
+        navLogo.style.opacity = 0;
+        setTimeout(() => {
+          logo.src = isDark ? logo.dataset.dark : logo.dataset.light;
+          navLogo.src = isDark ? navLogo.dataset.dark : navLogo.dataset.light;
+          logo.style.opacity = 1;
+          navLogo.style.opacity = 1;
+        }, 200);
+
+        // حفظ الحالة
+        localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+      });
+    });
+  </script>
+</body>
+
+</html>

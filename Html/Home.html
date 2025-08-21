@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeCare Hospital</title>
+  <link rel="stylesheet" href="../Css/home.css" />
+  <script src="../JS/home.js"></script>
+  <script src="../JS/register.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+  <div id="mainco">
+    <header class="navx">
+      <nav class="navbar">
+        <div class="logo-container">
+          <a href="/Html/Home.html">
+            <img src="../Images/logo.png" alt="Logo" class="logo" />
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="./Home.html">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="./Terms of Service.html">Services</a></li>
+          <li><a href="./Contact us.html">Contact</a></li>
+        </ul>
+        <div class="navbar-buttons">
+          <a href="login.html"><button class="btn login-btn">Login</button></a>
+          <a href="register.html"><button class="btn signup-btn" id="signup-btnID">Sign Up</button></a>
+          <div class="profile-icon" id="profileIcon" tabindex="0" role="button" aria-label="Profile">
+            <a href="/Html/patient profile.html" aria-label="Go to profile">
+              <i class="fas fa-user-circle fa-2x"></i>
+              <img src="../Images/Ahmed_Helmy.jpg" alt="" height="50" width="50" style="border-radius: 10px;display: none;">
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <h1>Your Health is Our Commitment</h1>
+          <p>Receive world-class medical services delivered with empathy, innovation, and care. Schedule your appointment with our expert physicians today.</p>
+          <a href="/Html/Booking Appointments.html" class="Hero-Button">Book Your Appointment</a>
+        </div>
+        <div class="hero-img">
+          <img src="../Images/Home/Hero Image.png" alt="Hero Image" style="height: 400px; width: 600px;" />
+        </div>
+      </div>
+    </section>
+
+    <section class="intro-video">
+      <div class="container intro-content">
+        <div class="intro-text">
+          <h2>Welcome to CodeCare Hospital</h2>
+          <p class="content">Explore our modern facilities, compassionate medical staff, and a full range of healthcare solutions. Discover why thousands trust CodeCare for their well-being.</p>
+          <ul>
+            <li>Cutting-edge diagnostic tools</li>
+            <li>Accredited medical professionals</li>
+            <li>Patient-first philosophy</li>
+          </ul>
+        </div>
+        <div class="intro-video-frame">
+          <video src="../Images/Home/Home .mp4" controls style="width: 450px;"></video>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about-section">
+      <div class="container about-container">
+        <div class="about-image">
+          <img src="../Images/Home/About .png" alt="About CodeCare Hospital" class="about-image" />
+        </div>
+        <div class="about-text">
+          <h2>About Us</h2>
+          <p>
+            At CodeCare Hospital, we are committed to delivering premium healthcare services through state-of-the-art technology, experienced professionals, and a deep passion for healing. We strive to make quality care accessible to everyone.
+          </p>
+          <a href="#services" class="About-button">Discover More</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="location" class="map-section">
+      <div class="container">
+        <h2>Our Location</h2>
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?..."
+            width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" title="CodeCare Hospital Location"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="services">
+      <div class="container text-center">
+        <h2>Our Services</h2>
+        <div class="services-content-wrapper">
+          <div class="services-grid">
+            <div class="services-left">
+              <div class="service-box">
+                <h3>General Health Check</h3>
+                <p>Comprehensive wellness exams and early detection services for a healthier life.</p>
+              </div>
+              <div class="service-box">
+                <h3>Cardiology</h3>
+                <p>Advanced heart care by renowned cardiologists using the latest techniques.</p>
+              </div>
+              <div class="service-box">
+                <h3>Pediatrics</h3>
+                <p>Complete pediatric care tailored to children and adolescents’ needs.</p>
+              </div>
+            </div>
+            <div class="Services-image">
+              <img src="../Images/Home/services.png" alt="About CodeCare Hospital" />
+            </div>
+          </div>
+        </div>
+        <a href="./Terms of Service.html" class="Services-button">Browse All Services</a>
+      </div>
+    </section>
+
+    <section id="doctors" class="doctors">
+      <div class="container text-center">
+        <h2>Our Top Medical Experts</h2>
+        <div class="doctor-container doctors-grid">
+          <div class="doctor-card">
+            <a href="./Ruba.html">
+              <img src="../Images/Home/Rubaa .jpg" alt="Dr. Rubaa"></a>
+            <h3>Dr. Rubaa </h3>
+            <p><strong>Specialty:</strong> Pediatric Medicine</p>
+            <p><strong>Experience:</strong> Over 10 years of excellence</p>
+            <p><strong>Email:</strong> Rubaa72@codecare.com</p>
+          </div>
+          <div class="doctor-card">
+            <a href="./Zaky .html">
+              <img src="../Images/Zaky.jpeg" alt="Dr. Mohamed Zaky"></a>
+            <h3>Dr. Mohamed Zaky</h3>
+            <p><strong>Specialty:</strong> Cardiology</p>
+            <p><strong>Experience:</strong> 12+ years in the field</p>
+            <p><strong>Email:</strong> Mohamedzaky25@codecare.com</p>
+          </div>
+          <div class="doctor-card">
+            <a href="./Mostafa .html">
+              <img src="../Images/mostafa .jpg" alt="Dr. Mostafa Ashraf"></a>
+            <h3>Dr. Mostafa Ashraf</h3>
+            <p><strong>Specialty:</strong> Clinical Psychology</p>
+            <p><strong>Experience:</strong> 12 years</p>
+            <p><strong>Email:</strong> MostafaAshraf30@codecare.com</p>
+          </div>
+        </div>
+        <div class="button-wrapper">
+          <a href="./Doctor Profiles.html" class="Doctor-button">Explore Our Medical Team</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="lab-test-section">
+      <div class="lab-test-wrapper">
+        <div class="lab-test-content">
+          <h2 class="section-title">Book a Lab Test Easily</h2>
+          <p class="section-description">
+            Access fast, precise, and confidential laboratory testing. Schedule your tests online and avoid unnecessary delays.
+          </p>
+          <a href="/Html/Lab Test Booking.html" class="Lab-button">Book Now</a>
+        </div>
+        <div class="lab-test-image">
+          <img src="../Images/Home/Lab Image .png" alt="Lab Test" />
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials-section">
+      <div class="container">
+        <h2>What Our Patients Say</h2>
+        <div class="testimonials-wrapper">
+          <div class="testimonial-card">
+            <img src="../Images/Home/lady patient .jpg" alt="Patient 1" class="testimonial-img">
+            <h3>Sara Ahmed</h3>
+            <p>"The doctors and staff were incredibly professional and caring. I felt safe and well taken care of."</p>
+          </div>
+          <div class="testimonial-card">
+            <a href="./patient profile.html">
+              <img src="../Images/Patient Profile.jpg" alt="Patient 2" class="testimonial-img"></a>
+            <h3>Mahmoud Sallem</h3>
+            <p>"Excellent facilities and very friendly nurses. The appointment process was smooth and quick."</p>
+          </div>
+          <div class="testimonial-card">
+            <img src="../Images/Home/Youth Patient .jpg" alt="Patient 3" class="testimonial-img">
+            <h3>Ahmed Hassan</h3>
+            <p>"Highly recommend CodeCare! The cardiology department took great care of my heart condition."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faqs" style="padding: 80px 0;">
+      <div class="container">
+        <h2 class="text-center">Frequently Asked Questions</h2>
+        <div class="faqs-layout">
+          <div class="faqs-content">
+            <div class="faq-item">
+              <h3>What are your working hours?</h3>
+              <p>We are open 24/7 to provide you with emergency and general healthcare services.</p>
+            </div>
+            <div class="faq-item">
+              <h3>Do I need to book an appointment?</h3>
+              <p>Appointments are recommended for faster service, but we do accept walk-ins as well.</p>
+            </div>
+            <div class="faq-item">
+              <h3>Are your services covered by insurance?</h3>
+              <p>Yes, we accept most major insurance plans. Please contact us for more information.</p>
+            </div>
+            <div class="faq-item">
+              <h3>How do I contact a specific department?</h3>
+              <p>You can call our main line and request to be connected to the appropriate department.</p>
+            </div>
+          </div>
+          <div class="faqs-image">
+            <img src="../Images/Home/services (2).png" alt="FAQs Image" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container text-center">
+        <h2>Contact Us</h2>
+        <p>Need assistance or have questions? We’re here to help. Send us a message and we’ll get back to you shortly.</p>
+        <form class="contact-form">
+          <input type="text" placeholder="Your Name">
+          <input type="email" placeholder="Your Email">
+          <textarea rows="5" placeholder="Your Message"></textarea>
+          <button type="submit" class="contact-button">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="./Contact us.html">Contact Us</a></li>
+            <li><a href="./Terms of Service.html">Our Services</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Why CodeCare?</h3>
+          <p>
+            At <strong>CodeCare Hospital</strong>, we blend modern diagnostics, expert medical knowledge, and a human touch to deliver care that truly matters.
+          </p>
+        </div>
+        <div class="footer-column">
+          <h3>Get in Touch</h3>
+          <p>Email: info@codecarehospital.com</p>
+          <p>Phone: +20 100 000 0000</p>
+          <p>Address: Cairo, Egypt</p>
+          <div class="social">
+            <a href="https://www.facebook.com/lolazoda?locale=ar_AR">Facebook</a> |
+            <a href="https://github.com/MohamedZaky-zdragon50">GitHub</a> |
+            <a href="https://www.linkedin.com/in/mohamed-zaky-0130a52a8/">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>

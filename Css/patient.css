@@ -1,0 +1,625 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: hwb(0 94% 2%);
+  color: black;
+  line-height: 1.6;
+}
+
+/* Container */
+main {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+/* Header */
+header {
+  background: #1e3a8a;
+  color: #fff;
+  padding: 30px;
+  text-align: center;
+}
+header h1 {
+  font-size: 2rem;
+  letter-spacing: 1px;
+    color: hsl(0, 0%, 0%);
+    transition: color 0.4s ease, transform 0.3s ease;
+}
+
+header h1:hover {
+      color: hwb(0 6% 94%);
+    transform: scale(1.05); /
+}
+
+/* Section Titles */
+section {
+  padding: 20px 30px;
+  border-bottom: 3px solid hsl(240, 1%, 75%);
+  border-radius: 1px;
+}
+section:last-of-type {
+  border-bottom: none;
+}
+section h2 {
+  font-size: 1.25rem;
+  color: #e30808;
+  margin-bottom: 15px;
+  position: relative;
+}
+section h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #1e40af;
+  margin-top: 5px;
+  border-radius: 2px;
+}
+
+
+
+.profile-card {
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.edit-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: #e30808;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.edit-btn:hover {
+  background-color: #c00606;
+  transform: translateY(-2px);
+}
+
+.profile-content {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #e5e7eb;
+}
+
+.profile-details {
+  margin: 0;
+  font-size: 16px;
+}
+
+.profile-details dt {
+  font-weight: bold;
+  color: #1e40af;
+  margin-top: 10px;
+}
+
+.profile-details dd {
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+
+
+
+/* Profile Image */
+#personal-info img {
+  display: block;
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  border: 3px solid #e30808;
+   transition: transform 0.3s ease, filter 0.3s ease;
+   
+}
+
+#personal-info img:hover {
+    transform: scale(1.1); /* تكبير الصورة عند  */
+    filter: brightness(1.1); /* زيادة السطوع */
+}
+
+/* Text Detail Lists */
+#personal-info p,
+#contact-info p,
+#emergency-contact p {
+  margin-bottom: 10px;
+}
+#personal-info p strong,
+#contact-info p strong,
+#emergency-contact p strong {
+  color: #e30808;
+}
+
+/* Medical History & Medications Lists */
+#medical-history ul,
+#current-medications ul {
+  list-style: none;
+  margin-left: 0;
+}
+#medical-history li,
+#current-medications li {
+  padding: 8px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+#medical-history li:last-child,
+#current-medications li:last-child {
+  border-bottom: none;
+}
+
+/* Appointments Table */
+#appointments table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+#appointments thead th {
+  background: #1e40af;
+  color: #fff;
+  padding: 10px;
+  font-weight: 500;
+  text-align: left;
+}
+#appointments tbody td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+#appointments tbody tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+/* Clinical Notes */
+#notes p {
+  background: #eef2ff;
+  padding: 15px;
+  border-left: 4px solid #1e40af;
+  border-radius: 4px;
+}
+
+
+/* Links */
+a {
+  color: #1e40af;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: #4338ca;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+  section {
+    padding: 15px 20px;
+  }
+  #appointments thead {
+    display: none;
+  }
+  #appointments tbody td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 10px;
+  }
+  #appointments tbody tr {
+    margin-bottom: 15px;
+    display: block;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+  }
+  #appointments tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+    color: #1e3a8a;
+  }
+}
+
+
+
+
+.site-header {
+  display: flex;
+  align-items: center;           /* محاذاة عمودية في الوسط */
+  justify-content: space-between;/* مسافة متساوية بين اللوجو والعنوان */
+  padding: 30px 15px 15px;
+  background-color: #fff;
+  position: relative; /* يلغي تأثيرات absolute الداخلية */
+  z-index: 1;
+  margin-top: 20px;   /* إذا كنت تستخدم navx ثابت أعلى */
+}
+
+
+.page-header {
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    padding: 12px 30px;
+    margin-right: 60px;
+    margin-top: 70px;
+    background-color: #ffffff;
+   margin-left: 420px;
+}
+
+.page-header h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #e30808;
+}
+
+.page-header p {
+    font-size: 1.1em;
+    max-width: 600px;
+    margin: 0 auto;
+    color: black;
+    font-weight: bold;
+}
+
+
+.logo-container {
+    flex-shrink: 0;
+}
+
+#logo {
+   position: static;  /* إزالة absolute */
+  width: 180px;
+  height: auto;
+  object-fit: contain;
+  margin-right: 20px;
+  margin-left: 60px;
+  margin-top: 15px;
+  transition: transform 0.3s ease;
+}
+
+#logo:hover {
+    transform: scale(1.03);
+}
+
+
+/* NAV XXXXXXXXX */
+.navx {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 25px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    z-index: 1000;
+    /* لضمان أن الهيدر يظهر فوق باقي العناصر */
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    /* تحديد أقصى عرض للشريط */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+}
+
+/* تنسيق روابط التنقل */
+.nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+/* التأثير عند التحويم */
+.nav-links li a:hover {
+    color: #e30808;
+}
+
+/* **************** */
+
+/* الخلفية  */
+
+.animated-bg {
+    background: linear-gradient(270deg, #e5c8c8, #ffffff, hwb(6 56% 2%));
+    background-size: 600% 600%;
+    animation: gradientMove 6s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* **************** */
+
+
+/* تنسيق اللودر ليظهر في المنتصف */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    /* يغطي أي محتوى تحته */
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.heart svg {
+    width: 100px;
+    height: 100px;
+}
+
+.pulse {
+    stroke-dasharray: 60;
+    stroke-dashoffset: 60;
+    animation: pulseMove 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseMove {
+    0% {
+        stroke-dashoffset: 60;
+    }
+
+    50% {
+        stroke-dashoffset: 0;
+    }
+
+    100% {
+        stroke-dashoffset: 60;
+    }
+}
+
+h1 {
+    font-family: Arial, sans-serif;
+    margin-top: 10px;
+    font-size: 2rem;
+}
+
+.dark {
+    color: #333;
+}
+
+.red {
+    color: #e4002b;
+}
+
+/* **************** */
+
+
+/* the Footer Style */
+.footer {
+    background-color: #222;
+    color: #eee;
+    padding: 60px 20px 30px;
+    font-family: Arial, sans-serif;
+     margin: -20px !important;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+    margin: 20px;
+}
+
+.footer-column h3 {
+    margin-bottom: 15px;
+    color: #ffffff;
+    font-size: 20px;
+    border-bottom: 2px solid #444;
+    padding-bottom: 5px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    margin: 10px;
+}
+
+.footer-column ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: hsl(0, 100%, 50%);
+}
+
+.footer-column p {
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    border-top: 1px solid #444;
+    padding-top: 15px;
+    color: #aaa;
+    font-size: 14px;
+}
+
+.social a {
+    color: #e22f1b;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social a:hover {
+    color: hsl(0, 0%, 100%); }
+
+strong {
+    color: #e30808;
+}
+
+/* **************** */
+
+
+
+/* NAV XXXXXXXXX */
+.navx {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    /* لضمان أن الهيدر يظهر فوق باقي العناصر */
+}
+
+.navbar {
+  position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1200px;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+    /* تحديد أقصى عرض للشريط */
+}
+
+.nav-links {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+
+}
+
+/* تنسيق روابط التنقل */
+.nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 22px;
+    font-weight: bolder;
+    transition: color 0.3s ease;
+}
+
+/* التأثير عند التحويم */
+.nav-links li a:hover {
+    color: #e30808;
+}
+
+/* **************** */
+
+
+.logo-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+    
+}
+
+
+/* اللوجو داخل الـ navbar */
+.logo {
+    position: static;
+    width: 110px;
+    height: 60px;
+    margin-left: 20px;
+    object-fit: contain;
+      transition: transform 0.3s ease;
+}
+
+
+
+ .logo-container {
+    flex-shrink: 0;
+}
+
+
+.logo:hover {
+    transform: scale(1.03);
+} 
+
+
+
+body {
+    overflow-x: hidden;
+}
+
+/* ولضمان أن الـ HTML ما يسمحش بالتمدد الجانبي */
+html {
+    overflow-x: hidden;
+    width: 100%;
+}

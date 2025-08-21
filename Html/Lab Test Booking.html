@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab Test Booking</title>
+  <link rel="stylesheet" href="../Css/labtest.css">
+  <script src="../JS/lab test.js"></script>
+</head>
+
+<body>
+
+
+
+  <body class="animated-bg">
+
+            <div id="mainco">
+           <header class="navx">
+            <nav class="navbar">
+              <div class="logo-container">
+                    <a href="/Html/Home.html">
+                <img src="../Images/logo.png" alt="Logo" class="logo" />
+                </a>
+                </div>
+
+                <ul class="nav-links">
+                <li><a href="/Html/Home.html">Home</a></li>
+                <li><a href="./Doctor Profiles.html">Doc Team</a></li>
+                <li><a href="./Terms of Service.html">Services</a></li>
+                <li><a href="/Html/Contact us.html">Contact</a></li>
+                </ul>
+            </nav>
+            </header>
+
+
+
+      <!-- رأس الصفحة -->
+      <header class="site-header">
+
+        <div class="page-header">
+          <h1 class="hover-title">Book a Lab Test</h1>
+          <p>Please fill out the form below to schedule your lab test appointment.</p>
+        </div>
+      </header>
+
+      <!-- المحتوى الرئيسي -->
+      <div class="container">
+        <img src="/Images/lab test page.jpg" alt="Doctors" class="side-image">
+
+
+
+        <form class="Book-lab">
+          <h2>Schedule Your Lab Test Appointment</h2>
+
+          <!-- بيانات شخصية -->
+
+          <legend style="font-weight: bold; font-size:x-large;">Personal Information</legend>
+          <div class="form-group">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your full name"
+              oninput="handleSubmit()">
+            <span style="color: red;font-size: 14px;margin-top: 5px;display: block;" id="error_name"></span>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email"
+              oninput="handleSubmit()">
+            <span style="color: red;font-size: 14px;margin-top: 5px;display: block;" id="error_email"></span>
+            <!-- <small class="error-msg" id="error-email">Invalid mail</small> -->
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" required placeholder="Enter your phone number"
+              oninput="handleSubmit()">
+            <span style="color: red;font-size: 14px;margin-top: 5px;display: block;" id="error_phone"></span>
+          </div>
+
+
+          <!-- تفاصيل الموعد -->
+
+          <legend style="font-weight: bold; font-size:x-large; margin-bottom: -10px ;">Appointment Details</legend>
+          <div class="form-group">
+
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="date">Preferred Test Date:</label>
+            <input type="date" id="date" name="date" required>
+          </div>
+
+          <div class="form-group">
+            <label for="main-test">Select Main Test Category:</label>
+            <select id="main-test" name="main-test" required  onchange="showSubTests()">
+              <option value="">-- Select Test Type --</option>
+              <option value="blood">Blood Test</option>
+              <option value="urine">Urine Test</option>
+              <option value="xray">X-Ray</option>
+              <option value="mri">MRI Scan</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <!-- أنواع تحليل الدم -->
+          <div class="form-group sub-test" id="blood-tests" style="display: none;">
+            <label for="blood-subtests">Select Blood Test:</label>
+            <select name="blood-subtests" id="blood-subtests">
+              <option value="cbc">CBC (Complete Blood Count)</option>
+              <option value="sugar">Blood Sugar (FBS / RBS)</option>
+              <option value="hba1c">HbA1c</option>
+              <option value="lipid">Lipid Profile</option>
+            </select>
+          </div>
+
+          <!-- أنواع تحليل البول -->
+          <div class="form-group sub-test" id="urine-tests" style="display: none;">
+            <label for="urine-subtests">Select Urine Test:</label>
+            <select name="urine-subtests" id="urine-subtests">
+              <option value="urinalysis">Urinalysis</option>
+              <option value="culture">Urine Culture</option>
+            </select>
+          </div>
+
+          <!-- أنواع الأشعة -->
+          <div class="form-group sub-test" id="xray-tests" style="display: none;">
+            <label for="xray-subtests">Select X-Ray Type:</label>
+            <select name="xray-subtests" id="xray-subtests">
+              <option value="chest">Chest X-Ray</option>
+              <option value="abdomen">Abdomen X-Ray</option>
+              <option value="bone">Bone X-Ray</option>
+            </select>
+          </div>
+
+          <!-- أنواع الرنين -->
+          <div class="form-group sub-test" id="mri-tests" style="display: none;">
+            <label for="mri-subtests">Select MRI Scan Type:</label>
+            <select name="mri-subtests" id="mri-subtests">
+              <option value="brain">Brain MRI</option>
+              <option value="spine">Spine MRI</option>
+              <option value="joints">Joints MRI</option>
+            </select>
+          </div>
+
+          <!-- تحليل آخر -->
+          <div class="form-group sub-test" id="other-tests" style="display: none;">
+            <label for="other-subtests">Please Specify the Test:</label>
+            <input type="text" name="other-subtests" id="other-subtests" placeholder="Describe the test needed">
+          </div>
+          </optgroup>
+
+
+          <label for="attachment" class="file-label">Upload Doctor's Request:</label>
+          <div class="custom-file-upload-wrapper">
+            <input type="file" id="attachment" name="attachment" accept=".pdf,.jpg,.png" class="file-input">
+            <label class="custom-file-upload" for="attachment">
+              <span class="button-text">Choose File</span>
+            </label>
+          </div>
+
+
+          </select>
+          <div class="form-group">
+            <label for="message">Additional Notes (optional):</label>
+            <textarea id="message" name="message" rows="4"
+              placeholder="Enter any notes, symptoms, or doctor referrals..."></textarea>
+          </div>
+
+          <!-- اتفاقية الخصوصية -->
+          <div class="form-group">
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">I agree to the <a href="#">terms and conditions</a>.</label>
+          </div>
+
+          <!-- رسالة تأكيد -->
+          <p>
+            Our team will contact you within 2 business days<br>
+            to confirm your appointment and share further details.
+          </p>
+
+          <!-- زر الإرسال -->
+          <div class="form-group">
+            <button type="submit" class="submit-button" id="submit-btn">Submit Booking</button>
+
+
+            <div id="successMessage" class="success-message" style="display: none;">
+              ✅ Thank you! We will contact you shortly
+            </div>
+
+
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+
+    <footer class="footer">
+      <div class="footer-container">
+
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="/Html/Contact us.html">Contact Us</a></li>
+             <li><a href="./Terms of Service.html">Our Services</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>About CodeCare Hospital </h3>
+          <p>
+            At <strong>CodeCare Hospital</strong>, we deliver trusted healthcare powered by modern diagnostics, expert
+            consultations, and compassionate care - tailored for you.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h3>Get in Touch</h3>
+          <p>Email: info@codecarehospital.com</p>
+          <p>Phone: +20 100 000 0000</p>
+          <p>Address: Cairo, Egypt</p>
+          <div class="social">
+            <a href="https://www.facebook.com/lolazoda?locale=ar_AR">Facebook</a> |
+            <a href="https://github.com/MohamedZaky-zdragon50">github</a> |
+            <a href="https://www.linkedin.com/in/mohamed-zaky-0130a52a8/">LinkedIn</a>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+    <div class="loader">
+      <div class="logo">
+        <div class="heart">
+          <svg viewBox="0 0 100 100">
+            <path class="outline"
+              d="M10,30 C10,10 40,10 50,30 C60,10 90,10 90,30 C90,60 50,90 50,90 C50,90 10,60 10,30 Z" fill="none"
+              stroke="#e4002b" stroke-width="4" />
+            <polyline class="pulse" points="20,50 30,50 35,40 40,60 45,50 55,50" fill="none" stroke="#e4002b"
+              stroke-width="3" />
+          </svg>
+        </div>
+        <h1><span class="dark">Code</span><span class="red">Care</span></h1>
+      </div>
+    </div>
+
+
+
+  </body>
+
+</html>
