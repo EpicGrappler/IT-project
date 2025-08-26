@@ -10,6 +10,338 @@
   <script src="../JS/register.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Enhanced Navbar Styling */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .navbar.dark-mode {
+      background: rgba(18, 18, 18, 0.95);
+      color: white;
+    }
+
+    .logo-container img {
+      height: 50px;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 50%;
+      background: linear-gradient(to right, #0080ca, #1d4ed8);
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+    .nav-links a:hover {
+      color: #0080ca;
+    }
+
+    .navbar.dark-mode .nav-links a {
+      color: white;
+    }
+
+    .navbar.dark-mode .nav-links a:hover {
+      color: #0080ca;
+    }
+
+    /* Search Container */
+    .search-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      position: relative;
+    }
+
+    #search-input {
+      padding: 8px 16px;
+      border: 2px solid #e1e5e9;
+      border-radius: 25px;
+      outline: none;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      width: 200px;
+    }
+
+    #search-input:focus {
+      border-color: #0080ca;
+      box-shadow: 0 0 10px rgba(0, 128, 202, 0.2);
+    }
+
+    .search-btn {
+      background: linear-gradient(135deg, #0080ca, #1d4ed8);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .search-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 15px rgba(0, 128, 202, 0.3);
+    }
+
+    /* Dark Mode Toggle */
+    .dark-mode-switch {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .dark-mode-toggle {
+      background: linear-gradient(135deg, #6b73ff, #000dff);
+      border: none;
+      border-radius: 25px;
+      padding: 8px 16px;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .dark-mode-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(107, 115, 255, 0.3);
+    }
+
+    .dark-mode-toggle.active {
+      background: linear-gradient(135deg, #ffd700, #ffed4e);
+      color: #333;
+    }
+
+    .dark-mode-toggle i {
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .dark-mode-toggle:hover i {
+      transform: rotate(180deg);
+    }
+
+    /* Navbar Right Section */
+    .navbar > .account-button {
+      margin-left: auto;
+    }
+
+    /* Account Button Styling */
+    .account-button {
+      padding: 8px 14px;
+      gap: 6px;
+      background: linear-gradient(to right, #ffffff, #f3faff);
+      border-radius: 40px;
+      box-shadow: 0 4px 14px rgba(0, 128, 202, 0.1);
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      animation: fadeInUp 0.5s ease-out;
+      transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
+      border: none;
+      text-decoration: none;
+    }
+
+    .account-button:hover {
+      transform: translateY(-3px);
+      background: linear-gradient(to right, #e0f0ff, #ffffff);
+      box-shadow: 0 8px 20px rgba(0, 128, 202, 0.2);
+    }
+
+    .account-button .icon {
+      width: 22px;
+      height: 22px;
+      transition: stroke 0.4s ease;
+    }
+
+    .account-button:hover .icon {
+      stroke: #1d4ed8;
+    }
+
+    .account-button .label {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #333;
+      transition: color 0.4s ease;
+    }
+
+    .account-button:hover .label {
+      color: #1d4ed8;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Profile Icon Update - Hidden since we're using account button */
+    .profile-icon {
+      display: none;
+    }
+
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      background: linear-gradient(135deg, #0080ca, #1d4ed8);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .menu-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 15px rgba(0, 128, 202, 0.3);
+    }
+
+    /* Side Menu */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 300px;
+      height: 100vh;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      transition: right 0.3s ease;
+      z-index: 1001;
+      padding: 2rem;
+      box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .side-menu.active {
+      right: 0;
+    }
+
+    .side-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 2rem 0;
+    }
+
+    .side-menu li {
+      margin: 1rem 0;
+    }
+
+    .side-menu a {
+      color: #333;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .side-menu a:hover {
+      color: #0080ca;
+    }
+
+    /* Dark mode for search and side menu */
+    .navbar.dark-mode #search-input {
+      background: #2a2a2a;
+      color: white;
+      border-color: #444;
+    }
+
+    .navbar.dark-mode .account-button {
+      background: linear-gradient(to right, #2a2a2a, #1a1a1a);
+    }
+
+    .navbar.dark-mode .account-button .label {
+      color: white;
+    }
+
+    .navbar.dark-mode .side-menu {
+      background: rgba(18, 18, 18, 0.95);
+    }
+
+    .navbar.dark-mode .side-menu a {
+      color: white;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links,
+      .search-container,
+      .dark-mode-switch,
+      .account-button .label {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .account-button {
+        padding: 8px;
+        margin-left: auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar {
+        padding: 1rem;
+      }
+
+      .account-button .label {
+        display: none;
+      }
+
+      .account-button {
+        padding: 8px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -18,24 +350,56 @@
       <nav class="navbar">
         <div class="logo-container">
           <a href="/Html/Home.html">
-            <img src="../Images/logo.png" alt="Logo" class="logo" />
+            <img id="navLogo" 
+                 src="../Images/logo.png" 
+                 data-light="../Images/logo.png"
+                 data-dark="../Images/logo-dark.png"
+                 alt="CodeCare Logo" class="logo" />
           </a>
         </div>
+        
         <ul class="nav-links">
           <li><a href="./Home.html">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="./Terms of Service.html">Services</a></li>
           <li><a href="./Contact us.html">Contact</a></li>
         </ul>
-        <div class="navbar-buttons">
-          <a href="login.html"><button class="btn login-btn">Login</button></a>
-          <a href="register.html"><button class="btn signup-btn" id="signup-btnID">Sign Up</button></a>
-          <div class="profile-icon" id="profileIcon" tabindex="0" role="button" aria-label="Profile">
-            <a href="/Html/patient profile.html" aria-label="Go to profile">
-              <i class="fas fa-user-circle fa-2x"></i>
-              <img src="../Images/Ahmed_Helmy.jpg" alt="" height="50" width="50" style="border-radius: 10px;display: none;">
-            </a>
-          </div>
+
+        <!-- Search Box -->
+        <div class="search-container">
+          <input type="search" id="search-input" placeholder="Search..." aria-label="Search" />
+          <button aria-label="Search" class="search-btn" id="search-btn">🔍</button>
+          <div class="search-error" id="search-error"></div>
+        </div>
+
+        <!-- Dark Mode Toggle -->
+        <div class="dark-mode-switch">
+          <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+            <span class="switch-label">Dark Mode</span>
+          </button>
+        </div>
+
+        <!-- Account Button -->
+        <div class="account-button">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" stroke-width="2" stroke="#0080ca" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="5" />
+            <path d="M20 21a8 8 0 0 0-16 0" />
+          </svg>
+          <span class="label">Account</span>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+
+        <!-- Side Menu -->
+        <div class="side-menu" id="side-menu">
+          <ul>
+            <li><a href="./Home.html">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="./Terms of Service.html">Services</a></li>
+            <li><a href="./Contact us.html">Contact</a></li>
+          </ul>
         </div>
       </nav>
     </header>
@@ -113,7 +477,7 @@
               </div>
               <div class="service-box">
                 <h3>Pediatrics</h3>
-                <p>Complete pediatric care tailored to children and adolescents’ needs.</p>
+                <p>Complete pediatric care tailored to children and adolescents' needs.</p>
               </div>
             </div>
             <div class="Services-image">
@@ -231,7 +595,7 @@
     <section id="contact" class="contact">
       <div class="container text-center">
         <h2>Contact Us</h2>
-        <p>Need assistance or have questions? We’re here to help. Send us a message and we’ll get back to you shortly.</p>
+        <p>Need assistance or have questions? We're here to help. Send us a message and we'll get back to you shortly.</p>
         <form class="contact-form">
           <input type="text" placeholder="Your Name">
           <input type="email" placeholder="Your Email">
@@ -270,6 +634,85 @@
       </div>
     </footer>
   </div>
+
+  <script>
+    // Dark Mode Toggle Functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('darkModeToggle');
+      const navbar = document.querySelector('.navbar');
+      const menuToggle = document.querySelector('.menu-toggle');
+      const sideMenu = document.getElementById('side-menu');
+      
+      if (!btn) return;
+
+      const icon = btn.querySelector('i');
+      const navLogo = document.getElementById('navLogo');
+
+      // Load saved dark mode preference
+      const wasDark = localStorage.getItem('darkMode') === 'enabled';
+      if (wasDark) {
+        document.body.classList.add('dark-mode');
+        navbar.classList.add('dark-mode');
+        btn.classList.add('active');
+        icon?.classList.replace('fa-moon', 'fa-sun');
+        if (navLogo && navLogo.dataset.dark) {
+          navLogo.src = navLogo.dataset.dark;
+        }
+      }
+
+      // Dark mode toggle event
+      btn.addEventListener('click', () => {
+        const isDark = document.body.classList.toggle('dark-mode');
+        navbar.classList.toggle('dark-mode', isDark);
+        btn.classList.toggle('active', isDark);
+        icon?.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
+
+        if (navLogo) {
+          navLogo.style.opacity = '0';
+          setTimeout(() => {
+            if (isDark && navLogo.dataset.dark) {
+              navLogo.src = navLogo.dataset.dark;
+            } else if (!isDark && navLogo.dataset.light) {
+              navLogo.src = navLogo.dataset.light;
+            }
+            navLogo.style.opacity = '1';
+          }, 200);
+        }
+
+        localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+      });
+
+      // Mobile menu toggle
+      menuToggle?.addEventListener('click', () => {
+        sideMenu.classList.toggle('active');
+      });
+
+      // Close side menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!sideMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+          sideMenu.classList.remove('active');
+        }
+      });
+
+      // Search functionality placeholder
+      const searchBtn = document.getElementById('search-btn');
+      const searchInput = document.getElementById('search-input');
+      
+      searchBtn?.addEventListener('click', () => {
+        const query = searchInput.value.trim();
+        if (query) {
+          console.log('Searching for:', query);
+          // Add your search functionality here
+        }
+      });
+
+      searchInput?.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          searchBtn.click();
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
