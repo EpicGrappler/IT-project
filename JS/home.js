@@ -100,7 +100,7 @@ window.addEventListener("load", () => {
             loadingDiv.classList.add("fade-out");
             setTimeout(() => loadingDiv.style.display = "none", 500);
             if (mainContent) mainContent.style.display = "block";
-        }, 2000); // Reduced loading time for better UX
+        }, 1000); // Reduced loading time for better UX
     }
 });
 

@@ -6,339 +6,759 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CodeCare Hospital</title>
   <link rel="stylesheet" href="../Css/home.css" />
-  <script src="../JS/home.js"></script>
-  <script src="../JS/register.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    /* Enhanced Navbar Styling */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-      position: sticky;
+    /* Updated Navbar Styling */
+    .navx {
+      background-color: #FFFFFF;
+      position: fixed;
       top: 0;
-      z-index: 1000;
-      transition: all 0.3s ease;
+      right: 0;
+      width: 100%;
+      z-index: 999;
+      box-shadow: 0 4px 12px rgba(13, 110, 253, 0.1);
+      border-bottom: 1px solid #CCE5FF;
+      font-weight: 600;
     }
 
-    .navbar.dark-mode {
-      background: rgba(18, 18, 18, 0.95);
-      color: white;
+    .navbar {
+      max-width: 1300px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 28px;
+      gap: 40px;
+    }
+
+    .logo-container {
+      flex-shrink: 0;
     }
 
     .logo-container img {
-      height: 50px;
+      height: 52px;
+      margin-left: 10px;
       transition: opacity 0.3s ease;
     }
 
-    .nav-links {
+    .nav-group {
       display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex-grow: 1;
+    }
+
+    .nav-links {
       list-style: none;
-      gap: 2rem;
-      margin: 0;
-      padding: 0;
+      display: flex;
+      gap: 22px;
+      margin-top: -8px;
     }
 
-    .nav-links a {
+    .nav-links li a {
       text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      font-size: 1rem;
-      transition: color 0.3s ease;
+      color: #343A40;
+      font-weight: 600;
+      font-size: 17px;
+      padding: 10px 0px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
       position: relative;
+      overflow: hidden;
+      background: transparent;
+      letter-spacing: 0.03em;
     }
 
-    .nav-links a::after {
-      content: '';
+    .nav-links li a::before {
+      content: "";
       position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
       width: 0;
       height: 2px;
-      bottom: -5px;
-      left: 50%;
-      background: linear-gradient(to right, #0080ca, #1d4ed8);
-      transition: all 0.3s ease;
+      background-color: #0D6EFD;
+      transition: width 0.3s ease-in-out;
+      border-radius: 4px;
     }
 
-    .nav-links a:hover::after {
-      width: 100%;
-      left: 0;
+    .nav-links li a:hover::before {
+      width: 80%;
     }
 
-    .nav-links a:hover {
-      color: #0080ca;
-    }
-
-    .navbar.dark-mode .nav-links a {
-      color: white;
-    }
-
-    .navbar.dark-mode .nav-links a:hover {
-      color: #0080ca;
+    .nav-links li a:hover {
+      color: #0D6EFD;
+      background-color: rgba(13, 110, 253, 0.1);
+      box-shadow: 0 2px 6px rgba(13, 110, 253, 0.1);
     }
 
     /* Search Container */
     .search-container {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
       position: relative;
-    }
-
-    #search-input {
-      padding: 8px 16px;
-      border: 2px solid #e1e5e9;
-      border-radius: 25px;
-      outline: none;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-      width: 200px;
-    }
-
-    #search-input:focus {
-      border-color: #0080ca;
-      box-shadow: 0 0 10px rgba(0, 128, 202, 0.2);
-    }
-
-    .search-btn {
-      background: linear-gradient(135deg, #0080ca, #1d4ed8);
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-      transition: all 0.3s ease;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 12px;
+      width: 220px;
     }
 
-    .search-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 4px 15px rgba(0, 128, 202, 0.3);
+    .search-container input[type="search"] {
+      padding: 8px 36px 8px 12px;
+      border-radius: 20px;
+      border: 1.5px solid #0D6EFD;
+      font-size: 14px;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      background-color: #FFFFFF;
+      color: #343A40;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    .search-container input[type="search"]:focus {
+      border-color: #084298;
+      box-shadow: 0 0 6px #CCE5FF;
+    }
+
+    .search-container button.search-btn {
+      position: absolute;
+      right: 10px;
+      top: 19px;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      color: #0D6EFD;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+
+    .search-container button.search-btn:hover {
+      color: #084298;
+    }
+
+    .search-error {
+      font-size: 13px;
+      color: #DC3545;
+      font-weight: 600;
+      min-height: 18px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      margin-top: 6px;
+    }
+
+    .search-error.visible {
+      opacity: 1;
     }
 
     /* Dark Mode Toggle */
     .dark-mode-switch {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 12px;
     }
 
     .dark-mode-toggle {
-      background: linear-gradient(135deg, #6b73ff, #000dff);
-      border: none;
-      border-radius: 25px;
-      padding: 8px 16px;
-      color: white;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-    }
-
-    .dark-mode-toggle:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(107, 115, 255, 0.3);
-    }
-
-    .dark-mode-toggle.active {
-      background: linear-gradient(135deg, #ffd700, #ffed4e);
-      color: #333;
-    }
-
-    .dark-mode-toggle i {
-      font-size: 1rem;
-      transition: transform 0.3s ease;
-    }
-
-    .dark-mode-toggle:hover i {
-      transform: rotate(180deg);
-    }
-
-    /* Navbar Right Section */
-    .navbar > .account-button {
-      margin-left: auto;
-    }
-
-    /* Account Button Styling */
-    .account-button {
-      padding: 8px 14px;
-      gap: 6px;
-      background: linear-gradient(to right, #ffffff, #f3faff);
-      border-radius: 40px;
-      box-shadow: 0 4px 14px rgba(0, 128, 202, 0.1);
       display: inline-flex;
       align-items: center;
-      cursor: pointer;
-      animation: fadeInUp 0.5s ease-out;
-      transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
+      gap: 12px;
+      padding: 0;
       border: none;
-      text-decoration: none;
+      background: none;
+      cursor: pointer;
+      font-family: 'Roboto', sans-serif;
     }
 
-    .account-button:hover {
-      transform: translateY(-3px);
-      background: linear-gradient(to right, #e0f0ff, #ffffff);
-      box-shadow: 0 8px 20px rgba(0, 128, 202, 0.2);
+    .dark-mode-toggle .slider {
+      position: relative;
+      width: 80px;
+      height: 36px;
+      background-color: #eee;
+      border-radius: 18px;
+      transition: background-color 0.3s ease;
+      overflow: hidden;
     }
 
-    .account-button .icon {
-      width: 22px;
-      height: 22px;
-      transition: stroke 0.4s ease;
+    .dark-mode-toggle .slider::before {
+      content: "";
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      top: 2px;
+      left: 2px;
+      background-color: #fff;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      transition: left 0.3s ease;
     }
 
-    .account-button:hover .icon {
-      stroke: #1d4ed8;
+    .dark-mode-toggle .slider i {
+      position: absolute;
+      top: 50%;
+      left: 11px;
+      transform: translateY(-50%);
+      font-size: 16px;
+      color: #666;
+      transition: left 0.3s ease, color 0.3s ease;
     }
 
-    .account-button .label {
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: #333;
+    .switch-label {
+      font-size: 1rem;
+      color: #444;
       transition: color 0.4s ease;
     }
 
-    .account-button:hover .label {
+    .dark-mode-toggle.active .slider {
+      background-color: #4a4a5e;
+    }
+
+    .dark-mode-toggle.active .slider::before {
+      left: 44px;
+    }
+
+    .dark-mode-toggle.active .slider i {
+      left: 51px;
+      color: #ffd700;
+    }
+
+    /* User Profile Styles */
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .profile-button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: linear-gradient(to right, #ffffff, #f3faff);
+      border-radius: 40px;
+      box-shadow: 0 4px 14px rgba(0, 128, 202, 0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid #e0f0ff;
+    }
+
+    .profile-button:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(to right, #e0f0ff, #ffffff);
+      box-shadow: 0 6px 18px rgba(0, 128, 202, 0.2);
+    }
+
+    .profile-icon {
+      width: 22px;
+      height: 22px;
+      transition: stroke 0.3s ease;
+    }
+
+    .profile-button:hover .profile-icon {
+      stroke: #1d4ed8;
+    }
+
+    .profile-label {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .profile-button:hover .profile-label {
       color: #1d4ed8;
     }
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .logout-btn {
+      padding: 8px 16px;
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
 
-    /* Profile Icon Update - Hidden since we're using account button */
-    .profile-icon {
-      display: none;
+    .logout-btn:hover {
+      background-color: #c82333;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(220, 53, 69, 0.25);
+    }
+
+    /* Mobile Profile Styles */
+    .user-profile-mobile {
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid #e0f0ff;
+    }
+
+    .profile-info {
+      margin-bottom: 10px;
+      padding: 10px 15px;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+    }
+
+    .profile-label-mobile {
+      font-size: 16px;
+      font-weight: 600;
+      color: #0080ca;
+    }
+
+    .logout-btn-mobile {
+      width: 100%;
+      padding: 12px;
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .logout-btn-mobile:hover {
+      background-color: #c82333;
+      transform: translateY(-2px);
+    }
+    .auth-buttons {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .auth-btn {
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 80px;
+      font-family: inherit;
+    }
+
+    .login-btn {
+      background-color: transparent;
+      color: #0080ca;
+      border: 2px solid #0080ca;
+    }
+
+    .login-btn:hover {
+      background-color: #0080ca;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 128, 202, 0.25);
+    }
+
+    .signup-btn {
+      background-color: #0080ca;
+      color: white;
+      border: 2px solid #0080ca;
+    }
+
+    .signup-btn:hover {
+      background-color: #1d4ed8;
+      border-color: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(29, 78, 216, 0.35);
     }
 
     /* Mobile Menu Toggle */
     .menu-toggle {
       display: none;
-      background: linear-gradient(135deg, #0080ca, #1d4ed8);
-      color: white;
+      background: transparent;
       border: none;
-      border-radius: 8px;
-      padding: 8px 12px;
+      font-size: 24px;
       cursor: pointer;
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
+      color: #0D6EFD;
+      user-select: none;
+      padding: 4px 8px;
+      transition: color 0.3s ease;
     }
 
     .menu-toggle:hover {
-      transform: scale(1.1);
-      box-shadow: 0 4px 15px rgba(0, 128, 202, 0.3);
+      color: #084298;
     }
 
     /* Side Menu */
     .side-menu {
       position: fixed;
-      top: 0;
-      right: -300px;
-      width: 300px;
-      height: 100vh;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      transition: right 0.3s ease;
-      z-index: 1001;
-      padding: 2rem;
-      box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .side-menu.active {
-      right: 0;
+      top: 70px;
+      right: -100%;
+      width: 260px;
+      background-color: #f9f9f9;
+      box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
+      padding: 20px;
+      transition: right 0.4s ease;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      border-radius: 0 0 12px 12px;
     }
 
     .side-menu ul {
       list-style: none;
       padding: 0;
-      margin: 2rem 0;
+      margin: 0;
     }
 
-    .side-menu li {
-      margin: 1rem 0;
+    .side-menu ul li {
+      margin: 15px 0;
     }
 
-    .side-menu a {
-      color: #333;
+    .side-menu ul li a {
+      display: block;
+      padding: 10px 15px;
+      color: #0D6EFD;
       text-decoration: none;
-      font-size: 1.1rem;
-      font-weight: 500;
-      transition: color 0.3s ease;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.3s ease;
     }
 
-    .side-menu a:hover {
-      color: #0080ca;
+    .side-menu ul li a:hover,
+    .side-menu ul li a:focus {
+      background-color: #e7f0ff;
+      color: #0a58ca;
+      box-shadow: inset 0 0 5px rgba(13, 110, 253, 0.2);
+      outline: none;
     }
 
-    /* Dark mode for search and side menu */
-    .navbar.dark-mode #search-input {
-      background: #2a2a2a;
-      color: white;
+    .side-menu.active {
+      right: 0;
+      display: flex;
+    }
+
+    .side-menu .auth-buttons {
+      margin-top: 20px;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .side-menu .auth-btn {
+      width: 100%;
+    }
+
+    /* Dark Mode Styles */
+    body, .container, .navx, .footer {
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    #logo, #navLogo {
+      transition: opacity 0.3s ease;
+    }
+
+    body.dark-mode {
+      background-color: #1e1e2f;
+      color: #e0e0e0;
+    }
+
+    body.dark-mode .switch-label {
+      color: #e0e0e0;
+    }
+
+    body.dark-mode .navx {
+      background-color: #2c2c3c;
+      border-bottom: 1px solid #444;
+    }
+
+    body.dark-mode .nav-links li a {
+      color: #fff;
+    }
+
+    body.dark-mode .nav-links li a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    body.dark-mode .search-container input[type="search"] {
+      background-color: #3a3a4a;
+      color: #fff;
+      border: 1px solid #666;
+    }
+
+    body.dark-mode .search-container .search-btn {
+      color: #fff;
+    }
+
+    body.dark-mode .login-btn {
+      background-color: transparent;
+      color: #66B2FF;
+      border-color: #66B2FF;
+    }
+
+    body.dark-mode .login-btn:hover {
+      background-color: #66B2FF;
+      color: #1e1e2f;
+    }
+
+    body.dark-mode .signup-btn {
+      background-color: #66B2FF;
+      color: #1e1e2f;
+      border-color: #66B2FF;
+    }
+
+    /* Dark Mode Profile Styles */
+    body.dark-mode .profile-button {
+      background: linear-gradient(to right, #2a2a2a, #1a1a1a);
       border-color: #444;
     }
 
-    .navbar.dark-mode .account-button {
-      background: linear-gradient(to right, #2a2a2a, #1a1a1a);
+    body.dark-mode .profile-button:hover {
+      background: linear-gradient(to right, #3a3a3a, #2a2a2a);
     }
 
-    .navbar.dark-mode .account-button .label {
-      color: white;
+    body.dark-mode .profile-label {
+      color: #e0e0e0;
     }
 
-    .navbar.dark-mode .side-menu {
-      background: rgba(18, 18, 18, 0.95);
+    body.dark-mode .profile-button:hover .profile-label {
+      color: #90c6ff;
     }
 
-    .navbar.dark-mode .side-menu a {
-      color: white;
+    body.dark-mode .profile-icon {
+      stroke: #66B2FF;
+    }
+
+    body.dark-mode .profile-button:hover .profile-icon {
+      stroke: #90c6ff;
+    }
+
+    body.dark-mode .profile-info {
+      background-color: #2a2a2a;
+    }
+
+    body.dark-mode .profile-label-mobile {
+      color: #66B2FF;
+    }
+
+    /* Login and Signup Buttons */
+
+    body.dark-mode .side-menu {
+      background-color: #2c2c3c;
+      box-shadow: -4px 0 12px rgba(255, 255, 255, 0.05);
+    }
+
+    body.dark-mode .side-menu ul li a {
+      color: #ffffff;
+    }
+
+    body.dark-mode .side-menu ul li a:hover,
+    body.dark-mode .side-menu ul li a:focus {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #90c6ff;
+    }
+
+    body.dark-mode section {
+      background: rgb(42, 42, 61) !important;
+    }
+
+    body.dark-mode .hero {
+      background: rgb(42, 42, 61) !important;
+    }
+
+    body.dark-mode .hero-text h1,
+    body.dark-mode .about-text h2,
+    body.dark-mode .intro-text h2,
+    body.dark-mode .services h2,
+    body.dark-mode .doctors h2,
+    body.dark-mode .lab-test-content h2,
+    body.dark-mode .testimonials-section h2,
+    body.dark-mode .faqs h2,
+    body.dark-mode #contact h2,
+    body.dark-mode .map-section h2,
+    body.dark-mode .text-center,
+    body.dark-mode .section-title {
+      color: #0080ca !important;
+    }
+
+    body.dark-mode .hero-text p,
+    body.dark-mode .about-text p,
+    body.dark-mode .content,
+    body.dark-mode .section-description,
+    body.dark-mode #contact p,
+    body.dark-mode .testimonial-text,
+    body.dark-mode .faq-item p {
+      color: #ccc;
+    }
+
+    body.dark-mode .service-box,
+    body.dark-mode .doctor-card,
+    body.dark-mode .testimonial-card,
+    body.dark-mode .faq-item {
+      background-color: #1f1f2e !important;
+      border-color: #333 !important;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+    }
+
+    body.dark-mode .service-box h3,
+    body.dark-mode .doctor-card h3,
+    body.dark-mode .testimonial-card h3,
+    body.dark-mode .faq-item h3 {
+      color: #0080ca !important;
+    }
+
+    body.dark-mode .doctor-card p {
+      color: #ccc !important;
+    }
+
+    body.dark-mode .doctor-card p strong {
+      color: #0080ca !important;
+    }
+
+    body.dark-mode .service-box p {
+      color: #ccc !important;
+    }
+
+    body.dark-mode .intro-text ul li {
+      background-color: #1f1f2e !important;
+      border-left: 4px solid #0080ca !important;
+      color: #ccc !important;
+    }
+
+    body.dark-mode .intro-text ul li:hover {
+      background-color: rgba(0, 128, 202, 0.1) !important;
+    }
+
+    body.dark-mode .contact-form input,
+    body.dark-mode .contact-form textarea {
+      background-color: #3a3a4a;
+      color: #fff;
+      border: 1px solid #666;
+    }
+
+    body.dark-mode .contact-form input:focus,
+    body.dark-mode .contact-form textarea:focus {
+      border-color: #0080ca;
+      box-shadow: 0 0 8px rgba(0, 128, 202, 0.3);
+    }
+
+    body.dark-mode .footer {
+      background-color: #222233;
+      color: #ccc;
+    }
+
+    body.dark-mode .footer a {
+      color: #aaa;
+    }
+
+    body.dark-mode .footer a:hover {
+      color: #fff;
     }
 
     /* Responsive Design */
     @media (max-width: 768px) {
-      .nav-links,
-      .search-container,
-      .dark-mode-switch,
-      .account-button .label {
-        display: none;
-      }
-
       .menu-toggle {
         display: block;
       }
+      
+      .nav-links, .auth-buttons {
+        display: none !important;
+      }
 
-      .account-button {
-        padding: 8px;
-        margin-left: auto;
+      .search-container {
+        display: none;
+      }
+      
+      .navbar {
+        gap: 20px;
+      }
+      
+      .hero {
+        padding: 40px 20px;
+        margin-top: 120px;
+      }
+      
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .Hero-Button {
+        width: 100%;
+        margin-left: 0;
+      }
+      
+      section {
+        margin: 20px 10px;
+        padding: 40px 20px;
+      }
+      
+      .about-container,
+      .intro-content,
+      .services-content-wrapper,
+      .faqs-layout,
+      .lab-test-wrapper {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+      
+      .services-grid {
+        flex-direction: column;
+      }
+      
+      .faqs-image,
+      .faqs-content {
+        flex: 1 1 100%;
+        justify-content: center;
+      }
+      
+      .doctors-grid,
+      .doctor-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .testimonials-wrapper {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .testimonial-card {
+        max-width: 100%;
+      }
+      
+      .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+      }
+      
+      .footer-column {
+        margin-bottom: 20px;
+      }
+      
+      .contact-form input,
+      .contact-form textarea {
+        padding: 12px;
+      }
+      
+      h1, h2 {
+        font-size: 1.8rem !important;
+      }
+      
+      .hero-text h1 {
+        font-size: 2rem !important;
       }
     }
 
-    @media (max-width: 480px) {
-      .navbar {
-        padding: 1rem;
-      }
-
-      .account-button .label {
-        display: none;
-      }
-
-      .account-button {
-        padding: 8px;
+    @media (min-width: 769px) {
+      .side-menu {
+        display: none !important;
       }
     }
   </style>
@@ -349,12 +769,12 @@
     <header class="navx">
       <nav class="navbar">
         <div class="logo-container">
-          <a href="/Html/Home.html">
+          <a href="./Home.html">
             <img id="navLogo" 
-                 src="../Images/logo.png" 
-                 data-light="../Images/logo.png"
+                 src="../Images/logo-light.png" 
+                 data-light="../Images/logo-light.png"
                  data-dark="../Images/logo-dark.png"
-                 alt="CodeCare Logo" class="logo" />
+                 alt="CodeCare Logo" />
           </a>
         </div>
         
@@ -367,7 +787,7 @@
 
         <!-- Search Box -->
         <div class="search-container">
-          <input type="search" id="search-input" placeholder="Search..." aria-label="Search" />
+          <input type="search" id="search-input" placeholder="Enter Doctor's name..." aria-label="Search" />
           <button aria-label="Search" class="search-btn" id="search-btn">🔍</button>
           <div class="search-error" id="search-error"></div>
         </div>
@@ -375,18 +795,29 @@
         <!-- Dark Mode Toggle -->
         <div class="dark-mode-switch">
           <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
-            <i class="fas fa-moon"></i>
+            <span class="slider">
+              <i class="fas fa-moon"></i>
+            </span>
             <span class="switch-label">Dark Mode</span>
           </button>
         </div>
 
-        <!-- Account Button -->
-        <div class="account-button">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" stroke-width="2" stroke="#0080ca" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="8" r="5" />
-            <path d="M20 21a8 8 0 0 0-16 0" />
-          </svg>
-          <span class="label">Account</span>
+        <!-- Login and Signup Buttons -->
+        <div class="auth-buttons" id="auth-buttons">
+          <a href="./login.html" class="auth-btn login-btn">Login</a>
+          <a href="./signup.html" class="auth-btn signup-btn">Sign Up</a>
+        </div>
+
+        <!-- User Profile Button (Hidden by default) -->
+        <div class="user-profile" id="user-profile" style="display: none;">
+          <div class="profile-button">
+            <svg xmlns="http://www.w3.org/2000/svg" class="profile-icon" viewBox="0 0 24 24" stroke-width="2" stroke="#0080ca" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="5" />
+              <path d="M20 21a8 8 0 0 0-16 0" />
+            </svg>
+            <span class="profile-label" id="profile-label">Welcome!</span>
+          </div>
+          <button class="logout-btn" id="logout-btn">Logout</button>
         </div>
 
         <!-- Mobile Menu Toggle Button -->
@@ -400,6 +831,16 @@
             <li><a href="./Terms of Service.html">Services</a></li>
             <li><a href="./Contact us.html">Contact</a></li>
           </ul>
+          <div class="auth-buttons" id="auth-buttons-mobile">
+            <a href="./login.html" class="auth-btn login-btn">Login</a>
+            <a href="./Register.html" class="auth-btn signup-btn">Sign Up</a>
+          </div>
+          <div class="user-profile-mobile" id="user-profile-mobile" style="display: none;">
+            <div class="profile-info">
+              <span class="profile-label-mobile" id="profile-label-mobile">Welcome!</span>
+            </div>
+            <button class="logout-btn-mobile" id="logout-btn-mobile">Logout</button>
+          </div>
         </div>
       </nav>
     </header>
@@ -409,7 +850,7 @@
         <div class="hero-text">
           <h1>Your Health is Our Commitment</h1>
           <p>Receive world-class medical services delivered with empathy, innovation, and care. Schedule your appointment with our expert physicians today.</p>
-          <a href="/Html/Booking Appointments.html" class="Hero-Button">Book Your Appointment</a>
+          <a href="./Booking Appointments.html" class="Hero-Button">Book Your Appointment</a>
         </div>
         <div class="hero-img">
           <img src="../Images/Home/Hero Image.png" alt="Hero Image" style="height: 400px; width: 600px;" />
@@ -510,7 +951,7 @@
             <p><strong>Email:</strong> Mohamedzaky25@codecare.com</p>
           </div>
           <div class="doctor-card">
-            <a href="./Mostafa .html">
+            <a href="./Mostafa.html">
               <img src="../Images/mostafa .jpg" alt="Dr. Mostafa Ashraf"></a>
             <h3>Dr. Mostafa Ashraf</h3>
             <p><strong>Specialty:</strong> Clinical Psychology</p>
@@ -531,7 +972,7 @@
           <p class="section-description">
             Access fast, precise, and confidential laboratory testing. Schedule your tests online and avoid unnecessary delays.
           </p>
-          <a href="/Html/Lab Test Booking.html" class="Lab-button">Book Now</a>
+          <a href="./Lab Test Booking.html" class="Lab-button">Book Now</a>
         </div>
         <div class="lab-test-image">
           <img src="../Images/Home/Lab Image .png" alt="Lab Test" />
@@ -636,10 +1077,83 @@
   </div>
 
   <script>
+    // Authentication State Management
+    function checkAuthState() {
+      const authButtons = document.getElementById('auth-buttons');
+      const authButtonsMobile = document.getElementById('auth-buttons-mobile');
+      const userProfile = document.getElementById('user-profile');
+      const userProfileMobile = document.getElementById('user-profile-mobile');
+      const profileLabel = document.getElementById('profile-label');
+      const profileLabelMobile = document.getElementById('profile-label-mobile');
+
+      // Check for user data in localStorage
+      const userData = localStorage.getItem('userData');
+      const userEmail = localStorage.getItem('userEmail');
+      const userName = localStorage.getItem('userName');
+      const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+      if (isLoggedIn || userData || userEmail || userName) {
+        // User is logged in - hide auth buttons, show profile
+        if (authButtons) authButtons.style.display = 'none';
+        if (authButtonsMobile) authButtonsMobile.style.display = 'none';
+        if (userProfile) userProfile.style.display = 'flex';
+        if (userProfileMobile) userProfileMobile.style.display = 'block';
+
+        // Set welcome message
+        const welcomeMsg = userName ? `Welcome, ${userName}!` : 
+                          userEmail ? `Welcome, ${userEmail}!` : 'Welcome!';
+        if (profileLabel) profileLabel.textContent = welcomeMsg;
+        if (profileLabelMobile) profileLabelMobile.textContent = welcomeMsg;
+      } else {
+        // User is not logged in - show auth buttons, hide profile
+        if (authButtons) authButtons.style.display = 'flex';
+        if (authButtonsMobile) authButtonsMobile.style.display = 'flex';
+        if (userProfile) userProfile.style.display = 'none';
+        if (userProfileMobile) userProfileMobile.style.display = 'none';
+      }
+    }
+
+    // Logout functionality
+    function logout() {
+      // Clear all user data from localStorage
+      localStorage.removeItem('userData');
+      localStorage.removeItem('userEmail');
+      localStorage.removeItem('userName');
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('userToken');
+      localStorage.removeItem('userSession');
+
+      // Show auth buttons, hide profile
+      checkAuthState();
+
+      // Optional: Show logout message
+      alert('You have been logged out successfully.');
+    }
+
     // Dark Mode Toggle Functionality
     document.addEventListener('DOMContentLoaded', () => {
+      // Check authentication state on page load
+      checkAuthState();
+
+      // Set up logout buttons
+      const logoutBtn = document.getElementById('logout-btn');
+      const logoutBtnMobile = document.getElementById('logout-btn-mobile');
+      
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', logout);
+      }
+      if (logoutBtnMobile) {
+        logoutBtnMobile.addEventListener('click', logout);
+      }
+
+      // Listen for storage changes (for multi-tab support)
+      window.addEventListener('storage', function(e) {
+        if (['userData', 'userEmail', 'userName', 'isLoggedIn'].includes(e.key)) {
+          checkAuthState();
+        }
+      });
+
       const btn = document.getElementById('darkModeToggle');
-      const navbar = document.querySelector('.navbar');
       const menuToggle = document.querySelector('.menu-toggle');
       const sideMenu = document.getElementById('side-menu');
       
@@ -652,7 +1166,6 @@
       const wasDark = localStorage.getItem('darkMode') === 'enabled';
       if (wasDark) {
         document.body.classList.add('dark-mode');
-        navbar.classList.add('dark-mode');
         btn.classList.add('active');
         icon?.classList.replace('fa-moon', 'fa-sun');
         if (navLogo && navLogo.dataset.dark) {
@@ -663,7 +1176,6 @@
       // Dark mode toggle event
       btn.addEventListener('click', () => {
         const isDark = document.body.classList.toggle('dark-mode');
-        navbar.classList.toggle('dark-mode', isDark);
         btn.classList.toggle('active', isDark);
         icon?.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
 
@@ -685,24 +1197,32 @@
       // Mobile menu toggle
       menuToggle?.addEventListener('click', () => {
         sideMenu.classList.toggle('active');
+        menuToggle.textContent = sideMenu.classList.contains('active') ? '✖' : '☰';
       });
 
       // Close side menu when clicking outside
       document.addEventListener('click', (e) => {
-        if (!sideMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+        if (sideMenu && !sideMenu.contains(e.target) && menuToggle && !menuToggle.contains(e.target)) {
           sideMenu.classList.remove('active');
+          if (menuToggle) menuToggle.textContent = '☰';
         }
       });
 
-      // Search functionality placeholder
+      // Search functionality
       const searchBtn = document.getElementById('search-btn');
       const searchInput = document.getElementById('search-input');
+      const searchError = document.getElementById('search-error');
       
       searchBtn?.addEventListener('click', () => {
         const query = searchInput.value.trim();
         if (query) {
           console.log('Searching for:', query);
           // Add your search functionality here
+          searchError.textContent = '';
+          searchError.classList.remove('visible');
+        } else {
+          searchError.textContent = 'Please enter a search term';
+          searchError.classList.add('visible');
         }
       });
 
@@ -711,6 +1231,63 @@
           searchBtn.click();
         }
       });
+
+      searchInput?.addEventListener('input', () => {
+        if (searchError.classList.contains('visible')) {
+          searchError.classList.remove('visible');
+        }
+      });
+    });
+
+    // Smooth scrolling for anchor links
+    document.addEventListener('DOMContentLoaded', function() {
+      const links = document.querySelectorAll('a[href^="#"]');
+      
+      links.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          
+          if (targetElement) {
+            const headerHeight = document.querySelector('.navx').offsetHeight;
+            const targetPosition = targetElement.offsetTop - headerHeight - 20;
+            
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+
+    // Form submission handling
+    document.addEventListener('DOMContentLoaded', function() {
+      const contactForm = document.querySelector('.contact-form');
+      
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Get form data
+          const formData = new FormData(this);
+          const name = formData.get('name') || this.querySelector('input[type="text"]').value;
+          const email = formData.get('email') || this.querySelector('input[type="email"]').value;
+          const message = formData.get('message') || this.querySelector('textarea').value;
+          
+          // Simple validation
+          if (!name || !email || !message) {
+            alert('Please fill in all fields.');
+            return;
+          }
+          
+          // Simulate form submission
+          alert('Thank you for your message! We will get back to you soon.');
+          this.reset();
+        });
+      }
     });
   </script>
 </body>

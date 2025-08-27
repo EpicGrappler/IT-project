@@ -37,5 +37,5 @@ window.addEventListener("load", () => {
       setTimeout(() => loadingDiv.style.display = "none", 500);
     }
     if (mainContent) mainContent.style.display = "block";
-  }, 4000);
+  }, 1000);
 });
