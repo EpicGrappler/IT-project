@@ -1,251 +1,599 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lab Test Booking</title>
-  <link rel="stylesheet" href="../Css/labtest.css">
-  <script src="../JS/lab test.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab Test Booking | CodeCare</title>
+  <link rel="stylesheet" href="../Css/Terms services.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../JS/Services .js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 
 <body>
-
-
-
-  <body class="animated-bg">
-
-            <div id="mainco">
-           <header class="navx">
-            <nav class="navbar">
-              <div class="logo-container">
-                    <a href="./Home.html">
-                <img src="../Images/logo.png" alt="Logo" class="logo" />
-                </a>
-                </div>
-
-                <ul class="nav-links">
-                <li><a href="./Home.html">Home</a></li>
-                <li><a href="./Doctor Profiles.html">Our Doctors</a></li>
-                <li><a href="./Terms of Service.html">Services</a></li>
-                <li><a href="./Contact us.html">Contact</a></li>
-                </ul>
-            </nav>
-            </header>
-
-
-
-      <!-- رأس الصفحة -->
-      <header class="site-header">
-
-        <div class="page-header">
-          <h1 class="hover-title">Book a Lab Test</h1>
-          <p>Please fill out the form below to schedule your lab test appointment.</p>
+  <div id="mainco">
+    <header class="navx">
+      <nav class="navbar">
+        <div class="logo-container">
+          <!-- Logo في الـ Navbar -->
+          <a href="/Html/Home.html">
+            <img id="navLogo"
+              src="../Images/logo-light.png"
+              data-light="../Images/logo-light.png"
+              data-dark="../Images/logo-dark.png"
+              alt="CodeCare Logo" />
+          </a>
         </div>
+        <ul class="nav-links">
+          <li><a href="./Home.html">Home</a></li>
+          <li><a href="./Doctor Profiles.html">Our Doctors</a></li>
+          <li><a href="./Terms of Service.html">Services</a></li>
+          <li><a href="./Contact-us.html">Contact</a></li>
+        </ul>
+
+        <!-- Search Box -->
+        <div class="search-container">
+          <input type="search" id="search-input" placeholder="Search..." aria-label="Search" />
+          <button aria-label="Search" class="search-btn" id="search-btn">🔍</button>
+          <div class="search-error" id="search-error"></div>
+        </div>
+
+        <!-- Dark Mode Toggle -->
+        <div class="dark-mode-switch">
+          <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+            <span class="slider">
+              <i class="fas fa-moon"></i>
+            </span>
+            <span class="switch-label">Dark Mode</span>
+          </button>
+        </div>
+
+        <div class="account-button compact">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" stroke-width="2" stroke="#0080ca" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="5" />
+            <path d="M20 21a8 8 0 0 0-16 0" />
+          </svg>
+          <span class="label">Account</span>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+
+        <!-- Side Menu -->
+        <div class="side-menu" id="side-menu">
+          <ul>
+            <li><a href="./Home.html">Home</a></li>
+            <li><a href="./Doctor Profiles.html">Our Doctors</a></li>
+            <li><a href="./Terms of Service.html">Services</a></li>
+            <li><a href="./Contact-us.html">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ========== Landing Page ========== -->
+    <main class="container">
+      <section class="content">
+        <h1 class="main-title">Book Your Lab Test<br> with <span class="highlight">CodeCare</span></h1>
+        <p class="description">
+          Schedule your laboratory tests with our state-of-the-art diagnostic facilities and expert technicians.
+        </p>
+        <a href="./Doctor Profiles.html" class="btn-link">Find Your Doctor</a>
+      </section>
+
+      <section class="image-area">
+        <img src="../Images/lab test page.jpg" alt="Lab Test Booking Illustration" />
+      </section>
+    </main>
+
+    <!-- ========== Lab Test Booking Form ========== -->
+    <div class="terms-wrapper" id="booking-form">
+      <header>
+        <h1>Schedule Your <span class="highlight">Lab Test</span> Appointment</h1>
+        <p>Please fill out the form below to schedule your lab test appointment. Our team will contact you within 2 business days to confirm your appointment.</p>
       </header>
 
-      <!-- المحتوى الرئيسي -->
-      <div class="container">
-        <img src="/Images/lab test page.jpg" alt="Doctors" class="side-image">
+      <form id="labTestForm" style="background: none; box-shadow: none; padding: 0;">
+        <section>
+          <h2>Personal Information</h2>
+          <ul style="list-style: none; padding: 0;">
+            <li style="background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
+              <label for="name" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Full Name:</label>
+              <input type="text" id="name" name="name" required placeholder="Enter your full name" 
+                style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px; transition: border-color 0.3s ease;"
+                oninput="handleSubmit()">
+              <span style="color: #dc3545; font-size: 14px; margin-top: 5px; display: block;" id="error_name"></span>
+            </li>
+            <li style="background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
+              <label for="email" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Email Address:</label>
+              <input type="email" id="email" name="email" required placeholder="Enter your email"
+                style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px; transition: border-color 0.3s ease;"
+                oninput="handleSubmit()">
+              <span style="color: #dc3545; font-size: 14px; margin-top: 5px; display: block;" id="error_email"></span>
+            </li>
+            <li style="background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
+              <label for="phone" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Phone Number:</label>
+              <input type="text" id="phone" name="phone" required placeholder="Enter your phone number"
+                style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px; transition: border-color 0.3s ease;"
+                oninput="handleSubmit()">
+              <span style="color: #dc3545; font-size: 14px; margin-top: 5px; display: block;" id="error_phone"></span>
+            </li>
+          </ul>
+        </section>
 
+        <section>
+          <h2>Appointment Details</h2>
+          <ul style="list-style: none; padding: 0;">
+            <li style="background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
+              <label for="date" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Preferred Test Date:</label>
+              <input type="date" id="date" name="date" required
+                style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px; transition: border-color 0.3s ease;">
+            </li>
+            <li style="background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
+              <label for="main-test" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Select Main Test Category:</label>
+              <select id="main-test" name="main-test" required onchange="showSubTests()"
+                style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px; transition: border-color 0.3s ease; background-color: white;">
+                <option value="">-- Select Test Type --</option>
+                <option value="blood">Blood Test</option>
+                <option value="urine">Urine Test</option>
+                <option value="xray">X-Ray</option>
+                <option value="mri">MRI Scan</option>
+                <option value="other">Other</option>
+              </select>
+            </li>
+          </ul>
+        </section>
 
+        <section>
+          <h2>Test Specifications</h2>
+          <ul style="list-style: none; padding: 0;">
+            <!-- Blood Tests -->
+            <li class="sub-test" id="blood-tests" style="display: none; background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
+              <label for="blood-subtests" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Select Blood Test:</label>
+              <select name="blood-subtests" id="blood-subtests"
+                style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px; background-color: white;">
+                <option value="cbc">CBC (Complete Blood Count)</option>
+                <option value="sugar">Blood Sugar (FBS / RBS)</option>
+                <option value="hba1c">HbA1c</option>
+                <option value="lipid">Lipid Profile</option>
+              </select>
+            </li>
 
-        <form class="Book-lab">
-          <h2>Schedule Your Lab Test Appointment</h2>
+            <!-- Urine Tests -->
+            <li class="sub-test" id="urine-tests" style="display: none; background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
+              <label for="urine-subtests" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Select Urine Test:</label>
+              <select name="urine-subtests" id="urine-subtests"
+                style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px; background-color: white;">
+                <option value="urinalysis">Urinalysis</option>
+                <option value="culture">Urine Culture</option>
+              </select>
+            </li>
 
-          <!-- بيانات شخصية -->
+            <!-- X-Ray Tests -->
+            <li class="sub-test" id="xray-tests" style="display: none; background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
+              <label for="xray-subtests" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Select X-Ray Type:</label>
+              <select name="xray-subtests" id="xray-subtests"
+                style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px; background-color: white;">
+                <option value="chest">Chest X-Ray</option>
+                <option value="abdomen">Abdomen X-Ray</option>
+                <option value="bone">Bone X-Ray</option>
+              </select>
+            </li>
 
-          <legend style="font-weight: bold; font-size:x-large;">Personal Information</legend>
-          <div class="form-group">
-            <label for="name">Full Name:</label>
-            <input type="text" id="name" name="name" required placeholder="Enter your full name"
-              oninput="handleSubmit()">
-            <span style="color: red;font-size: 14px;margin-top: 5px;display: block;" id="error_name"></span>
-          </div>
-          <div class="form-group">
-            <label for="email">Email Address:</label>
-            <input type="email" id="email" name="email" required placeholder="Enter your email"
-              oninput="handleSubmit()">
-            <span style="color: red;font-size: 14px;margin-top: 5px;display: block;" id="error_email"></span>
-            <!-- <small class="error-msg" id="error-email">Invalid mail</small> -->
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone Number:</label>
-            <input type="text" id="phone" name="phone" required placeholder="Enter your phone number"
-              oninput="handleSubmit()">
-            <span style="color: red;font-size: 14px;margin-top: 5px;display: block;" id="error_phone"></span>
-          </div>
+            <!-- MRI Tests -->
+            <li class="sub-test" id="mri-tests" style="display: none; background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
+              <label for="mri-subtests" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Select MRI Scan Type:</label>
+              <select name="mri-subtests" id="mri-subtests"
+                style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px; background-color: white;">
+                <option value="brain">Brain MRI</option>
+                <option value="spine">Spine MRI</option>
+                <option value="joints">Joints MRI</option>
+              </select>
+            </li>
 
+            <!-- Other Tests -->
+            <li class="sub-test" id="other-tests" style="display: none; background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
+              <label for="other-subtests" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Please Specify the Test:</label>
+              <input type="text" name="other-subtests" id="other-subtests" placeholder="Describe the test needed"
+                style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px;">
+            </li>
+          </ul>
+        </section>
 
-          <!-- تفاصيل الموعد -->
+        <section>
+          <h2>Additional Information</h2>
+          <ul style="list-style: none; padding: 0;">
+            <li style="background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
+              <label for="attachment" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Upload Doctor's Request:</label>
+              <div class="custom-file-upload-wrapper">
+                <input type="file" id="attachment" name="attachment" accept=".pdf,.jpg,.png" style="display: none;">
+                <label for="attachment" style="display: inline-block; background-color: #0080ca; color: white; padding: 12px 24px; font-size: 16px; font-weight: 600; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease;">
+                  <i class="fas fa-upload" style="margin-right: 8px;"></i>
+                  Choose File
+                </label>
+              </div>
+            </li>
+            <li style="background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
+              <label for="message" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Additional Notes (optional):</label>
+              <textarea id="message" name="message" rows="4" placeholder="Enter any notes, symptoms, or doctor referrals..."
+                style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px; resize: vertical; font-family: 'Roboto', sans-serif;"></textarea>
+            </li>
+            <li style="background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <input type="checkbox" id="terms" name="terms" required style="width: 18px; height: 18px;">
+                <label for="terms" style="color: #343a40; font-weight: 500;">I agree to the <a href="./Terms of Service.html" style="color: #0080ca; text-decoration: underline;">terms and conditions</a>.</label>
+              </div>
+            </li>
+          </ul>
+        </section>
 
-          <legend style="font-weight: bold; font-size:x-large; margin-bottom: -10px ;">Appointment Details</legend>
-          <div class="form-group">
-
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="date">Preferred Test Date:</label>
-            <input type="date" id="date" name="date" required>
-          </div>
-
-          <div class="form-group">
-            <label for="main-test">Select Main Test Category:</label>
-            <select id="main-test" name="main-test" required  onchange="showSubTests()">
-              <option value="">-- Select Test Type --</option>
-              <option value="blood">Blood Test</option>
-              <option value="urine">Urine Test</option>
-              <option value="xray">X-Ray</option>
-              <option value="mri">MRI Scan</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          <!-- أنواع تحليل الدم -->
-          <div class="form-group sub-test" id="blood-tests" style="display: none;">
-            <label for="blood-subtests">Select Blood Test:</label>
-            <select name="blood-subtests" id="blood-subtests">
-              <option value="cbc">CBC (Complete Blood Count)</option>
-              <option value="sugar">Blood Sugar (FBS / RBS)</option>
-              <option value="hba1c">HbA1c</option>
-              <option value="lipid">Lipid Profile</option>
-            </select>
-          </div>
-
-          <!-- أنواع تحليل البول -->
-          <div class="form-group sub-test" id="urine-tests" style="display: none;">
-            <label for="urine-subtests">Select Urine Test:</label>
-            <select name="urine-subtests" id="urine-subtests">
-              <option value="urinalysis">Urinalysis</option>
-              <option value="culture">Urine Culture</option>
-            </select>
-          </div>
-
-          <!-- أنواع الأشعة -->
-          <div class="form-group sub-test" id="xray-tests" style="display: none;">
-            <label for="xray-subtests">Select X-Ray Type:</label>
-            <select name="xray-subtests" id="xray-subtests">
-              <option value="chest">Chest X-Ray</option>
-              <option value="abdomen">Abdomen X-Ray</option>
-              <option value="bone">Bone X-Ray</option>
-            </select>
-          </div>
-
-          <!-- أنواع الرنين -->
-          <div class="form-group sub-test" id="mri-tests" style="display: none;">
-            <label for="mri-subtests">Select MRI Scan Type:</label>
-            <select name="mri-subtests" id="mri-subtests">
-              <option value="brain">Brain MRI</option>
-              <option value="spine">Spine MRI</option>
-              <option value="joints">Joints MRI</option>
-            </select>
-          </div>
-
-          <!-- تحليل آخر -->
-          <div class="form-group sub-test" id="other-tests" style="display: none;">
-            <label for="other-subtests">Please Specify the Test:</label>
-            <input type="text" name="other-subtests" id="other-subtests" placeholder="Describe the test needed">
-          </div>
-          </optgroup>
-
-
-          <label for="attachment" class="file-label">Upload Doctor's Request:</label>
-          <div class="custom-file-upload-wrapper">
-            <input type="file" id="attachment" name="attachment" accept=".pdf,.jpg,.png" class="file-input">
-            <label class="custom-file-upload" for="attachment">
-              <span class="button-text">Choose File</span>
-            </label>
-          </div>
-
-
-          </select>
-          <div class="form-group">
-            <label for="message">Additional Notes (optional):</label>
-            <textarea id="message" name="message" rows="4"
-              placeholder="Enter any notes, symptoms, or doctor referrals..."></textarea>
-          </div>
-
-          <!-- اتفاقية الخصوصية -->
-          <div class="form-group">
-            <input type="checkbox" id="terms" name="terms" required>
-            <label for="terms">I agree to the <a href="#">terms and conditions</a>.</label>
-          </div>
-
-          <!-- رسالة تأكيد -->
-          <p>
-            Our team will contact you within 2 business days<br>
-            to confirm your appointment and share further details.
+        <section>
+          <h2>Booking Confirmation</h2>
+          <p style="font-weight: bold; text-align: center; color: #6c757d; margin-bottom: 20px;">
+            Our team will contact you within 2 business days to confirm your appointment and share further details.
           </p>
-
-          <!-- زر الإرسال -->
-          <div class="form-group">
-            <button type="submit" class="submit-button" id="submit-btn">Submit Booking</button>
-
-
-            <div id="successMessage" class="success-message" style="display: none;">
-              ✅ Thank you! We will contact you shortly
-            </div>
-
-
+          <div style="text-align: center;">
+            <button type="submit" class="btn-link" id="submit-btn" disabled 
+              style="background-color: #6c757d; cursor: not-allowed; font-size: 18px; padding: 15px 40px;">
+              <i class="fas fa-calendar-check" style="margin-right: 8px;"></i>
+              Submit Booking
+            </button>
           </div>
-        </form>
-      </div>
+          
+          <div id="successMessage" style="display: none; margin-top: 20px; padding: 20px; background-color: #d4edda; color: #155724; text-align: center; border-radius: 8px; border: 1px solid #c3e6cb;">
+            <i class="fas fa-check-circle" style="margin-right: 8px; color: #28a745;"></i>
+            <strong>Success!</strong> Thank you for your booking. We will contact you shortly to confirm your appointment.
+          </div>
+        </section>
+      </form>
     </div>
-
-
 
     <footer class="footer">
       <div class="footer-container">
-
-        <div class="footer-column">
+        <div class="footer-column" id="f1">
           <h3>Quick Links</h3>
           <ul>
-            <li><a href="./Contact us.html">Contact Us</a></li>
-             <li><a href="./Terms of Service.html">Our Services</a></li>
+            <li><a href="./Contact-us.html">Contact Support</a></li>
+            <li><a href="./Terms of Service.html">View Services</a></li>
           </ul>
         </div>
 
-        <div class="footer-column">
-          <h3>About CodeCare Hospital </h3>
-          <p>
-            At <strong>CodeCare Hospital</strong>, we deliver trusted healthcare powered by modern diagnostics, expert
-            consultations, and compassionate care - tailored for you.
-          </p>
+        <div class="footer-column" id="f2">
+          <h3>About CodeCare Hospital</h3>
+          <p>At <strong style="color: #0080ca;">CodeCare Hospital</strong>, we provide exceptional healthcare solutions combining state-of-the-art technology, expert professionals, and compassionate care tailored to each patient's needs.</p>
         </div>
 
-        <div class="footer-column">
-          <h3>Get in Touch</h3>
-          <p>Email: info@codecarehospital.com</p>
-          <p>Phone: +20 100 000 0000</p>
-          <p>Address: Cairo, Egypt</p>
+        <div class="footer-column" id="f3">
+          <h3>Contact Information</h3>
+          <p><i class="fas fa-envelope"></i> Email: info@codecarehospital.com</p>
+          <p><i class="fas fa-phone"></i> Phone: +20 100 000 0000</p>
+          <p><i class="fas fa-map-marker-alt"></i> Address: Cairo, Egypt</p>
           <div class="social">
-            <a href="https://www.facebook.com/lolazoda?locale=ar_AR">Facebook</a> |
-            <a href="https://github.com/MohamedZaky-zdragon50">github</a> |
-            <a href="https://www.linkedin.com/in/mohamed-zaky-0130a52a8/">LinkedIn</a>
+            <a href="https://www.facebook.com/lolazoda?locale=ar_AR">
+              <i class="fab fa-facebook-f"></i> Facebook
+            </a> |
+            <a href="https://github.com/MohamedZaky-zdragon50">
+              <i class="fab fa-github"></i> GitHub
+            </a> |
+            <a href="https://www.linkedin.com/in/mohamed-zaky-0130a52a8/">
+              <i class="fab fa-linkedin-in"></i> LinkedIn
+            </a>
           </div>
         </div>
-
       </div>
     </footer>
+  </div>
 
-    <div class="loader">
-      <div class="logo">
-        <div class="heart">
-          <svg viewBox="0 0 100 100">
-            <path class="outline"
-              d="M10,30 C10,10 40,10 50,30 C60,10 90,10 90,30 C90,60 50,90 50,90 C50,90 10,60 10,30 Z" fill="none"
-              stroke="#e4002b" stroke-width="4" />
-            <polyline class="pulse" points="20,50 30,50 35,40 40,60 45,50 55,50" fill="none" stroke="#e4002b"
-              stroke-width="3" />
-          </svg>
-        </div>
-        <h1><span class="dark">Code</span><span class="red">Care</span></h1>
+  <!-- Loading Screen -->
+  <div class="loading light-mode fade">
+    <div class="logo">
+      <div class="heart">
+        <svg viewBox="0 0 100 100">
+          <path class="outline" d="M10,30 C10,10 40,10 50,30 C60,10 90,10 90,30 C90,60 50,90 50,90 C50,90 10,60 10,30 Z" fill="none" stroke="#007bff" stroke-width="4" />
+          <polyline class="pulse" points="20,50 30,50 35,40 40,60 45,50 55,50" fill="none" stroke="#007bff" stroke-width="3" />
+        </svg>
       </div>
+      <h1><span class="white">Code</span><span class="blue">Care</span></h1>
     </div>
+  </div>
+
+  <style>
+    /* Account Button Styles */
+    .account-button.compact {
+      padding: 8px 14px;
+      gap: 6px;
+      background: linear-gradient(to right, #ffffff, #f3faff);
+      border-radius: 40px;
+      box-shadow: 0 4px 14px rgba(0, 128, 202, 0.1);
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      animation: fadeInUp 0.5s ease-out;
+      transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
+    }
+
+    .account-button.compact:hover {
+      transform: translateY(-3px);
+      background: linear-gradient(to right, #e0f0ff, #ffffff);
+      box-shadow: 0 8px 20px rgba(0, 128, 202, 0.2);
+    }
+
+    .account-button .icon {
+      width: 22px;
+      height: 22px;
+      transition: stroke 0.4s ease;
+    }
+
+    .account-button.compact:hover .icon {
+      stroke: #1d4ed8;
+    }
+
+    .account-button .label {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #333;
+      transition: color 0.4s ease;
+    }
+
+    .account-button.compact:hover .label {
+      color: #1d4ed8;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Form Input Focus Effects */
+    input:focus, select:focus, textarea:focus {
+      border-color: #0080ca !important;
+      box-shadow: 0 0 0 3px rgba(0, 128, 202, 0.1) !important;
+      outline: none !important;
+    }
+
+    /* Submit Button States */
+    #submit-btn:not(:disabled) {
+      background-color: #0080ca !important;
+      cursor: pointer !important;
+      color: white !important;
+    }
+
+    #submit-btn:not(:disabled):hover {
+      background-color: #005f99 !important;
+      transform: translateY(-2px) !important;
+    }
+
+    /* File Upload Button */
+    label[for="attachment"]:hover {
+      background-color: #005f99 !important;
+      transform: translateY(-2px);
+    }
+
+    /* Dark Mode Form Styles */
+    body.dark-mode .terms-wrapper section ul li {
+      background-color: #1f1f2e !important;
+      color: #ffffff !important;
+      border-left: 4px solid #0080ca !important;
+    }
+
+    body.dark-mode input, 
+    body.dark-mode select, 
+    body.dark-mode textarea {
+      background-color: #2a2a3d !important;
+      color: #e0e0e0 !important;
+      border-color: #444 !important;
+    }
+
+    body.dark-mode label {
+      color: #e0e0e0 !important;
+    }
+
+    body.dark-mode #successMessage {
+      background-color: #1a472a !important;
+      color: #66d9a4 !important;
+      border-color: #28a745 !important;
+    }
+
+    /* Dark mode account button */
+    body.dark-mode .account-button.compact {
+      background: linear-gradient(to right, #2c2c3c, #3a3a4a);
+    }
+
+    body.dark-mode .account-button.compact:hover {
+      background: linear-gradient(to right, #3a3a4a, #4a4a5e);
+    }
+
+    body.dark-mode .account-button .label {
+      color: #e0e0e0;
+    }
+
+    body.dark-mode .account-button.compact:hover .label {
+      color: #90c6ff;
+    }
+
+    body.dark-mode .account-button .icon {
+      stroke: #90c6ff;
+    }
+
+    body.dark-mode .account-button.compact:hover .icon {
+      stroke: #ffffff;
+    }
+  </style>
+
+  <script>
+    // Dark Mode Toggle Script
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('darkModeToggle');
+      if (!btn) return;
+
+      const icon = btn.querySelector('i');
+      const logo = document.getElementById('logo');
+      const navLogo = document.getElementById('navLogo');
+
+      const wasDark = localStorage.getItem('darkMode') === 'enabled';
+      if (wasDark) {
+        document.body.classList.add('dark-mode');
+        btn.classList.add('active');
+        icon?.classList.replace('fa-moon', 'fa-sun');
+        if (logo) logo.src = logo.dataset.dark;
+        if (navLogo) navLogo.src = navLogo.dataset.dark;
+      }
+
+      btn.addEventListener('click', () => {
+        const isDark = document.body.classList.toggle('dark-mode');
+        btn.classList.toggle('active', isDark);
+        icon?.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
+
+        if (logo) logo.style.opacity = 0;
+        if (navLogo) navLogo.style.opacity = 0;
+
+        setTimeout(() => {
+          if (logo) {
+            logo.src = isDark ? logo.dataset.dark : logo.dataset.light;
+            logo.style.opacity = 1;
+          }
+          if (navLogo) {
+            navLogo.src = isDark ? navLogo.dataset.dark : navLogo.dataset.light;
+            navLogo.style.opacity = 1;
+          }
+        }, 200);
+
+        localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+      });
+    });
+
+    // Form Validation Functions
+    window.onload = function() {
+      // Set minimum date to today
+      const dateInput = document.getElementById("date");
+      if (dateInput) {
+        const today = new Date().toISOString().split("T")[0];
+        dateInput.setAttribute("min", today);
+        dateInput.value = today;
+      }
+
+      // Validation functions
+      function check_name() {
+        const nameInput = document.getElementById("name");
+        const name_error = document.getElementById("error_name");
+        const name = nameInput.value.trim();
+
+        if (!/^[^\d]+$/.test(name)) {
+          if (name === "") {
+            name_error.textContent = "";
+            nameInput.style.borderColor = "";
+          } else {
+            nameInput.style.borderColor = "#dc3545";
+            name_error.textContent = "Name must not contain numbers.";
+            return false;
+          }
+        } else {
+          name_error.textContent = "";
+          nameInput.style.borderColor = "";
+          return true;
+        }
+      }
+
+      function check_email() {
+        const emailInput = document.getElementById("email");
+        const email_error = document.getElementById("error_email");
+        const email = emailInput.value.trim();
+
+        if (!/\S+@\S+\.\S+/.test(email)) {
+          if (email === "") {
+            email_error.textContent = "";
+            emailInput.style.borderColor = "";
+          } else {
+            emailInput.style.borderColor = "#dc3545";
+            email_error.textContent = "Enter email in (example@gmail.com) format.";
+            return false;
+          }
+        } else {
+          email_error.textContent = "";
+          emailInput.style.borderColor = "";
+          return true;
+        }
+      }
+
+      function check_phone() {
+        const phoneInput = document.getElementById("phone");
+        const phone_error = document.getElementById("error_phone");
+        const phone = phoneInput.value.trim();
+
+        if (!/^\d{11}$/.test(phone)) {
+          if (phone === "") {
+            phone_error.textContent = "";
+            phoneInput.style.borderColor = "";
+          } else {
+            phoneInput.style.borderColor = "#dc3545";
+            phone_error.textContent = "Phone must be exactly 11 digits and contain only numbers.";
+            return false;
+          }
+        } else {
+          phone_error.textContent = "";
+          phoneInput.style.borderColor = "";
+          return true;
+        }
+      }
+
+      window.handleSubmit = function() {
+        const submit_button = document.getElementById("submit-btn");
+        const validEmail = check_email();
+        const validName = check_name();
+        const validPhone = check_phone();
+
+        submit_button.disabled = !(validEmail && validName && validPhone);
+        return validEmail && validName && validPhone;
+      };
+
+      // Form submission
+      document.getElementById('labTestForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (handleSubmit()) {
+          document.getElementById('successMessage').style.display = 'block';
+          this.reset();
+          const dateInput = document.getElementById("date");
+          if (dateInput) {
+            const today = new Date().toISOString().split("T")[0];
+            dateInput.value = today;
+          }
+          document.getElementById("submit-btn").disabled = true;
+        }
+      });
+    };
+
+    // Show Sub Tests Function
+    function showSubTests() {
+      const selectedTest = document.getElementById("main-test").value;
+      const allSubTestDivs = document.querySelectorAll(".sub-test");
+      
+      allSubTestDivs.forEach(div => {
+        div.style.display = "none";
+      });
+
+      if (selectedTest === "blood") {
+        document.getElementById("blood-tests").style.display = "block";
+      } else if (selectedTest === "urine") {
+        document.getElementById("urine-tests").style.display = "block";
+      } else if (selectedTest === "xray") {
+        document.getElementById("xray-tests").style.display = "block";
+      } else if (selectedTest === "mri") {
+        document.getElementById("mri-tests").style.display = "block";
+      } else if (selectedTest === "other") {
+        document.getElementById("other-tests").style.display = "block";
+      }
+    }
+  </script>
 
 
-
-  </body>
+</body>
 
 </html>
