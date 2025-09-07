@@ -1,63 +1,108 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dr. Mohamed Waleed - Doctor Profile</title>
+  <title>Dr. Mohamed Ragap - Doctor Profile | CodeCare</title>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap" rel="stylesheet">
   <!-- FontAwesome for icons -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- External CSS -->
-  <link rel="stylesheet" href="/Css/Ragap.css">
+  <link rel="stylesheet" href="../Css/Ragap.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../JS/Ragap.js" defer></script>
 </head>
 <body>
 
 <div id="mainco">
-           <header class="navx">
-            <nav class="navbar">
-                  <div class="logo-container">
-                    <a href="/Html/Home.html">
-                <img src="../Images/logo.png" alt="Logo" class="logo" />
-                </a>
-                </div>
+  <header class="navx">
+    <nav class="navbar">
+      <div class="logo-container">
+        <!-- Logo في الـ Navbar -->
+        <a href="./Home.html">
+          <img id="navLogo"
+            src="../Images/logo-light.png"
+            data-light="../Images/logo-light.png"
+            data-dark="../Images/logo-dark.png"
+            alt="CodeCare Logo" />
+        </a>
+      </div>
+      
+      <div class="nav-group">
+        <ul class="nav-links">
+          <li><a href="./Home.html">Home</a></li>
+          <li><a href="./Doctor Profiles.html">Our Doctors</a></li>
+          <li><a href="./Terms of Service.html">Services</a></li>
+          <li><a href="./Contact us.html">Contact</a></li>
+        </ul>
+      </div>
 
-                <ul class="nav-links">
-                <li><a href="/Html/Home.html">Home</a></li>
-                <li><a href="./Doctor Profiles.html">Doc Team</a></li>
-                <li><a href="/Html/Terms of Service.html">Services</a></li>
-                <li><a href="/Htm./Contact-us.html">Contact</a></li>
-                </ul>
-            </nav>
-            </header>
+      <div class="navbar-controls">
+        <!-- Search Box -->
+        <div class="search-container">
+          <input type="search" id="search-input" placeholder="Enter Doctor's name..." aria-label="Search" />
+          <button aria-label="Search" class="search-btn" id="search-btn">🔍</button>
+          <div class="search-error" id="search-error"></div>
+        </div>
 
+        <!-- Dark Mode Toggle -->
+        <div class="dark-mode-switch">
+          <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+            <span class="slider">
+              <i class="fas fa-moon"></i>
+            </span>
+            <span class="switch-label">Dark Mode</span>
+          </button>
+        </div>
+
+        <div class="account-button compact">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" stroke-width="2" stroke="#0080ca" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="5" />
+            <path d="M20 21a8 8 0 0 0-16 0" />
+          </svg>
+          <span class="label">Account</span>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+
+      <!-- Side Menu -->
+      <div class="side-menu" id="side-menu">
+        <ul>
+          <li><a href="./Home.html">Home</a></li>
+          <li><a href="./Doctor Profiles.html">Our Doctors</a></li>
+          <li><a href="./Terms of Service.html">Services</a></li>
+          <li><a href="./Contact us.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
   <div class="container">
     <!-- Header -->
     <div class="header">
-      <img src="/Images/ragap .avif" alt="Dr. Mohamed Ragap">
+      <img src="../Images/ragap .avif" alt="Dr. Mohamed Ragap">
       <div>
         <h1>Dr. Mohamed Ragap</h1>
-        <h3><i class="fas fa-stethoscope icon"></i>Neurology | 10 Years of Expertise</h3>
+        <h3><i class="fas fa-brain icon"></i>Neurology | 10 Years of Expertise</h3>
       </div>
     </div>
 
     <div class="grid-2">
       <section class="card">
         <h2 class="About">About</h2>
-        <p>Dr. Mohamed Ragap is a renowned 
-          <strong>Neurologist</strong> specialist recognized for compassionate, evidence-based care. An MD graduate of 
-          <em>Cairo University Faculty of Medicine</em>, with a fellowship from <em>Harvard Medical School</em>, Dr. Waleed bridges research and clinical practice to achieve superior patient outcomes.</p>
+        <p>Dr. Mohamed Ragap is a renowned <strong>Neurologist</strong> specialist recognized for compassionate, evidence-based care. An MD graduate of <em>Cairo University Faculty of Medicine</em>, with a fellowship from <em>Harvard Medical School</em>, Dr. Ragap bridges research and clinical practice to achieve superior patient outcomes.</p>
       </section>
       <section class="card">
         <h2 class="Qual">Qualifications</h2>
         <ul>
-          <li>. MD,<em>Cairo University Faculty of Medicine</em> – 2013</li>
-          <li>. Fellowship in <em>Neurodiagnostics</em> – 2017</li>
-          <li>. Board Certified in <em>Neurology</em> – 2016</li>
+          <li>MD, <em>Cairo University Faculty of Medicine</em> – 2013</li>
+          <li>Fellowship in <em>Neurodiagnostics</em> – 2017</li>
+          <li>Board Certified in <em>Neurology</em> – 2016</li>
         </ul>
       </section>
     </div>
@@ -66,16 +111,16 @@
       <h2>Experience</h2>
       <div class="card">
         <ul>
-          <li><strong><i class="fas fa-user-md icon"></i>. Consultant Neurologist</strong> at <span style="font-weight: bold;">Ain Shams University Hospitals</span>, 2019–Present
+          <li><strong><i class="fas fa-user-md icon"></i>Consultant Neurologist</strong> at <span style="font-weight: bold;">Ain Shams University Hospitals</span>, 2019–Present
             <ul>
-              <li>. Lead specialist in stroke and seizure management.</li>
-              <li>. Conduct neuro-electrophysiology and EMG assessments.</li>
+              <li>Lead specialist in stroke and seizure management.</li>
+              <li>Conduct neuro-electrophysiology and EMG assessments.</li>
             </ul>
           </li>
-          <li><strong><i class="fas fa-user-nurse icon"></i>. Resident Neurologist</strong> at <span style="font-weight: bold;"> University Teaching Hospitals (Kasr Al‑Ainy)</span>, 2013–2019
+          <li><strong><i class="fas fa-user-nurse icon"></i>Resident Neurologist</strong> at <span style="font-weight: bold;">University Teaching Hospitals (Kasr Al‑Ainy)</span>, 2013–2019
             <ul>
-              <li>. Managed acute and chronic neurological conditions.</li>
-              <li>. Supervised EEG labs and clinical rotations for junior doctors.</li>
+              <li>Managed acute and chronic neurological conditions.</li>
+              <li>Supervised EEG labs and clinical rotations for junior doctors.</li>
             </ul>
           </li>
         </ul>
@@ -86,7 +131,7 @@
       <h2>Clinical Interests & Research</h2>
       <div class="card">
         <ul>
-          <li><strong><i class="fas fa-procedures icon"></i>Key Procedures:</strong> Stroke Management, Epilepsy, Multiple Sclerosis Care</li>
+          <li><strong><i class="fas fa-brain icon"></i>Key Specialties:</strong> Stroke Management, Epilepsy Treatment, Multiple Sclerosis Care, Neurological Diagnostics</li>
           <li><strong><i class="fas fa-book-medical icon"></i>Publications:</strong>
             <ol>
               <li>"Neuroinflammation in Stroke Patients", <em>Journal of Neurology</em>, 2019</li>
@@ -105,8 +150,11 @@
             <tr><th>Course</th><th>Institution</th><th>Date</th></tr>
           </thead>
           <tbody>
-            <tr><td><i class="fas fa-heartbeat icon"></i>Advanced EEG Interpretation</td><td>Mayo Clinic</td><td>Apr 2021</td></tr>
+            <tr><td><i class="fas fa-brain icon"></i>Advanced EEG Interpretation</td><td>Mayo Clinic</td><td>Apr 2021</td></tr>
             <tr><td><i class="fas fa-user-md icon"></i>Stroke Management Workshop</td><td>Cleveland Clinic</td><td>Aug 2022</td></tr>
+            <tr><td><i class="fas fa-stethoscope icon"></i>Neurological Emergencies</td><td>Johns Hopkins Hospital</td><td>Dec 2020</td></tr>
+            <tr><td><i class="fas fa-heartbeat icon"></i>Multiple Sclerosis Care</td><td>European Neurological Society</td><td>Mar 2019</td></tr>
+            <tr><td><i class="fas fa-procedures icon"></i>EMG & Nerve Conduction Studies</td><td>Harvard Medical School</td><td>Sep 2018</td></tr>
           </tbody>
         </table>
       </div>
@@ -117,9 +165,9 @@
       <div class="card">
         <p><i class="fas fa-clock icon"></i><strong>Office Hours:</strong><br>Wed–Sun: 5:00 PM–9:00 PM<br>Sat: 12:00 PM–5:00 PM</p>
         <div>
-          <a href="tel:[Phone]" class="button btn-primary"><i class="fas fa-phone-alt"></i> Call</a>
+          <a href="tel:+20 100 000 0000" class="button btn-primary"><i class="fas fa-phone-alt"></i> Call</a>
           <a href="mailto:MohamedRagap70@codecare.com" class="button btn-accent"><i class="fas fa-envelope"></i> Email</a>
-          <a href="/Html/Booking Appointments.html" class="button btn-primary"><i class="fas fa-calendar-check"></i> Book Online</a>
+          <a href="./Booking Appointments.html" class="button btn-primary"><i class="fas fa-calendar-check"></i> Book Online</a>
         </div>
       </div>
     </section>
@@ -127,16 +175,16 @@
     <section>
       <h2>Doctor Feedback</h2>
       <div class="card">
-        <blockquote></i>"Dr. Ragap provided clear insights into my neurological condition. Highly knowledgeable!" – <strong style="color: rgb(30, 64, 175);">L.N.</strong></blockquote>
-        <blockquote><i class="fas fa-quote-left icon"></i>""He listens carefully and explains everything in detail. Highly recommended!" – <strong style="color: rgb(30, 64, 175);">T.K.</strong></blockquote>
+        <blockquote><i class="fas fa-quote-left icon"></i>"Dr. Ragap provided clear insights into my neurological condition. Highly knowledgeable!" – <strong style="color: #0080ca;">L.N.</strong></blockquote>
+        <blockquote><i class="fas fa-quote-left icon"></i>"He listens carefully and explains everything in detail. Highly recommended!" – <strong style="color: #0080ca;">T.K.</strong></blockquote>
       </div>
     </section>
 
     <section>
       <h2>Contact & Social</h2>
-      <div class="card" class="contact">
+      <div class="card contact">
         <p><i class="fas fa-phone icon"></i><strong>Hospital Phone:</strong> +20 100 000 0000</p>
-        <p><i class="fas fa-envelope icon"></i><strong>Email:</strong> <a href="mailto:MohamedRagap70@codecare.com" style="font-weight: bold; color: rgb(30, 64, 175);">MohamedRagap70@codecare.com</a></p>
+        <p><i class="fas fa-envelope icon"></i><strong>Email:</strong> <a href="mailto:MohamedRagap70@codecare.com" style="font-weight: bold; color: #0080ca;">MohamedRagap70@codecare.com</a></p>
         <div class="social-links">
           <a href="#"><i class="fab fa-facebook-f"></i></a>
           <a href="#"><i class="fab fa-twitter"></i></a>
@@ -145,57 +193,55 @@
         </div>
       </div>
     </section>
+  </div>
 
-
-<footer class="footer" style="font-weight: bold;">
+  <footer class="footer">
     <div class="footer-container">
-  
-      <div class="footer-column">
+      <div class="footer-column" id="f1">
         <h3>Quick Links</h3>
         <ul>
-          <li><a href="./Contact-us.html">Contact Us</a></li>
-           <li><a href="./Terms of Service.html">Our Services</a></li>
+          <li><a href="./Contact us.html">Contact Support</a></li>
+          <li><a href="./Terms of Service.html">View Services</a></li>
         </ul>
       </div>
-  
-      <div class="footer-column">
-        <h3>About CodeCare Hospital </h3>
-        <p>
-          At <strong>CodeCare Hospital</strong>, we deliver trusted healthcare powered by modern diagnostics, expert
-          consultations, and compassionate care - tailored for you.
-        </p>
+
+      <div class="footer-column" id="f2">
+        <h3>About CodeCare Hospital</h3>
+        <p>At <strong style="color: #0080ca;">CodeCare Hospital</strong>, we provide exceptional healthcare solutions combining state-of-the-art technology, expert professionals, and compassionate care tailored to each patient's needs.</p>
       </div>
-  
-      <div class="footer-column">
-        <h3>Get in Touch</h3>
-        <p>Email: info@codecarehospital.com</p>
-        <p>Phone: +20 100 000 0000</p>
-        <p>Address: Cairo, Egypt</p>
+
+      <div class="footer-column" id="f3">
+        <h3>Contact Information</h3>
+        <p><i class="fas fa-envelope"></i> Email: info@codecarehospital.com</p>
+        <p><i class="fas fa-phone"></i> Phone: +20 100 000 0000</p>
+        <p><i class="fas fa-map-marker-alt"></i> Address: Cairo, Egypt</p>
         <div class="social">
-          <a href="https://www.facebook.com/lolazoda?locale=ar_AR">Facebook</a> |
-          <a href="https://github.com/MohamedZaky-zdragon50">github</a> |
-          <a href="https://www.linkedin.com/in/mohamed-zaky-0130a52a8/">LinkedIn</a>
+          <a href="https://www.facebook.com/lolazoda?locale=ar_AR">
+            <i class="fab fa-facebook-f"></i> Facebook
+          </a> |
+          <a href="https://github.com/MohamedZaky-zdragon50">
+            <i class="fab fa-github"></i> GitHub
+          </a> |
+          <a href="https://www.linkedin.com/in/mohamed-zaky-0130a52a8/">
+            <i class="fab fa-linkedin-in"></i> LinkedIn
+          </a>
         </div>
       </div>
-  
     </div>
   </footer>
+</div>
 
-  <div class="loader">
-    <div class="logo">
-      <div class="heart">
-        <svg viewBox="0 0 100 100">
-          <path class="outline" d="M10,30 C10,10 40,10 50,30 C60,10 90,10 90,30 C90,60 50,90 50,90 C50,90 10,60 10,30 Z" fill="none" stroke="#e4002b" stroke-width="4" />
-          <polyline class="pulse" points="20,50 30,50 35,40 40,60 45,50 55,50" fill="none" stroke="#e4002b"
-            stroke-width="3" />
-        </svg>
-      </div>
-      <h1><span class="dark">Code</span><span class="red">Care</span></h1>
+<div class="loading light-mode fade">
+  <div class="logo">
+    <div class="heart">
+      <svg viewBox="0 0 100 100">
+        <path class="outline" d="M10,30 C10,10 40,10 50,30 C60,10 90,10 90,30 C90,60 50,90 50,90 C50,90 10,60 10,30 Z" fill="none" stroke="#007bff" stroke-width="4" />
+        <polyline class="pulse" points="20,50 30,50 35,40 40,60 45,50 55,50" fill="none" stroke="#007bff" stroke-width="3" />
+      </svg>
     </div>
+    <h1><span class="white">Code</span><span class="blue">Care</span></h1>
   </div>
+</div>
 
-
-
-  </div>
 </body>
 </html>

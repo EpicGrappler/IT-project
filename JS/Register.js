@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("hideSignupBtn", "true");
 
         // الانتقال للصفحة التالية
-        window.location.href = "../HTML/Home.html";
+        window.location.href = "../Html/Login.html";
       } else {
         Swal.fire({
           icon: "error",

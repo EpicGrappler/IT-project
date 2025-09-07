@@ -93,7 +93,7 @@ window.onload = function () {
                     icon: "success",
                     confirmButtonText: "OK",
                 }).then(() => {
-                    window.location.href = "../HTML/Search Doctors.html";
+                    window.location.href = "../Html/Home.html";
                 });
             } else {
                 Swal.fire({

@@ -1,4 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Initialize search functionality
+  if (typeof initializeSearch === 'function') {
+    initializeSearch();
+  }
+
   const savedMode = localStorage.getItem("darkMode");
   if (savedMode === "enabled") {
     document.body.classList.add("dark-mode");
@@ -36,7 +41,7 @@ window.addEventListener("load", () => {
       setTimeout(() => loadingDiv.style.display = "none", 500); // بعد انتهاء التلاشي
     }
     if (mainContent) mainContent.style.display = "block";
-  }, 4000);
+  }, 1000);
 });
 
 

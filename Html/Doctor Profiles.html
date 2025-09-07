@@ -3,14 +3,878 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>services | CodeCare</title>
-  <link rel="stylesheet" href="../Css/Doctor Profiles.css">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="../JS/Doctors.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    
+  <title>Our Doctors | CodeCare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: #F8F9FA;
+  color: #343A40;
+  line-height: 1.75;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Navbar */
+.navx {
+  background-color: #FFFFFF;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.1);
+  border-bottom: 1px solid #CCE5FF;
+  font-weight: 600;
+}
+
+.navbar {
+  max-width: 1300px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 28px;
+  gap: 40px;
+}
+
+.logo-container {
+  flex-shrink: 0;
+}
+
+.logo-container img {
+  height: 52px;
+  margin-left: 10px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.logo-container img:hover {
+  transform: scale(1.03);
+}
+
+.nav-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-grow: 1;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 22px;
+  margin: 0;
+  padding: 0;
+  margin-top: -8px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #343A40;
+  font-weight: 600;
+  font-size: 17px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  letter-spacing: 0.03em;
+}
+
+.nav-links li a::before {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: #0D6EFD;
+  transition: width 0.3s ease-in-out;
+  border-radius: 4px;
+}
+
+.nav-links li a:hover::before {
+  width: 80%;
+}
+
+.nav-links li a:hover {
+  color: #0D6EFD;
+  background-color: rgba(13, 110, 253, 0.1);
+  box-shadow: 0 2px 6px rgba(13, 110, 253, 0.1);
+}
+
+/* Account Button */
+.account-button.compact {
+  padding: 8px 14px;
+  gap: 6px;
+  background: linear-gradient(to right, #ffffff, #f3faff);
+  border-radius: 40px;
+  box-shadow: 0 4px 14px rgba(0, 128, 202, 0.1);
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  animation: fadeInUp 0.5s ease-out;
+  transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
+}
+
+.account-button.compact:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(to right, #e0f0ff, #ffffff);
+  box-shadow: 0 8px 20px rgba(0, 128, 202, 0.2);
+}
+
+.account-button .icon {
+  width: 22px;
+  height: 22px;
+  transition: stroke 0.4s ease;
+}
+
+.account-button.compact:hover .icon {
+  stroke: #1d4ed8;
+}
+
+.account-button .label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #333;
+  transition: color 0.4s ease;
+}
+
+.account-button.compact:hover .label {
+  color: #1d4ed8;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Right side controls container */
+.navbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Search Container */
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 220px;
+}
+
+.search-container input[type="search"] {
+  padding: 8px 36px 8px 12px;
+  border-radius: 20px;
+  border: 1.5px solid #0D6EFD;
+  font-size: 14px;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #FFFFFF;
+  color: #343A40;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.search-container input[type="search"]:focus {
+  border-color: #084298;
+  box-shadow: 0 0 6px #CCE5FF;
+}
+
+.search-container button.search-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #0D6EFD;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+.search-container button.search-btn:hover {
+  color: #084298;
+}
+
+.search-error {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  font-size: 13px;
+  color: #DC3545;
+  font-weight: 600;
+  min-height: 18px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+.search-error.visible {
+  opacity: 1;
+}
+
+/* Dark Mode Toggle */
+.dark-mode-switch {
+  display: flex;
+  align-items: center;
+}
+
+.dark-mode-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+}
+
+.dark-mode-toggle .slider {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  background-color: #eee;
+  border-radius: 15px;
+  transition: background-color 0.3s ease;
+  overflow: hidden;
+}
+
+.dark-mode-toggle .slider::before {
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  top: 2px;
+  left: 2px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: left 0.3s ease;
+}
+
+.dark-mode-toggle .slider i {
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #666;
+  transition: left 0.3s ease, color 0.3s ease;
+}
+
+.switch-label {
+  font-size: 0.9rem;
+  color: #444;
+  transition: color 0.4s ease;
+  white-space: nowrap;
+}
+
+.dark-mode-toggle.active .slider {
+  background-color: #4a4a5e;
+}
+
+.dark-mode-toggle.active .slider::before {
+  left: 32px;
+}
+
+.dark-mode-toggle.active .slider i {
+  left: 38px;
+  color: #ffd700;
+}
+
+/* Menu Toggle Button */
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #0D6EFD;
+  user-select: none;
+  padding: 4px 8px;
+  transition: color 0.3s ease;
+}
+
+.menu-toggle:hover {
+  color: #084298;
+}
+
+/* Side Menu (Mobile Only) */
+.side-menu {
+  position: fixed;
+  top: 70px;
+  right: -100%;
+  width: 260px;
+  background-color: #f9f9f9;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  transition: right 0.4s ease;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 0 12px 12px;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-menu ul li {
+  margin: 15px 0;
+}
+
+.side-menu ul li a {
+  display: block;
+  padding: 10px 15px;
+  color: #0D6EFD;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.side-menu ul li a:hover,
+.side-menu ul li a:focus {
+  background-color: #e7f0ff;
+  color: #0a58ca;
+  box-shadow: inset 0 0 5px rgba(13, 110, 253, 0.2);
+  outline: none;
+}
+
+.side-menu.active {
+  right: 0;
+  display: flex;
+}
+
+/* Page Header */
+.page-header {
+  text-align: center;
+  color: #000;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 50px 10px 30px;
+  margin: -15px 10px 0;
+  background-color: #f6f7f9;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+}
+
+.page-header::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, #0080ca, #0066a1);
+  border-radius: 2px;
+}
+
+.page-header h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+  color: hsl(0, 0%, 0%);
+  transition: color 0.4s ease, transform 0.3s ease;
+}
+
+.page-header .highlight {
+  color: #0080ca;
+  transition: color 0.4s ease;
+}
+
+.page-header p {
+  color: black;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: color 0.3s ease;
+}
+
+/* Doctor Container */
+.doctor-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Doctor Card */
+.doctor-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  padding: 25px 20px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.doctor-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to right, #0080ca, #0066a1);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.doctor-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  background-color: #fcfcfc;
+}
+
+.doctor-card img {
+  border-radius: 10px;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border: 4px solid #0080ca;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.doctor-card:hover img {
+  transform: scale(1.08);
+  filter: brightness(1.1);
+}
+
+.doctor-card h3 {
+  margin: 10px 0 5px;
+  color: #0080ca;
+  font-size: 20px;
+}
+
+.doctor-card p {
+  margin: 4px 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+}
+
+.doctor-card p strong {
+  color: #0080ca;
+}
+
+/* Button Container */
+.button-container {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.book-btn {
+  width: 100%;
+  max-width: 300px;
+  padding: 12px 24px;
+  background-color: #0080ca;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.book-btn:hover {
+  color: #fff;
+  background-color: #1D4ED8;
+  box-shadow: 0 6px 12px rgba(29, 78, 216, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Links */
+a {
+  color: #0080ca;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #1d4ed8;
+}
+
+strong {
+  color: #0080ca;
+}
+
+/* Footer */
+.footer {
+  background-color: #152a3f;
+  color: #FFFFFF;
+  padding: 40px 0;
+  font-size: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin: 0 !important;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.footer-column {
+  flex: 1 1 250px;
+}
+
+.footer-column h3 {
+  margin-bottom: 15px;
+  color: #FFFFFF;
+  font-size: 18px;
+  border-bottom: 2px solid #0D6EFD;
+  display: inline-block;
+  padding-bottom: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.footer-column a {
+  color: #CCE5FF;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.footer-column a:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+.social a {
+  display: inline-block;
+  margin-top: 10px;
+  margin-right: 10px;
+  color: #66B2FF;
+}
+
+/* Loading Screen */
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  background-color: #f8f9fa;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+body.dark-mode .loading {
+  background-color: #2C2C3C;
+}
+
+.loading.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heart svg {
+  width: 120px;
+  height: 120px;
+}
+
+.pulse {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation: pulseMove 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseMove {
+  0% {
+    stroke-dashoffset: 60;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 60;
+  }
+}
+
+.loading h1 {
+  font-family: Arial, sans-serif;
+  font-size: 2rem;
+  margin-top: 10px;
+}
+
+.white {
+  color: #000;
+}
+
+body.dark-mode .white {
+  color: #fff;
+}
+
+.blue {
+  color: #007bff;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #1e1e2f;
+  color: #e0e0e0;
+}
+
+body.dark-mode .switch-label {
+  color: #e0e0e0;
+}
+
+body.dark-mode .navx {
+  background-color: #2c2c3c;
+  border-bottom: 1px solid #444;
+}
+
+body.dark-mode .nav-links li a {
+  color: #fff;
+}
+
+body.dark-mode .nav-links li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+body.dark-mode .search-container input[type="search"] {
+  background-color: #3a3a4a;
+  color: #fff;
+  border: 1px solid #666;
+}
+
+body.dark-mode .search-container .search-btn {
+  color: #fff;
+}
+
+body.dark-mode .side-menu {
+  background-color: #2c2c3c;
+  box-shadow: -4px 0 12px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .side-menu ul li a {
+  color: #ffffff;
+}
+
+body.dark-mode .side-menu ul li a:hover,
+body.dark-mode .side-menu ul li a:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #90c6ff;
+}
+
+body.dark-mode .page-header {
+  background-color: #1e1e2f;
+  color: #ffffff;
+  border: none;
+  box-shadow: none;
+}
+
+body.dark-mode .page-header h1,
+body.dark-mode .page-header p {
+  color: #f0f0f0;
+}
+
+body.dark-mode .highlight {
+  color: #33b8ff;
+}
+
+body.dark-mode .doctor-container {
+  background-color: transparent;
+}
+
+body.dark-mode .doctor-card {
+  background-color: #2c2c3f;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .doctor-card::after {
+  background: linear-gradient(to right, #0080ca, #0066a1);
+}
+
+body.dark-mode .doctor-card h3 {
+  color: #33b8ff;
+}
+
+body.dark-mode .doctor-card p {
+  color: #fff;
+}
+
+body.dark-mode .footer {
+  background-color: #222233;
+  color: #ccc;
+}
+
+body.dark-mode .footer a {
+  color: #aaa;
+}
+
+body.dark-mode .footer a:hover {
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none !important;
+  }
+
+  .navbar-controls {
+    gap: 10px;
+  }
+
+  .search-container {
+    width: 180px;
+  }
+
+  .switch-label {
+    display: none;
+  }
+
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .page-header p {
+    font-size: 0.95rem;
+  }
+  
+  .book-btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+  
+  .doctor-container {
+    padding: 30px 10px;
+    gap: 20px;
+  }
+
+  .footer {
+    padding: 20px 0;
+  }
+
+  #f1 {
+    gap: 0px;
+    margin-top: 150px;
+    margin-bottom: -140px;
+  }
+
+  #f2 {
+    gap: 0px;
+    margin-bottom: -130px;
+  }
+
+  #f3 {
+    margin-bottom: 50px;
+  }
+
+  .footer-column h3 {
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+
+  .footer-column p,
+  .footer-column a {
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+
+  .social a {
+    margin-right: 6px;
+    font-size: 14px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (min-width: 769px) {
+  .side-menu {
+    display: flex !important;
+  }
+}
+  </style>
 </head>
 
 <body>
@@ -19,7 +883,7 @@
       <nav class="navbar">
         <div class="logo-container">
           <!-- Logo في الـ Navbar -->
-          <a href="/Html/Home.html">
+          <a href="./Home.html">
             <img id="navLogo"
               src="../Images/logo-light.png"
               data-light="../Images/logo-light.png"
@@ -27,92 +891,42 @@
               alt="CodeCare Logo" />
           </a>
         </div>
-        <ul class="nav-links">
-          <li><a href="./Home.html">Home</a></li>
-          <li><a href="./Doctor Profiles.html">Our Doctors</a></li>
-          <li><a href="./Terms of Service.html">Services</a></li>
-          <li><a href="./Contact-us.html">Contact</a></li>
-        </ul>
-
-        <!-- Search Box -->
-        <div class="search-container">
-          <input type="search" id="search-input" placeholder="Search..." aria-label="Search" />
-          <button aria-label="Search" class="search-btn" id="search-btn">🔍</button>
-          <div class="search-error" id="search-error"></div>
+        
+        <div class="nav-group">
+          <ul class="nav-links">
+            <li><a href="./Home.html">Home</a></li>
+            <li><a href="./Doctor Profiles.html">Our Doctors</a></li>
+            <li><a href="./Terms of Service.html">Services</a></li>
+            <li><a href="./Contact-us.html">Contact</a></li>
+          </ul>
         </div>
 
-        <!-- Dark Mode Toggle -->
-        <div class="dark-mode-switch">
-          <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
-            <span class="slider">
-              <i class="fas fa-moon"></i>
-            </span>
-            <span class="switch-label">Dark Mode</span>
-          </button>
-        </div>
+        <div class="navbar-controls">
+          <!-- Search Box -->
+          <div class="search-container">
+            <input type="search" id="search-input" placeholder="Enter Doctor's name..." aria-label="Search" />
+            <button aria-label="Search" class="search-btn" id="search-btn">🔍</button>
+            <div class="search-error" id="search-error"></div>
+          </div>
+
+          <!-- Dark Mode Toggle -->
+          <div class="dark-mode-switch">
+            <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+              <span class="slider">
+                <i class="fas fa-moon"></i>
+              </span>
+              <span class="switch-label">Dark Mode</span>
+            </button>
+          </div>
 
           <div class="account-button compact">
-  <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" stroke-width="2" stroke="#0080ca" fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="12" cy="8" r="5" />
-    <path d="M20 21a8 8 0 0 0-16 0" />
-  </svg>
-  <span class="label">Account</span>
-</div>
-
-<style>
-  .account-button.compact {
-    padding: 8px 14px;
-    gap: 6px;
-    background: linear-gradient(to right, #ffffff, #f3faff);
-    border-radius: 40px;
-    box-shadow: 0 4px 14px rgba(0, 128, 202, 0.1);
-    display: inline-flex;
-    align-items: center;
-    cursor: pointer;
-    animation: fadeInUp 0.5s ease-out;
-    transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
-  }
-
-  .account-button.compact:hover {
-    transform: translateY(-3px);
-    background: linear-gradient(to right, #e0f0ff, #ffffff);
-    box-shadow: 0 8px 20px rgba(0, 128, 202, 0.2);
-  }
-
-  .account-button .icon {
-    width: 22px;
-    height: 22px;
-    transition: stroke 0.4s ease;
-  }
-
-  .account-button.compact:hover .icon {
-    stroke: #1d4ed8;
-  }
-
-  .account-button .label {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: #333;
-    transition: color 0.4s ease;
-  }
-
-  .account-button.compact:hover .label {
-    color: #1d4ed8;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(8px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-</style>
-
-
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" stroke-width="2" stroke="#0080ca" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="5" />
+              <path d="M20 21a8 8 0 0 0-16 0" />
+            </svg>
+            <span class="label">Account</span>
+          </div>
+        </div>
 
         <!-- Mobile Menu Toggle Button -->
         <button class="menu-toggle" aria-label="Toggle menu">☰</button>
@@ -120,97 +934,91 @@
         <!-- Side Menu -->
         <div class="side-menu" id="side-menu">
           <ul>
-            <li><a href="/Html/Home.html">Home</a></li>
+            <li><a href="./Home.html">Home</a></li>
             <li><a href="./Doctor Profiles.html">Our Doctors</a></li>
-            <li><a href="/Html/Terms of Service.html">Services</a></li>
-            <li><a href="/Htm./Contact-us.html">Contact</a></li>
+            <li><a href="./Terms of Service.html">Services</a></li>
+            <li><a href="./Contact-us.html">Contact</a></li>
           </ul>
         </div>
       </nav>
     </header>
 
+    <div class="page-header">
+      <h1 class="hover-title">
+        Meet Our Expert Doctors at <span class="highlight">CODECARE</span>
+      </h1>
+      <p>
+        Our expert doctors are here to provide you with the best care.
+      </p>
+    </div>
 
+    <div class="doctor-container">
+      <!-- بطاقة الدكتور محمد وليد -->
+      <div class="doctor-card" id="doctor-1">
+        <a href="./Doc Waleed Page .html">
+          <img src="../Images/Waleed.jpeg" alt="Dr. Mohamed Waleed"></a>
+        <h3>Dr. Mohamed Waleed</h3>
+        <p><strong>Specialty:</strong> Internal Medicine</p>
+        <p><strong>Experience:</strong> 20 years</p>
+        <p><strong>Email:</strong> Mohamedwaleed7@codecare.com</p>
+      </div>
 
+      <!-- بطاقة الدكتور محمد زكي -->
+      <div class="doctor-card" id="doctor-2">
+        <a href="./Zaky.html">
+          <img src="../Images/Zaky.jpeg" alt="Dr. Mohamed Zaky"></a>
+        <h3>Dr. Mohamed Zaky</h3>
+        <p><strong>Specialty:</strong> Cardiology</p>
+        <p><strong>Experience:</strong> 12 years</p>
+        <p><strong>Email:</strong> Mohamedzaky25@codecare.com</p>
+      </div>
 
-        <div class="page-header">
-          <h1 class="hover-title">
-            Meet Our Expert Doctors at <span class="highlight">CODECARE</span>
-          </h1>
-          <p>
-            Our expert doctors are here to provide you with the best care.
-          </p>
-        </div>
-      </header>
+      <!-- بطاقة الدكتور عمر رجب -->
+      <div class="doctor-card" id="doctor-3">
+        <a href="./OmarRagap.html">
+          <img src="../Images/Omar.jpg" alt="Dr. Omar Ragap"></a>
+        <h3>Dr. Omar Ragap</h3>
+        <p><strong>Specialty:</strong> Dental Surgery</p>
+        <p><strong>Experience:</strong> 13 years</p>
+        <p><strong>Email:</strong> Omar.Ragap66@codecare.com</p>
+      </div>
 
+      <!-- بطاقة الدكتور مصطفى أشرف -->
+      <div class="doctor-card" id="doctor-4">
+        <a href="./Mostafa.html">
+          <img src="../Images/mostafa .jpg" alt="Dr. Mostafa Ashraf"></a>
+        <h3>Dr. Mostafa Ashraf</h3>
+        <p><strong>Specialty:</strong> Clinical Psychology</p>
+        <p><strong>Experience:</strong> 12 years</p>
+        <p><strong>Email:</strong> MostafaAshraf30@codecare.com</p>
+      </div>
 
-          <div class="doctor-container">
-              <!-- بطاقة الدكتور محمد وليد -->
-              <div class="doctor-card" id="doctor-1">
-                <a href="./Doc Waleed Page .html">
-                  <img src="../Images/Waleed.jpeg" alt="Dr. Mohamed Waleed"></a>
-                  <h3>Dr. Mohamed Waleed</h3>
-                  <p><strong>Specialty:</strong> Internal Medicine</p>
-                  <p><strong>Experience:</strong> 20 years</p>
-                  <p><strong>Email:</strong> Mohamedwaleed7@codecare.com</p>
-              </div>
+      <!-- بطاقة الدكتور يوسف الدمرداش -->
+      <div class="doctor-card" id="doctor-5">
+        <a href="./Al-Demerdash.html">
+          <img src="../Images/Joo.jpg" alt="Dr. Youssef Al-Demerdash"></a>
+        <h3>Dr. Youssef Al-Demerdash</h3>
+        <p><strong>Specialty:</strong> Dermatology</p>
+        <p><strong>Experience:</strong> 14 years</p>
+        <p><strong>Email:</strong> Al-Demerdash20@codecare.com</p>
+      </div>
 
-              <!-- بطاقة الدكتور محمد زكي -->
-              <div class="doctor-card" id="doctor-2">
-                      <a href="./Zaky.html">
-                  <img src="../Images/Zaky.jpeg" alt="Dr. Mohamed Zaky"></a>
-                  <h3>Dr. Mohamed Zaky</h3>
-                  <p><strong>Specialty:</strong> Cardiology</p>
-                  <p><strong>Experience:</strong> 12 years</p>
-                  <p><strong>Email:</strong> Mohamedzaky25@codecare.com</p>
-              </div>
+      <!-- بطاقة الدكتور محمد رجب -->
+      <div class="doctor-card" id="doctor-6">
+        <a href="./Ragap.html">
+          <img src="../Images/ragap .avif" alt="Dr. Mohamed Ragap"></a>
+        <h3>Dr. Mohamed Ragap</h3>
+        <p><strong>Specialty:</strong> Neurology</p>
+        <p><strong>Experience:</strong> 10 years</p>
+        <p><strong>Email:</strong> MohamedRagap70@codecare.com</p>
+      </div>
+    </div>
 
-              <!-- بطاقة الدكتور عمر رجب -->
-              <div class="doctor-card" id="doctor-3">
-                <a href="./OmarRagap.html">
-                  <img src="../Images/Omar.jpg" alt="Dr. Omar Ragap"></a>
-                  <h3>Dr. Omar Ragap</h3>
-                  <p><strong>Specialty:</strong> Dental Surgery</p>
-                  <p><strong>Experience:</strong> 13 years</p>
-                  <p><strong>Email:</strong> Omar.Ragap66@codecare.com</p>
-              </div>
-
-              <!-- بطاقة الدكتور مصطفى أشرف -->
-              <div class="doctor-card" id="doctor-4">
-                <a href="./Mostafa.html">
-                  <img src="../Images/mostafa .jpg" alt="Dr. Mostafa Ashraf"></a>
-                  <h3>Dr. Mostafa Ashraf</h3>
-                  <p><strong>Specialty:</strong> Clinical Psychology</p>
-                  <p><strong>Experience:</strong> 12 years</p>
-                  <p><strong>Email:</strong> MostafaAshraf30@codecare.com</p>
-              </div>
-
-              <!-- بطاقة الدكتور يوسف الدمرادش -->
-              <div class="doctor-card" id="doctor-5">
-                    <a href="./Al-Demerdash.html">
-                  <img src="../Images/Joo.jpg" alt="Dr. Youssef Al-Demerdash"></a>
-                  <h3>Dr. Youssef Al-Demerdash</h3>
-                  <p><strong>Specialty:</strong> Dermatology</p>
-                  <p><strong>Experience:</strong> 14 years</p>
-                  <p><strong>Email:</strong> Al-Demerdash20@codecare.com</p>
-              </div>
-
-              <!-- بطاقة الدكتور محمد رجب -->
-              <div class="doctor-card" id="doctor-6">
-                  <a href="/Html/Ragap.html">
-                  <img src="../Images/ragap .avif" alt="Dr. Mohamed Ragap"></a>
-                  <h3>Dr. Mohamed Ragap</h3>
-                  <p><strong>Specialty:</strong> Neurology</p>
-                  <p><strong>Experience:</strong> 10 years</p>
-                  <p><strong>Email:</strong> MohamedRagap70@codecare.com</p>
-              </div>
-          </div>
-
- 
-          <!-- زر حجز الموعد (واحد فقط تحت جميع البروفايلات) -->
-          <div class="button-container">
-             <a href="/Html/Booking Appointments.html" class="book-btn">Booking Appointments</a>
-
-          </div>
+    <!-- زر حجز الموعد (واحد فقط تحت جميع البروفايلات) -->
+    <div class="button-container">
+      <a href="./Booking Appointments.html" class="book-btn">Booking Appointments</a>
+    </div>
+    
     <footer class="footer">
       <div class="footer-container">
         <div class="footer-column" id="f1">
@@ -223,7 +1031,7 @@
 
         <div class="footer-column" id="f2">
           <h3>About CodeCare Hospital</h3>
-          <p>At <strong style="color: #0080ca;">CodeCare Hospital</strong>, we provide exceptional healthcare solutions combining state-of-the-art technology, expert professionals, and compassionate care tailored to each patient’s needs.</p>
+          <p>At <strong style="color: #0080ca;">CodeCare Hospital</strong>, we provide exceptional healthcare solutions combining state-of-the-art technology, expert professionals, and compassionate care tailored to each patient's needs.</p>
         </div>
 
         <div class="footer-column" id="f3">
@@ -247,21 +1055,128 @@
     </footer>
   </div>
 
-
-
-<div class="loading light-mode fade">
-  <div class="logo">
-    <div class="heart">
-      <svg viewBox="0 0 100 100">
-        <path class="outline" d="M10,30 C10,10 40,10 50,30 C60,10 90,10 90,30 C90,60 50,90 50,90 C50,90 10,60 10,30 Z" fill="none" stroke="#007bff" stroke-width="4" />
-        <polyline class="pulse" points="20,50 30,50 35,40 40,60 45,50 55,50" fill="none" stroke="#007bff" stroke-width="3" />
-      </svg>
+  <div class="loading light-mode fade">
+    <div class="logo">
+      <div class="heart">
+        <svg viewBox="0 0 100 100">
+          <path class="outline" d="M10,30 C10,10 40,10 50,30 C60,10 90,10 90,30 C90,60 50,90 50,90 C50,90 10,60 10,30 Z" fill="none" stroke="#007bff" stroke-width="4" />
+          <polyline class="pulse" points="20,50 30,50 35,40 40,60 45,50 55,50" fill="none" stroke="#007bff" stroke-width="3" />
+        </svg>
+      </div>
+      <h1><span class="white">Code</span><span class="blue">Care</span></h1>
     </div>
-    <h1><span class="white">Code</span><span class="blue">Care</span></h1>
   </div>
-</div>
 
+  <script>
+    // حفظ الوضع الليلي من localStorage وتطبيقه تلقائيًا عند التحميل
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedMode = localStorage.getItem("darkMode");
+      if (savedMode === "enabled") {
+        document.body.classList.add("dark-mode");
+        document.body.classList.remove("light-mode");
 
+        const loadingDiv = document.querySelector(".loading");
+        if (loadingDiv) {
+          loadingDiv.classList.add("dark-mode");
+          loadingDiv.classList.remove("light-mode");
+        }
+      }
+
+      // Toggle Side Menu on Mobile
+      const toggleBtn = document.querySelector(".menu-toggle");
+      const sideMenu = document.getElementById("side-menu");
+
+      if (toggleBtn && sideMenu) {
+        toggleBtn.addEventListener("click", () => {
+          sideMenu.classList.toggle("active");
+          toggleBtn.textContent = sideMenu.classList.contains("active") ? "✖" : "☰";
+        });
+      }
+
+      // Dark Mode Toggle
+      const btn = document.getElementById('darkModeToggle');
+      if (!btn) return; // حماية لو الزر مش موجود
+
+      const icon = btn.querySelector('i');
+      const logo = document.getElementById('logo');
+      const navLogo = document.getElementById('navLogo');
+
+      const wasDark = localStorage.getItem('darkMode') === 'enabled';
+      if (wasDark) {
+        document.body.classList.add('dark-mode');
+        btn.classList.add('active');
+        if (icon) icon.classList.replace('fa-moon', 'fa-sun');
+        if (logo) logo.src = logo.dataset.dark;
+        if (navLogo) navLogo.src = navLogo.dataset.dark;
+      }
+
+      btn.addEventListener('click', () => {
+        const isDark = document.body.classList.toggle('dark-mode');
+        btn.classList.toggle('active', isDark);
+        if (icon) icon.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
+
+        if (logo) logo.style.opacity = 0;
+        if (navLogo) navLogo.style.opacity = 0;
+
+        setTimeout(() => {
+          if (logo) {
+            logo.src = isDark ? logo.dataset.dark : logo.dataset.light;
+            logo.style.opacity = 1;
+          }
+          if (navLogo) {
+            navLogo.src = isDark ? navLogo.dataset.dark : navLogo.dataset.light;
+            navLogo.style.opacity = 1;
+          }
+        }, 200);
+
+        localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+      });
+
+      // Search functionality (basic implementation)
+      const searchInput = document.getElementById('search-input');
+      const searchBtn = document.getElementById('search-btn');
+      const searchError = document.getElementById('search-error');
+
+      if (searchBtn && searchInput) {
+        searchBtn.addEventListener('click', () => {
+          const query = searchInput.value.trim();
+          if (query.length === 0) {
+            searchError.textContent = 'Please enter a search term';
+            searchError.classList.add('visible');
+            setTimeout(() => {
+              searchError.classList.remove('visible');
+            }, 3000);
+          } else {
+            // Here you would typically perform the search
+            console.log('Searching for:', query);
+            searchError.classList.remove('visible');
+          }
+        });
+
+        searchInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            searchBtn.click();
+          }
+        });
+      }
+    });
+
+    // إخفاء اللودر بعد 1 ثانية مع تأثير تلاشي
+    window.addEventListener("load", () => {
+      const loadingDiv = document.querySelector(".loading");
+      const mainContent = document.querySelector("#mainco");
+
+      if (mainContent) mainContent.style.display = "none";
+
+      setTimeout(() => {
+        if (loadingDiv) {
+          loadingDiv.classList.add("fade-out");
+          setTimeout(() => loadingDiv.style.display = "none", 500);
+        }
+        if (mainContent) mainContent.style.display = "block";
+      }, 1000);
+    });
+  </script>
 
 </body>
 </html>

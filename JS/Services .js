@@ -1,5 +1,10 @@
 // حفظ الوضع الليلي من localStorage وتطبيقه تلقائيًا عند التحميل
 document.addEventListener("DOMContentLoaded", () => {
+  // Initialize search functionality
+  if (typeof initializeSearch === 'function') {
+    initializeSearch();
+  }
+
   const savedMode = localStorage.getItem("darkMode");
   if (savedMode === "enabled") {
     document.body.classList.add("dark-mode");
