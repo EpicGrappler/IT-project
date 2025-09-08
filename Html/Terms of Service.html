@@ -11,67 +11,66 @@
   <script src="../JS/shared-search.js" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../Css/home.css">
 </head>
 
 <body>
   <div id="mainco">
     <header class="navx">
-      <nav class="navbar">
-        <div class="logo-container">
-          <!-- Logo في الـ Navbar -->
-          <a href="/Html/Home.html">
-            <img id="navLogo"
-              src="../Images/logo-light.png"
-              data-light="../Images/logo-light.png"
-              data-dark="../Images/logo-dark.png"
-              alt="CodeCare Logo" />
-          </a>
-        </div>
-        <ul class="nav-links">
-          <li><a href="./Home.html">Home</a></li>
-          <li><a href="./Doctor Profiles.html">Our Doctors</a></li>
-          <li><a href="./Terms of Service.html">Services</a></li>
-          <li><a href="./Contact-us.html">Contact</a></li>
-        </ul>
+<nav class="navbar">
+  <div class="logo-container">
+    <a href="./Home.html">
+      <img id="navLogo" 
+           src="../Images/logo-light.png" 
+           data-light="../Images/logo-light.png"
+           data-dark="../Images/logo-dark.png"
+           alt="CodeCare Logo" />
+    </a>
+  </div>
+  
+  <ul class="nav-links">
+    <li><a href="./Home.html">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="./Terms of Service.html">Services</a></li>
+    <li><a href="./Contact-us.html">Contact</a></li>
+  </ul>
 
-        <!-- Search Box -->
-        <div class="search-container">
-          <input type="search" id="search-input" placeholder="Search..." aria-label="Search" />
-          <button aria-label="Search" class="search-btn" id="search-btn"><i class="fas fa-search"></i></button>
-          <div class="search-error" id="search-error"></div>
-        </div>
+  <!-- Search Box -->
+  <div class="search-container">
+    <input type="search" id="search-input" placeholder="Enter Doctor's name..." aria-label="Search" />
+    <button aria-label="Search" class="search-btn" id="search-btn">🔍</button>
+    <div class="search-error" id="search-error"></div>
+  </div>
 
-        <!-- Dark Mode Toggle -->
-        <div class="dark-mode-switch">
-          <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
-            <span class="slider">
-              <i class="fas fa-moon"></i>
-            </span>
-            <span class="switch-label">Dark Mode</span>
-          </button>
-        </div>
+  <!-- Dark Mode Toggle -->
+  <div class="dark-mode-switch">
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+      <span class="slider">
+        <i class="fas fa-moon"></i>
+      </span>
+      <span class="switch-label">Dark Mode</span>
+    </button>
+  </div>
 
-        <div class="account-button compact">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" stroke-width="2" stroke="#0080ca" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="8" r="5" />
-            <path d="M20 21a8 8 0 0 0-16 0" />
-          </svg>
-          <span class="label">Account</span>
-        </div>
+  <!-- Login / Sign Up Buttons -->
+  <div class="auth-buttons" id="auth-buttons">
+    <a href="./login.html" class="auth-btn login-btn">Login</a>
+    <a href="./Register.html" class="auth-btn signup-btn">Sign Up</a>
+  </div>
 
-        <!-- Mobile Menu Toggle Button -->
-        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+  <!-- User Profile (shown when logged in) -->
+  <div class="user-profile" id="user-profile" style="display: none;">
+    <div class="profile-button">
+      <svg xmlns="http://www.w3.org/2000/svg" class="profile-icon" viewBox="0 0 24 24" stroke-width="2" stroke="#0080ca" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="8" r="5" />
+        <path d="M20 21a8 8 0 0 0-16 0" />
+      </svg>
+      <span class="profile-label" id="profile-label">Welcome!</span>
+    </div>
+    <button class="logout-btn" id="logout-btn">Logout</button>
+  </div>
+</nav>
 
-        <!-- Side Menu -->
-        <div class="side-menu" id="side-menu">
-          <ul>
-            <li><a href="./Home.html">Home</a></li>
-            <li><a href="./Doctor Profiles.html">Our Doctors</a></li>
-            <li><a href="./Terms of Service.html">Services</a></li>
-            <li><a href="./Contact-us.html">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
     </header>
 
     <!-- ========== Landing Page ========== -->
@@ -339,6 +338,43 @@
         localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
       });
     });
+
+  function checkAuthState() {
+    const authButtons = document.getElementById('auth-buttons');
+    const userProfile = document.getElementById('user-profile');
+    const profileLabel = document.getElementById('profile-label');
+
+    const userName = localStorage.getItem('userName');
+    const userEmail = localStorage.getItem('userEmail');
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+    if (isLoggedIn || userName || userEmail) {
+      if (authButtons) authButtons.style.display = 'none';
+      if (userProfile) userProfile.style.display = 'flex';
+
+      const welcomeMsg = userName ? `Welcome, ${userName}!` : 
+                        userEmail ? `Welcome, ${userEmail}!` : 'Welcome!';
+      if (profileLabel) profileLabel.textContent = welcomeMsg;
+    } else {
+      if (authButtons) authButtons.style.display = 'flex';
+      if (userProfile) userProfile.style.display = 'none';
+    }
+  }
+
+  function logout() {
+    localStorage.removeItem('userName');
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('isLoggedIn');
+    checkAuthState();
+    alert('You have been logged out successfully.');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    checkAuthState();
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) logoutBtn.addEventListener('click', logout);
+  });
+
   </script>
 
 </body>

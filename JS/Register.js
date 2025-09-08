@@ -104,7 +104,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Event Listeners للحقل
   [firstName, lastName, email, confirmEmail, birthDate, password].forEach((input) => {
-    input.addEventListener("input", validateForm);
+    if (input) {
+      input.addEventListener("input", validateForm);
+    }
   });
 
   // عند الإرسال
@@ -113,12 +115,24 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       if (validateForm()) {
         // حفظ البيانات
+        const fullName = `${firstName.value.trim()} ${lastName.value.trim()}`;
+        
         localStorage.setItem("savedEmail", email.value.trim());
         localStorage.setItem("savedPassword", password.value.trim());
+        localStorage.setItem("userName", fullName);
+        localStorage.setItem("userBirthDate", birthDate.value);
         localStorage.setItem("hideSignupBtn", "true");
 
-        // الانتقال للصفحة التالية
-        window.location.href = "../Html/Login.html";
+        // Show success message
+        Swal.fire({
+          icon: "success",
+          title: "Registration Successful",
+          text: "Your account has been created successfully! Please login to continue.",
+          confirmButtonText: "Go to Login"
+        }).then(() => {
+          // الانتقال للصفحة التالية
+          window.location.href = "../Html/Login.html";
+        });
       } else {
         Swal.fire({
           icon: "error",
@@ -154,4 +168,29 @@ document.addEventListener("DOMContentLoaded", () => {
       toggleBtn.textContent = sideMenu.classList.contains("active") ? "✖" : "☰";
     });
   }
+
+  // Password visibility toggle function
+  window.togglePasswordVisibility = function() {
+    const passwordInput = document.getElementById("password");
+    const toggleIcon = document.querySelector(".toggle-password i");
+    
+    if (passwordInput && toggleIcon) {
+      const isHidden = passwordInput.type === "password";
+      passwordInput.type = isHidden ? "text" : "password";
+      toggleIcon.className = isHidden ? "fa-solid fa-eye-slash icon-eye" : "fa-solid fa-eye icon-eye";
+    }
+  };
+
+  // Password strength validation function
+  window.validatePasswordStrength = function() {
+    const passwordInput = document.getElementById("password");
+    if (passwordInput) {
+      updatePasswordStrength(passwordInput.value);
+    }
+  };
+
+  // Handle submit function
+  window.handleSubmit = function() {
+    return validateForm();
+  };
 });

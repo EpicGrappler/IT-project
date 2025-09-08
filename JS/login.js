@@ -5,7 +5,6 @@ window.onload = function () {
         document.body.classList.remove('loading');
     }, 1000);
 
-
     function check_email() {
         const email = document.getElementById("Email");
         const emailError = document.getElementById("emailerror");
@@ -22,7 +21,6 @@ window.onload = function () {
                 return false;
             }
         }
-
         else {
             emailError.textContent = "";
             email.style.border = "";
@@ -50,8 +48,8 @@ window.onload = function () {
             password.style.border = "";
             return true;
         }
-
     }
+
     window.handleSubmit = function () {
         const submit_button = document.getElementById("submit-btn");
         const validEmail = check_email();
@@ -59,7 +57,6 @@ window.onload = function () {
 
         submit_button.disabled = !(validEmail && validPassword);
         return validEmail && validPassword;
-
     }
 
     const form = document.getElementById("form");
@@ -87,6 +84,12 @@ window.onload = function () {
             }
 
             if (enteredEmail === storedEmail && enteredPassword === storedPassword) {
+                // Set authentication state
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('userEmail', enteredEmail);
+                localStorage.setItem('userName', enteredEmail.split('@')[0]); // Use email prefix as name
+                localStorage.setItem('userToken', 'logged-in-token'); // Simple token for session
+                
                 Swal.fire({
                     title: "Done",
                     text: "Success login",
@@ -103,9 +106,8 @@ window.onload = function () {
                     confirmButtonText: "Try again",
                 });
             }
-        }
-    });
-
+        }
+    });
 };
 
 const searchBtn = document.getElementById('search-btn');
@@ -114,7 +116,7 @@ const searchError = document.getElementById('search-error');
 
 const validItems = ['Find a Doctor', 'Locations', 'Departments', 'Patients', 'Appointments'];
 
-searchBtn.addEventListener('click', (e) => {
+searchBtn?.addEventListener('click', (e) => {
   e.preventDefault();
 
   const query = searchInput.value.trim();
@@ -141,17 +143,18 @@ function clearError() {
   searchInput.classList.remove('input-error');
 }
 
-searchInput.addEventListener('input', clearError);
+searchInput?.addEventListener('input', clearError);
 
 // Toggle Side Menu on Mobile
 document.addEventListener("DOMContentLoaded", () => {
   const toggleBtn = document.querySelector(".menu-toggle");
   const sideMenu = document.getElementById("side-menu");
 
-  toggleBtn.addEventListener("click", () => {
-    sideMenu.classList.toggle("active");
-
-    // Toggle button icon
-    toggleBtn.textContent = sideMenu.classList.contains("active") ? "✖" : "☰";
-  });
+  if (toggleBtn && sideMenu) {
+    toggleBtn.addEventListener("click", () => {
+      sideMenu.classList.toggle("active");
+      // Toggle button icon
+      toggleBtn.textContent = sideMenu.classList.contains("active") ? "✖" : "☰";
+    });
+  }
 });
