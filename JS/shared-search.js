@@ -1,12 +1,54 @@
-// Sample doctors data - Replace this with your actual doctors data
+// Doctors data with complete information
 const doctors = [
-    { name: "Dr. Youssef Al-Demerdash", specialty: "Cardiologist", page: "Al-Demerdash.html" },
-    { name: "Dr. Mohamed Waleed", specialty: "Neurologist", page: "Doc Waleed Page .html" },
-    { name: "Dr. Omar Ragap", specialty: "Orthopedist", page: "OmarRagap.html" },
-    { name: "Dr. Mostafa Ashraf", specialty: "Pediatrician", page: "Mostafa.html" },
-    { name: "Dr. Ruba", specialty: "Dermatologist", page: "Ruba.html" },
-    { name: "Dr. Mohamed Zaky", specialty: "Surgeon", page: "Zaky.html" },
-    { name: "Dr. Mohamed Ragap", specialty: "Neurology", page: "Ragap.html" }
+    { 
+        name: "Dr. Youssef Al-Demerdash",
+        specialty: "Orthopedics",
+        page: "Al-Demerdash.html",
+        image: "../Images/Joo.jpg",
+        experience: "14 years"
+    },
+    { 
+        name: "Dr. Mohamed Waleed",
+        specialty: "Dentistry",
+        page: "Doc Waleed Page .html",
+        image: "../Images/Waleed.jpeg",
+        experience: "12 years"
+    },
+    { 
+        name: "Dr. Omar Ragap",
+        specialty: "General Medicine",
+        page: "OmarRagap.html",
+        image: "../Images/Omar.jpg",
+        experience: "8 years"
+    },
+    { 
+        name: "Dr. Mostafa Ashraf",
+        specialty: "Clinical Psychology",
+        page: "Mostafa.html",
+        image: "../Images/mostafa .jpg",
+        experience: "12 years"
+    },
+    { 
+        name: "Dr. Ruba",
+        specialty: "Pediatric Medicine",
+        page: "Ruba.html",
+        image: "../Images/Home/Rubaa .jpg",
+        experience: "10 years"
+    },
+    { 
+        name: "Dr. Mohamed Zaky",
+        specialty: "Cardiology",
+        page: "Zaky.html",
+        image: "../Images/Zaky.jpeg",
+        experience: "12 years"
+    },
+    { 
+        name: "Dr. Mohamed Ragap",
+        specialty: "Neurology",
+        page: "Ragap.html",
+        image: "../Images/ragap .avif",
+        experience: "10 years"
+    }
 ];
 
 // Search functionality
@@ -44,25 +86,44 @@ function initializeSearch() {
                 overflow-y: auto;
             }
             .suggestion-item {
-                padding: 10px 15px;
+                padding: 12px 15px;
                 cursor: pointer;
                 border-bottom: 1px solid #eee;
-                transition: background-color 0.2s;
+                transition: all 0.2s ease;
+                display: flex;
+                align-items: center;
+                gap: 12px;
             }
             .suggestion-item:last-child {
                 border-bottom: none;
             }
             .suggestion-item:hover {
                 background-color: #f5f8ff;
+                transform: translateX(2px);
+            }
+            .suggestion-img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 2px solid #0D6EFD;
+            }
+            .suggestion-info {
+                flex: 1;
             }
             .suggestion-name {
                 font-weight: 600;
                 color: #333;
+                margin-bottom: 2px;
             }
             .suggestion-specialty {
                 font-size: 0.85em;
                 color: #666;
-                margin-top: 2px;
+            }
+            .suggestion-experience {
+                font-size: 0.8em;
+                color: #0D6EFD;
+                font-weight: 500;
             }
 
             .search-container {
@@ -201,8 +262,12 @@ function initializeSearch() {
                 const specialtyHtml = highlightMatch(doctor.specialty, searchTerm);
                 return `
                     <div class="suggestion-item" data-page="${doctor.page}">
-                        <div class="suggestion-name">${nameHtml}</div>
-                        <div class="suggestion-specialty">${specialtyHtml}</div>
+                        <img src="${doctor.image}" alt="${doctor.name}" class="suggestion-img">
+                        <div class="suggestion-info">
+                            <div class="suggestion-name">${nameHtml}</div>
+                            <div class="suggestion-specialty">${specialtyHtml}</div>
+                            <div class="suggestion-experience">${doctor.experience} experience</div>
+                        </div>
                     </div>
                 `;
             }).join('');

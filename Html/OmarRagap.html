@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap" rel="stylesheet">
   <!-- FontAwesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="../JS/shared-search.js" defer></script>
   <style>
 /* Reset & Base */
 * {
@@ -38,6 +39,94 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+/* Search Container */
+.search-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 12px;
+  width: 280px;
+  z-index: 1;
+}
+
+.search-container input[type="search"] {
+  padding: 12px 40px 12px 16px;
+  border-radius: 24px;
+  border: 2px solid #0D6EFD;
+  font-size: 15px;
+  outline: none;
+  width: 100%;
+  transition: all 0.3s ease;
+  background-color: #FFFFFF;
+  color: #343A40;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.search-container input[type="search"]:focus {
+  border-color: #084298;
+  box-shadow: 0 0 12px rgba(13, 110, 253, 0.2);
+  transform: translateY(-1px);
+}
+
+.search-container button.search-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #0D6EFD;
+  padding: 8px;
+  user-select: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-container button.search-btn:hover {
+  color: #084298;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.search-error {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  font-size: 13px;
+  color: #DC3545;
+  font-weight: 600;
+  min-height: 18px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 6px 12px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.2);
+  pointer-events: none;
+}
+
+.search-error.visible {
+  opacity: 1;
+  transform: translateY(2px);
+}
+
+/* Dark Mode Search Styles */
+body.dark-mode .search-container input[type="search"] {
+  background-color: #2d2d2d;
+  color: #fff;
+  border-color: #0D6EFD;
+}
+
+body.dark-mode .search-container .search-btn {
+  color: #fff;
 }
 
 /* Navbar */
@@ -1002,7 +1091,7 @@ body.dark-mode .white {
           <li><a href="./Home.html">Home</a></li>
           <li><a href="./Doctor Profiles.html">Our Doctors</a></li>
           <li><a href="./Terms of Service.html">Services</a></li>
-          <li><a href="./Contact-us.html">Contact</a></li>
+          <li><a href="#feedback">Feedback</a></li>
         </ul>
       </div>
 
@@ -1042,7 +1131,7 @@ body.dark-mode .white {
           <li><a href="./Home.html">Home</a></li>
           <li><a href="./Doctor Profiles.html">Our Doctors</a></li>
           <li><a href="./Terms of Service.html">Services</a></li>
-          <li><a href="./Contact-us.html">Contact</a></li>
+          <li><a href="#feedback">Feedback</a></li>
         </ul>
       </div>
     </nav>
@@ -1135,7 +1224,7 @@ body.dark-mode .white {
       </div>
     </section>
 
-    <section>
+    <section id="feedback">
       <h2>Doctor Feedback</h2>
       <div class="card">
         <blockquote><i class="fas fa-quote-left icon"></i>"Precise work and pain-free experience. Great dentist!" – <strong style="color: #0080ca;">E.F.</strong></blockquote>

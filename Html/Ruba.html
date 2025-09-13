@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap" rel="stylesheet">
   <!-- FontAwesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="../JS/shared-search.js" defer></script>
   <script src="../JS/Ruba.js" defer></script>
   <style>
 /* Reset & Base */
@@ -1003,7 +1004,7 @@ body.dark-mode .white {
           <li><a href="./Home.html">Home</a></li>
           <li><a href="./Doctor Profiles.html">Our Doctors</a></li>
           <li><a href="./Terms of Service.html">Services</a></li>
-          <li><a href="./Contact-us.html">Contact</a></li>
+          <li><a href="#feedback">Feedback</a></li>
         </ul>
       </div>
 
@@ -1043,7 +1044,7 @@ body.dark-mode .white {
           <li><a href="./Home.html">Home</a></li>
           <li><a href="./Doctor Profiles.html">Our Doctors</a></li>
           <li><a href="./Terms of Service.html">Services</a></li>
-          <li><a href="./Contact-us.html">Contact</a></li>
+          <li><a href="#feedback">Feedback</a></li>
         </ul>
       </div>
     </nav>
@@ -1162,6 +1163,25 @@ body.dark-mode .white {
       </div>
     </section>
   </div>
+
+  <section id="feedback" class="card">
+    <h2>Feedback</h2>
+    <form id="feedbackForm">
+      <div style="margin-bottom: 16px;">
+        <label for="feedbackName" style="display: block; margin-bottom: 8px; font-weight: 600;">Name</label>
+        <input type="text" id="feedbackName" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+      </div>
+      <div style="margin-bottom: 16px;">
+        <label for="feedbackEmail" style="display: block; margin-bottom: 8px; font-weight: 600;">Email</label>
+        <input type="email" id="feedbackEmail" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+      </div>
+      <div style="margin-bottom: 16px;">
+        <label for="feedbackMessage" style="display: block; margin-bottom: 8px; font-weight: 600;">Your Feedback</label>
+        <textarea id="feedbackMessage" required rows="4" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; resize: vertical;"></textarea>
+      </div>
+      <button type="submit" class="button btn-primary">Submit Feedback</button>
+    </form>
+  </section>
 
   <footer class="footer">
     <div class="footer-container">

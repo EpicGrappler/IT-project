@@ -3,7 +3,8 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Search Doctors</title>
-  <link rel="stylesheet" href="/Css/style.css"> 
+  <link rel="stylesheet" href="/Css/style.css">
+  <script src="../JS/shared-search.js" defer></script>
 </head>
 
 <body class="animated-bg loading">
@@ -42,11 +43,12 @@
       <!-- Image on the right -->
       <img src="/Images/Doc prof.jpg" alt="Doctors" class="doctor-image">
 
-      <!-- Search Form -->
-      <form class="search-form">
+      <!-- Search Container -->
+      <div class="search-container">
         <h2>Search for a Doctor</h2>
-        <label for="name">Doctor's Name:</label>
-        <input type="text" id="name" name="name" placeholder="Enter Doctor's name...">
+        <input type="search" id="doctor-search" placeholder="Search doctors..." aria-label="Search" />
+        <button aria-label="Search" class="search-btn" id="search-btn">🔍</button>
+        <div class="search-error" id="search-error"></div>
         <br><br>
         <label for="specialty">Select Specialty:</label>
         <select id="specialty" name="specialty">
