@@ -783,7 +783,7 @@
           <li><a href="./Home.html">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="./Terms of Service.html">Services</a></li>
-          <li><a href="./Contact-us.html">Contact</a></li>
+          <li><a href="./Doctor Profiles.html">Our Doctors</a></li>
         </ul>
 
         <!-- Search Box -->
@@ -1101,8 +1101,8 @@
         if (userProfileMobile) userProfileMobile.style.display = 'block';
 
         // Set welcome message
-        const welcomeMsg = userName ? `Welcome, ${userName}!` : 
-                          userEmail ? `Welcome, ${userEmail}!` : 'Welcome!';
+        const welcomeMsg = userName ? `Welcome!` : 
+                          userEmail ? `Welcome!` : 'Welcome!';
         if (profileLabel) profileLabel.textContent = welcomeMsg;
         if (profileLabelMobile) profileLabelMobile.textContent = welcomeMsg;
       } else {
