@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
           confirmButtonText: "Go to Login"
         }).then(() => {
           // الانتقال للصفحة التالية
-          window.location.href = "../Html/Login.html";
+          window.location.href = "../docs/Login.html";
         });
       } else {
         Swal.fire({
