@@ -106,7 +106,7 @@ window.onload = function () {
         icon: "success",
         confirmButtonText: "ok",
       }).then(() => {
-        window.location.href = "../docs/Doctor Profiles.html"; 
+        window.location.href = "../Html/Doctor Profiles.html"; 
       });
     }
   });

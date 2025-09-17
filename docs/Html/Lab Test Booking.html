@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Book Appointment | CodeCare</title>
+  <title>Lab Test Booking | CodeCare</title>
   <link rel="stylesheet" href="../Css/Terms services.css" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="../JS/shared-search.js" defer></script>
   <script src="../JS/Services .js" defer></script>
+  <script src="../JS/shared-search.js" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
@@ -19,7 +19,7 @@
       <nav class="navbar">
         <div class="logo-container">
           <!-- Logo في الـ Navbar -->
-          <a href="/docs/index.html">
+          <a href="/Html/index.html">
             <img id="navLogo"
               src="../Images/logo-light.png"
               data-light="../Images/logo-light.png"
@@ -31,12 +31,12 @@
           <li><a href="./index.html">Home</a></li>
           <li><a href="./Doctor Profiles.html">Our Doctors</a></li>
           <li><a href="./Terms of Service.html">Services</a></li>
-          <li><a href="./Contact us.html">Contact</a></li>
+          <li><a href="./Contact-us.html">Contact</a></li>
         </ul>
 
         <!-- Search Box -->
         <div class="search-container">
-          <input type="search" id="search-input" placeholder="Enter Doctor's name..." aria-label="Search" />
+          <input type="search" id="search-input" placeholder="Search..." aria-label="Search" />
           <button aria-label="Search" class="search-btn" id="search-btn">🔍</button>
           <div class="search-error" id="search-error"></div>
         </div>
@@ -68,7 +68,7 @@
             <li><a href="./index.html">Home</a></li>
             <li><a href="./Doctor Profiles.html">Our Doctors</a></li>
             <li><a href="./Terms of Service.html">Services</a></li>
-            <li><a href="./Contact us.html">Contact</a></li>
+            <li><a href="./Contact-us.html">Contact</a></li>
           </ul>
         </div>
       </nav>
@@ -77,26 +77,26 @@
     <!-- ========== Landing Page ========== -->
     <main class="container">
       <section class="content">
-        <h1 class="main-title">Book Your Appointment<br> with <span class="highlight">Our Experts</span></h1>
+        <h1 class="main-title">Book Your Lab Test<br> with <span class="highlight">CodeCare</span></h1>
         <p class="description">
-          Schedule your consultation with one of our specialist doctors. We're here to provide you with the best medical care.
+          Schedule your laboratory tests with our state-of-the-art diagnostic facilities and expert technicians.
         </p>
-        <a href="./Doctor Profiles.html" class="btn-link">Meet Our Doctors</a>
+        <a href="./Doctor Profiles.html" class="btn-link">Find Your Doctor</a>
       </section>
 
       <section class="image-area">
-        <img src="../Images/Book page .png" alt="Book Appointment Illustration" />
+        <img src="../Images/lab test page.jpg" alt="Lab Test Booking Illustration" />
       </section>
     </main>
 
-    <!-- ========== Appointment Booking Form ========== -->
+    <!-- ========== Lab Test Booking Form ========== -->
     <div class="terms-wrapper" id="booking-form">
       <header>
-        <h1>Schedule Your <span class="highlight">Appointment</span></h1>
-        <p>Fill out the form below to book your consultation with one of our medical specialists. We'll confirm your appointment within 24 hours.</p>
+        <h1>Schedule Your <span class="highlight">Lab Test</span> Appointment</h1>
+        <p>Please fill out the form below to schedule your lab test appointment. Our team will contact you within 2 business days to confirm your appointment.</p>
       </header>
 
-      <form id="appointmentForm" style="background: none; box-shadow: none; padding: 0;">
+      <form id="labTestForm" style="background: none; box-shadow: none; padding: 0;">
         <section>
           <h2>Personal Information</h2>
           <ul style="list-style: none; padding: 0;">
@@ -109,7 +109,7 @@
             </li>
             <li style="background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
               <label for="email" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Email Address:</label>
-              <input type="email" id="email" name="email" required placeholder="Enter your email address"
+              <input type="email" id="email" name="email" required placeholder="Enter your email"
                 style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px; transition: border-color 0.3s ease;"
                 oninput="handleSubmit()">
               <span style="color: #dc3545; font-size: 14px; margin-top: 5px; display: block;" id="error_email"></span>
@@ -128,54 +128,77 @@
           <h2>Appointment Details</h2>
           <ul style="list-style: none; padding: 0;">
             <li style="background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
-              <label for="date" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Preferred Appointment Date:</label>
+              <label for="date" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Preferred Test Date:</label>
               <input type="date" id="date" name="date" required
                 style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px; transition: border-color 0.3s ease;">
             </li>
             <li style="background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
-              <label for="time" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Preferred Time:</label>
-              <select id="time" name="time" required
+              <label for="main-test" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Select Main Test Category:</label>
+              <select id="main-test" name="main-test" required onchange="showSubTests()"
                 style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px; transition: border-color 0.3s ease; background-color: white;">
-                <option value="">-- Select Time Slot --</option>
-                <option value="09:00">9:00 AM</option>
-                <option value="10:00">10:00 AM</option>
-                <option value="11:00">11:00 AM</option>
-                <option value="12:00">12:00 PM</option>
-                <option value="14:00">2:00 PM</option>
-                <option value="15:00">3:00 PM</option>
-                <option value="16:00">4:00 PM</option>
-                <option value="17:00">5:00 PM</option>
+                <option value="">-- Select Test Type --</option>
+                <option value="blood">Blood Test</option>
+                <option value="urine">Urine Test</option>
+                <option value="xray">X-Ray</option>
+                <option value="mri">MRI Scan</option>
+                <option value="other">Other</option>
               </select>
             </li>
           </ul>
         </section>
 
         <section>
-          <h2>Medical Specialization</h2>
+          <h2>Test Specifications</h2>
           <ul style="list-style: none; padding: 0;">
-            <li style="background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
-              <label for="department" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Select Department & Doctor:</label>
-              <select id="department" name="department" required
-                style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px; transition: border-color 0.3s ease; background-color: white;">
-                <option value="">-- Choose Your Specialist --</option>
-                <option value="general">Internal Medicine - Dr. Mohamed Waleed</option>
-                <option value="cardiology">Cardiology - Dr. Mohamed Zaky</option>
-                <option value="neurology">Neurology - Dr. Mohamed Ragab</option>
-                <option value="dentistry">Dental Surgery - Dr. Omar Ragab</option>
-                <option value="dermatology">Dermatology - Dr. Youssef Al-Demerdash</option>
-                <option value="psychology">Clinical Psychology - Dr. Mostafa Ashraf</option>
+            <!-- Blood Tests -->
+            <li class="sub-test" id="blood-tests" style="display: none; background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
+              <label for="blood-subtests" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Select Blood Test:</label>
+              <select name="blood-subtests" id="blood-subtests"
+                style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px; background-color: white;">
+                <option value="cbc">CBC (Complete Blood Count)</option>
+                <option value="sugar">Blood Sugar (FBS / RBS)</option>
+                <option value="hba1c">HbA1c</option>
+                <option value="lipid">Lipid Profile</option>
               </select>
             </li>
-            <li style="background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
-              <label for="appointment-type" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Appointment Type:</label>
-              <select id="appointment-type" name="appointment-type" required
-                style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px; transition: border-color 0.3s ease; background-color: white;">
-                <option value="">-- Select Type --</option>
-                <option value="consultation">General Consultation</option>
-                <option value="follow-up">Follow-up Visit</option>
-                <option value="checkup">Routine Check-up</option>
-                <option value="emergency">Urgent Care</option>
+
+            <!-- Urine Tests -->
+            <li class="sub-test" id="urine-tests" style="display: none; background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
+              <label for="urine-subtests" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Select Urine Test:</label>
+              <select name="urine-subtests" id="urine-subtests"
+                style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px; background-color: white;">
+                <option value="urinalysis">Urinalysis</option>
+                <option value="culture">Urine Culture</option>
               </select>
+            </li>
+
+            <!-- X-Ray Tests -->
+            <li class="sub-test" id="xray-tests" style="display: none; background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
+              <label for="xray-subtests" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Select X-Ray Type:</label>
+              <select name="xray-subtests" id="xray-subtests"
+                style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px; background-color: white;">
+                <option value="chest">Chest X-Ray</option>
+                <option value="abdomen">Abdomen X-Ray</option>
+                <option value="bone">Bone X-Ray</option>
+              </select>
+            </li>
+
+            <!-- MRI Tests -->
+            <li class="sub-test" id="mri-tests" style="display: none; background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
+              <label for="mri-subtests" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Select MRI Scan Type:</label>
+              <select name="mri-subtests" id="mri-subtests"
+                style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px; background-color: white;">
+                <option value="brain">Brain MRI</option>
+                <option value="spine">Spine MRI</option>
+                <option value="joints">Joints MRI</option>
+              </select>
+            </li>
+
+            <!-- Other Tests -->
+            <li class="sub-test" id="other-tests" style="display: none; background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
+              <label for="other-subtests" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Please Specify the Test:</label>
+              <input type="text" name="other-subtests" id="other-subtests" placeholder="Describe the test needed"
+                style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px;">
             </li>
           </ul>
         </section>
@@ -184,48 +207,45 @@
           <h2>Additional Information</h2>
           <ul style="list-style: none; padding: 0;">
             <li style="background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
-              <label for="symptoms" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Current Symptoms (if any):</label>
-              <textarea id="symptoms" name="symptoms" rows="3" placeholder="Describe any symptoms or health concerns..."
-                style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px; resize: vertical; font-family: 'Roboto', sans-serif;"></textarea>
-            </li>
-            <li style="background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
-              <label for="message" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Additional Notes (Optional):</label>
-              <textarea id="message" name="message" rows="3" placeholder="Any additional information for the doctor..."
-                style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px; resize: vertical; font-family: 'Roboto', sans-serif;"></textarea>
-            </li>
-            <li style="background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
-              <div style="display: flex; align-items: flex-start; gap: 12px;">
-                <input type="checkbox" id="insurance" name="insurance" style="width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0;">
-                <label for="insurance" style="color: #343a40; font-weight: 500; line-height: 1.4;">I have medical insurance and will provide details during the visit</label>
+              <label for="attachment" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Upload Doctor's Request:</label>
+              <div class="custom-file-upload-wrapper">
+                <input type="file" id="attachment" name="attachment" accept=".pdf,.jpg,.png" style="display: none;">
+                <label for="attachment" style="display: inline-block; background-color: #0080ca; color: white; padding: 12px 24px; font-size: 16px; font-weight: 600; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease;">
+                  <i class="fas fa-upload" style="margin-right: 8px;"></i>
+                  Choose File
+                </label>
               </div>
             </li>
             <li style="background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
-              <div style="display: flex; align-items: flex-start; gap: 12px;">
-                <input type="checkbox" id="terms" name="terms" required style="width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0;">
-                <label for="terms" style="color: #343a40; font-weight: 500; line-height: 1.4;">I agree to the <a href="./Terms of Service.html" style="color: #0080ca; text-decoration: underline;">terms and conditions</a> and <a href="#" style="color: #0080ca; text-decoration: underline;">privacy policy</a></label>
+              <label for="message" style="display: block; font-weight: bold; margin-bottom: 8px; color: #343a40;">Additional Notes (optional):</label>
+              <textarea id="message" name="message" rows="4" placeholder="Enter any notes, symptoms, or doctor referrals..."
+                style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 16px; resize: vertical; font-family: 'Roboto', sans-serif;"></textarea>
+            </li>
+            <li style="background: #ffffff; margin-bottom: 15px; padding: 20px; border-radius: 8px; border-left: 4px solid #0080ca;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <input type="checkbox" id="terms" name="terms" required style="width: 18px; height: 18px;">
+                <label for="terms" style="color: #343a40; font-weight: 500;">I agree to the <a href="./Terms of Service.html" style="color: #0080ca; text-decoration: underline;">terms and conditions</a>.</label>
               </div>
             </li>
           </ul>
         </section>
 
         <section>
-          <h2>Appointment Confirmation</h2>
+          <h2>Booking Confirmation</h2>
           <p style="font-weight: bold; text-align: center; color: #6c757d; margin-bottom: 20px;">
-            <i class="fas fa-info-circle" style="color: #0080ca; margin-right: 8px;"></i>
-            Please arrive 15 minutes before your scheduled appointment time. We'll send you a confirmation email with all the details.
+            Our team will contact you within 2 business days to confirm your appointment and share further details.
           </p>
           <div style="text-align: center;">
             <button type="submit" class="btn-link" id="submit-btn" disabled 
               style="background-color: #6c757d; cursor: not-allowed; font-size: 18px; padding: 15px 40px;">
-              <i class="fas fa-calendar-plus" style="margin-right: 8px;"></i>
-              Book Appointment
+              <i class="fas fa-calendar-check" style="margin-right: 8px;"></i>
+              Submit Booking
             </button>
           </div>
           
           <div id="successMessage" style="display: none; margin-top: 20px; padding: 20px; background-color: #d4edda; color: #155724; text-align: center; border-radius: 8px; border: 1px solid #c3e6cb;">
-            <i class="fas fa-check-circle" style="margin-right: 8px; color: #28a745; font-size: 18px;"></i>
-            <strong>Appointment Booked Successfully!</strong><br>
-            Thank you for choosing CodeCare Hospital. We will contact you within 24 hours to confirm your appointment details.
+            <i class="fas fa-check-circle" style="margin-right: 8px; color: #28a745;"></i>
+            <strong>Success!</strong> Thank you for your booking. We will contact you shortly to confirm your appointment.
           </div>
         </section>
       </form>
@@ -236,7 +256,7 @@
         <div class="footer-column" id="f1">
           <h3>Quick Links</h3>
           <ul>
-            <li><a href="./Contact us.html">Contact Support</a></li>
+            <li><a href="./Contact-us.html">Contact Support</a></li>
             <li><a href="./Terms of Service.html">View Services</a></li>
           </ul>
         </div>
@@ -352,6 +372,12 @@
       transform: translateY(-2px) !important;
     }
 
+    /* File Upload Button */
+    label[for="attachment"]:hover {
+      background-color: #005f99 !important;
+      transform: translateY(-2px);
+    }
+
     /* Dark Mode Form Styles */
     body.dark-mode .terms-wrapper section ul li {
       background-color: #1f1f2e !important;
@@ -400,15 +426,6 @@
 
     body.dark-mode .account-button.compact:hover .icon {
       stroke: #ffffff;
-    }
-
-    /* Checkbox improvements */
-    input[type="checkbox"] {
-      accent-color: #0080ca;
-    }
-
-    body.dark-mode input[type="checkbox"] {
-      accent-color: #90c6ff;
     }
   </style>
 
@@ -534,35 +551,12 @@
         const validName = check_name();
         const validPhone = check_phone();
 
-        const dateInput = document.getElementById("date");
-        const timeInput = document.getElementById("time");
-        const departmentInput = document.getElementById("department");
-        const appointmentTypeInput = document.getElementById("appointment-type");
-        const termsInput = document.getElementById("terms");
-
-        const hasDate = dateInput.value.trim() !== "";
-        const hasTime = timeInput.value !== "";
-        const hasDepartment = departmentInput.value !== "";
-        const hasAppointmentType = appointmentTypeInput.value !== "";
-        const hasTerms = termsInput.checked;
-
-        const isFormComplete = validEmail && validName && validPhone && hasDate && hasTime && hasDepartment && hasAppointmentType && hasTerms;
-
-        submit_button.disabled = !isFormComplete;
-        return isFormComplete;
+        submit_button.disabled = !(validEmail && validName && validPhone);
+        return validEmail && validName && validPhone;
       };
 
-      // Add event listeners for all form inputs
-      ['date', 'time', 'department', 'appointment-type', 'terms'].forEach(id => {
-        const element = document.getElementById(id);
-        if (element) {
-          element.addEventListener('change', handleSubmit);
-          element.addEventListener('input', handleSubmit);
-        }
-      });
-
       // Form submission
-      document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+      document.getElementById('labTestForm').addEventListener('submit', function(e) {
         e.preventDefault();
         if (handleSubmit()) {
           document.getElementById('successMessage').style.display = 'block';
@@ -573,16 +567,33 @@
             dateInput.value = today;
           }
           document.getElementById("submit-btn").disabled = true;
-          
-          // Scroll to success message
-          document.getElementById('successMessage').scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'center' 
-          });
         }
       });
     };
+
+    // Show Sub Tests Function
+    function showSubTests() {
+      const selectedTest = document.getElementById("main-test").value;
+      const allSubTestDivs = document.querySelectorAll(".sub-test");
+      
+      allSubTestDivs.forEach(div => {
+        div.style.display = "none";
+      });
+
+      if (selectedTest === "blood") {
+        document.getElementById("blood-tests").style.display = "block";
+      } else if (selectedTest === "urine") {
+        document.getElementById("urine-tests").style.display = "block";
+      } else if (selectedTest === "xray") {
+        document.getElementById("xray-tests").style.display = "block";
+      } else if (selectedTest === "mri") {
+        document.getElementById("mri-tests").style.display = "block";
+      } else if (selectedTest === "other") {
+        document.getElementById("other-tests").style.display = "block";
+      }
+    }
   </script>
+
 
 </body>
 
