@@ -96,7 +96,7 @@ window.onload = function () {
                     icon: "success",
                     confirmButtonText: "OK",
                 }).then(() => {
-                    window.location.href = "../docs/index.html";
+                    window.location.href = "/docs/index.html";
                 });
             } else {
                 Swal.fire({
