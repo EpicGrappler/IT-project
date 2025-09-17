@@ -4,49 +4,49 @@ const doctors = [
         name: "Dr. Youssef Al-Demerdash",
         specialty: "Orthopedics",
         page: "Al-Demerdash.html",
-        image: "/Images/Joo.jpg",
+        image: "../Images/Joo.jpg",
         experience: "14 years"
     },
     { 
         name: "Dr. Mohamed Waleed",
         specialty: "Dentistry",
         page: "Doc Waleed Page .html",
-        image: "/Images/Waleed.jpeg",
+        image: "../Images/Waleed.jpeg",
         experience: "12 years"
     },
     { 
         name: "Dr. Omar Ragap",
         specialty: "General Medicine",
         page: "OmarRagap.html",
-        image: "/Images/Omar.jpg",
+        image: "../Images/Omar.jpg",
         experience: "8 years"
     },
     { 
         name: "Dr. Mostafa Ashraf",
         specialty: "Clinical Psychology",
         page: "Mostafa.html",
-        image: "/Images/mostafa .jpg",
+        image: "../Images/mostafa .jpg",
         experience: "12 years"
     },
     { 
         name: "Dr. Ruba",
         specialty: "Pediatric Medicine",
         page: "Ruba.html",
-        image: "/Images/Home/Rubaa .jpg",
+        image: "../Images/Home/Rubaa .jpg",
         experience: "10 years"
     },
     { 
         name: "Dr. Mohamed Zaky",
         specialty: "Cardiology",
         page: "Zaky.html",
-        image: "/Images/Zaky.jpeg",
+        image: "../Images/Zaky.jpeg",
         experience: "12 years"
     },
     { 
         name: "Dr. Mohamed Ragap",
         specialty: "Neurology",
         page: "Ragap.html",
-        image: "/Images/ragap .avif",
+        image: "../Images/ragap .avif",
         experience: "10 years"
     }
 ];
